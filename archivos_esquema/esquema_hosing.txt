@@ -1,0 +1,1 @@
+housing#price#int#8#area#int#5#bedrooms#int#1#bathrooms#int#1#stories#int#1#mainroad#string#3#guestroom#string#3#basement#string#3#hotwaterheating#string#3#airconditioning#string#3#parking#int#1#prefarea#string#3#furnishingstatus#string#15

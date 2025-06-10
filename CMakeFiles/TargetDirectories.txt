@@ -1,0 +1,5 @@
+/home/asus/Documentos/BD_1/CMakeFiles/edit_cache.dir
+/home/asus/Documentos/BD_1/CMakeFiles/rebuild_cache.dir
+/home/asus/Documentos/BD_1/src/CMakeFiles/BD_1.dir
+/home/asus/Documentos/BD_1/src/CMakeFiles/edit_cache.dir
+/home/asus/Documentos/BD_1/src/CMakeFiles/rebuild_cache.dir

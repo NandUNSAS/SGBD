@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/BD_1.dir/main.cpp.o CMakeFiles/BD_1.dir/implementacion/funciones.cpp.o CMakeFiles/BD_1.dir/implementacion/disco.cpp.o CMakeFiles/BD_1.dir/implementacion/gestorAlmacenamiento.cpp.o -o BD_1

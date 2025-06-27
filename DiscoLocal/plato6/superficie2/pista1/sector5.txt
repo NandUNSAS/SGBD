@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-526,0,3,"Farrell, Mr. James",male,40.5,0,0,367232,7.75,,Q
-527,1,2,"Ridsdale, Miss. Lucy",female,50,0,0,W./C. 14258,10.5,,S
-528,0,1,"Farthing, Mr. John",male,,0,0,PC 17483,221.7792,C95,S
-529,0,3,"Salonen, Mr. Johan Werner",male,39,0,0,3101296,7.925,,S
-530,0,2,"Hocking, Mr. Richard George",male,23,2,1,29104,11.5,,S
-531,1,2,"Quick, Miss. Phyllis May",female,2,1,1,26360,26,,S
-532,0,3,"Toufik, Mr. Nakli",male,,0,0,2641,7.2292,,C

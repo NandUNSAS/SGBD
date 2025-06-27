@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-330,1,1,"Hippach, Miss. Jean Gertrude",female,16,0,1,111361,57.9792,B18,C
-331,1,3,"McCoy, Miss. Agnes",female,,2,0,367226,23.25,,Q
-332,0,1,"Partner, Mr. Austen",male,45.5,0,0,113043,28.5,C124,S
-333,0,1,"Graham, Mr. George Edward",male,38,0,1,PC 17582,153.4625,C91,S
-334,0,3,"Vander Planke, Mr. Leo Edmondus",male,16,2,0,345764,18,,S
-335,1,1,"Frauenthal, Mrs. Henry William (Clara Heinsheimer)",female,,1,0,PC 17611,133.65,,S
-336,0,3,"Denkoff, Mr. Mitto",male,,0,0,349225,7.8958,,S

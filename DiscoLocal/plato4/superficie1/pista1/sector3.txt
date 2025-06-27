@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-267,0,3,"Panula, Mr. Ernesti Arvid",male,16,4,1,3101295,39.6875,,S
-268,1,3,"Persson, Mr. Ernst Ulrik",male,25,1,0,347083,7.775,,S
-269,1,1,"Graham, Mrs. William Thompson (Edith Junkins)",female,58,0,1,PC 17582,153.4625,C125,S
-270,1,1,"Bissette, Miss. Amelia",female,35,0,0,PC 17760,135.6333,C99,S
-271,0,1,"Cairns, Mr. Alexander",male,,0,0,113798,31,,S
-272,1,3,"Tornquist, Mr. William Henry",male,25,0,0,LINE,0,,S
-273,1,2,"Mellinger, Mrs. (Elizabeth Anne Maidment)",female,41,0,1,250644,19.5,,S

@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-729,0,2,"Bryhl, Mr. Kurt Arnold Gottfrid",male,25,1,0,236853,26,,S
-730,0,3,"Ilmakangas, Miss. Pieta Sofia",female,25,1,0,STON/O2. 3101271,7.925,,S
-731,1,1,"Allen, Miss. Elisabeth Walton",female,29,0,0,24160,211.3375,B5,S
-732,0,3,"Hassan, Mr. Houssein G N",male,11,0,0,2699,18.7875,,C
-733,0,2,"Knight, Mr. Robert J",male,,0,0,239855,0,,S
-734,0,2,"Berriman, Mr. William John",male,23,0,0,28425,13,,S
-735,0,2,"Troupiansky, Mr. Moses Aaron",male,23,0,0,233639,13,,S

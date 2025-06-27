@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-407,0,3,"Widegren, Mr. Carl/Charles Peter",male,51,0,0,347064,7.75,,S
-408,1,2,"Richards, Master. William Rowe",male,3,1,1,29106,18.75,,S
-409,0,3,"Birkeland, Mr. Hans Martin Monsen",male,21,0,0,312992,7.775,,S
-410,0,3,"Lefebre, Miss. Ida",female,,3,1,4133,25.4667,,S
-411,0,3,"Sdycoff, Mr. Todor",male,,0,0,349222,7.8958,,S
-412,0,3,"Hart, Mr. Henry",male,,0,0,394140,6.8583,,Q
-413,1,1,"Minahan, Miss. Daisy E",female,33,1,0,19928,90,C78,Q

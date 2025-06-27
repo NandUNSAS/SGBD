@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-463,0,1,"Gee, Mr. Arthur H",male,47,0,0,111320,38.5,E63,S
-464,0,2,"Milling, Mr. Jacob Christian",male,48,0,0,234360,13,,S
-465,0,3,"Maisner, Mr. Simon",male,,0,0,A/S 2816,8.05,,S
-466,0,3,"Goncalves, Mr. Manuel Estanslas",male,38,0,0,SOTON/O.Q. 3101306,7.05,,S
-467,0,2,"Campbell, Mr. William",male,,0,0,239853,0,,S
-468,0,1,"Smart, Mr. John Montgomery",male,56,0,0,113792,26.55,,S
-469,0,3,"Scanlan, Mr. James",male,,0,0,36209,7.725,,Q

@@ -1,5 +1,0 @@
-0250#0-1#058#04#04
-1#../../DiscoLocal/plato5/superficie1/pista1/sector1.txt
-1#../../DiscoLocal/plato5/superficie2/pista1/sector1.txt
-1#../../DiscoLocal/plato6/superficie1/pista1/sector1.txt
-1#../../DiscoLocal/plato6/superficie2/pista1/sector1.txt

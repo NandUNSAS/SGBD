@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-498,0,3,"Shellard, Mr. Frederick William",male,,0,0,C.A. 6212,15.1,,S
-499,0,1,"Allison, Mrs. Hudson J C (Bessie Waldo Daniels)",female,25,1,2,113781,151.55,C22 C26,S
-500,0,3,"Svensson, Mr. Olof",male,24,0,0,350035,7.7958,,S
-501,0,3,"Calic, Mr. Petar",male,17,0,0,315086,8.6625,,S
-502,0,3,"Canavan, Miss. Mary",female,21,0,0,364846,7.75,,Q
-503,0,3,"O'Sullivan, Miss. Bridget Mary",female,,0,0,330909,7.6292,,Q
-504,0,3,"Laitinen, Miss. Kristina Sofia",female,37,0,0,4135,9.5875,,S

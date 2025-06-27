@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-323,1,2,"Slayter, Miss. Hilda Mary",female,30,0,0,234818,12.35,,Q
-324,1,2,"Caldwell, Mrs. Albert Francis (Sylvia Mae Harbaugh)",female,22,1,1,248738,29,,S
-325,0,3,"Sage, Mr. George John Jr",male,,8,2,CA. 2343,69.55,,S
-326,1,1,"Young, Miss. Marie Grice",female,36,0,0,PC 17760,135.6333,C32,C
-327,0,3,"Nysveen, Mr. Johan Hansen",male,61,0,0,345364,6.2375,,S
-328,1,2,"Ball, Mrs. (Ada E Hall)",female,36,0,0,28551,13,D,S
-329,1,3,"Goldsmith, Mrs. Frank John (Emily Alice Brown)",female,31,1,1,363291,20.525,,S

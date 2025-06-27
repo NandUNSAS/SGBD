@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-260,1,2,"Parrish, Mrs. (Lutie Davis)",female,50,0,1,230433,26,,S
-261,0,3,"Smith, Mr. Thomas",male,,0,0,384461,7.75,,Q
-262,1,3,"Asplund, Master. Edvin Rojj Felix",male,3,4,2,347077,31.3875,,S
-263,0,1,"Taussig, Mr. Emil",male,52,1,1,110413,79.65,E67,S
-264,0,1,"Harrison, Mr. William",male,40,0,0,112059,0,B94,S
-265,0,3,"Henry, Miss. Delia",female,,0,0,382649,7.75,,Q
-266,0,2,"Reeves, Mr. David",male,36,0,0,C.A. 17248,10.5,,S

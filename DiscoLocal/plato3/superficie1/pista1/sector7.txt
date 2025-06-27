@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-701,1,1,"Astor, Mrs. John Jacob (Madeleine Talmadge Force)",female,18,1,0,PC 17757,227.525,C62 C64,C
-702,1,1,"Silverthorne, Mr. Spencer Victor",male,35,0,0,PC 17475,26.2875,E24,S
-703,0,3,"Barbara, Miss. Saiide",female,18,0,1,2691,14.4542,,C
-704,0,3,"Gallagher, Mr. Martin",male,25,0,0,36864,7.7417,,Q
-705,0,3,"Hansen, Mr. Henrik Juul",male,26,1,0,350025,7.8542,,S
-706,0,2,"Morley, Mr. Henry Samuel (""Mr Henry Marshall"")",male,39,0,0,250655,26,,S
-707,1,2,"Kelly, Mrs. Florence ""Fannie""",female,45,0,0,223596,13.5,,S

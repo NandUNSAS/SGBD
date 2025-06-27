@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-204,0,3,"Youseff, Mr. Gerious",male,45.5,0,0,2628,7.225,,C
-205,1,3,"Cohen, Mr. Gurshon ""Gus""",male,18,0,0,A/5 3540,8.05,,S
-206,0,3,"Strom, Miss. Telma Matilda",female,2,0,1,347054,10.4625,G6,S
-207,0,3,"Backstrom, Mr. Karl Alfred",male,32,1,0,3101278,15.85,,S
-208,1,3,"Albimona, Mr. Nassef Cassem",male,26,0,0,2699,18.7875,,C
-209,1,3,"Carr, Miss. Helen ""Ellen""",female,16,0,0,367231,7.75,,Q
-210,1,1,"Blank, Mr. Henry",male,40,0,0,112277,31,A31,C

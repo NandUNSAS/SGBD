@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-582,1,1,"Thayer, Mrs. John Borland (Marian Longstreth Morris)",female,39,1,1,17421,110.8833,C68,C
-583,0,2,"Downton, Mr. William James",male,54,0,0,28403,26,,S
-584,0,1,"Ross, Mr. John Hugo",male,36,0,0,13049,40.125,A10,C
-585,0,3,"Paulner, Mr. Uscher",male,,0,0,3411,8.7125,,C
-586,1,1,"Taussig, Miss. Ruth",female,18,0,2,110413,79.65,E68,S
-587,0,2,"Jarvis, Mr. John Denzil",male,47,0,0,237565,15,,S
-588,1,1,"Frolicher-Stehli, Mr. Maxmillian",male,60,1,1,13567,79.2,B41,C

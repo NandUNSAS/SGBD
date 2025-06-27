@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-631,1,1,"Barkworth, Mr. Algernon Henry Wilson",male,80,0,0,27042,30,A23,S
-632,0,3,"Lundahl, Mr. Johan Svensson",male,51,0,0,347743,7.0542,,S
-633,1,1,"Stahelin-Maeglin, Dr. Max",male,32,0,0,13214,30.5,B50,C
-634,0,1,"Parr, Mr. William Henry Marsh",male,,0,0,112052,0,,S
-635,0,3,"Skoog, Miss. Mabel",female,9,3,2,347088,27.9,,S
-636,1,2,"Davis, Miss. Mary",female,28,0,0,237668,13,,S
-637,0,3,"Leinonen, Mr. Antti Gustaf",male,32,0,0,STON/O 2. 3101292,7.925,,S

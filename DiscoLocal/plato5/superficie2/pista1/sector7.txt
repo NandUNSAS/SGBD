@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-736,0,3,"Williams, Mr. Leslie",male,28.5,0,0,54636,16.1,,S
-737,0,3,"Ford, Mrs. Edward (Margaret Ann Watson)",female,48,1,3,W./C. 6608,34.375,,S
-738,1,1,"Lesurer, Mr. Gustave J",male,35,0,0,PC 17755,512.3292,B101,C
-739,0,3,"Ivanoff, Mr. Kanio",male,,0,0,349201,7.8958,,S
-740,0,3,"Nankoff, Mr. Minko",male,,0,0,349218,7.8958,,S
-741,1,1,"Hawksford, Mr. Walter James",male,,0,0,16988,30,D45,S
-742,0,1,"Cavendish, Mr. Tyrell William",male,36,1,0,19877,78.85,C46,S

@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-862,0,2,"Giles, Mr. Frederick Edward",male,21,1,0,28134,11.5,,S
-863,1,1,"Swift, Mrs. Frederick Joel (Margaret Welles Barron)",female,48,0,0,17466,25.9292,D17,S
-864,0,3,"Sage, Miss. Dorothy Edith ""Dolly""",female,,8,2,CA. 2343,69.55,,S
-865,0,2,"Gill, Mr. John William",male,24,0,0,233866,13,,S
-866,1,2,"Bystrom, Mrs. (Karolina)",female,42,0,0,236852,13,,S
-867,1,2,"Duran y More, Miss. Asuncion",female,27,1,0,SC/PARIS 2149,13.8583,,C
-868,0,1,"Roebling, Mr. Washington Augustus II",male,31,0,0,PC 17590,50.4958,A24,S

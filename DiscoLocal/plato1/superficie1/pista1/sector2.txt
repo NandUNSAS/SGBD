@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-113,0,3,"Barton, Mr. David John",male,22,0,0,324669,8.05,,S
-114,0,3,"Jussila, Miss. Katriina",female,20,1,0,4136,9.825,,S
-115,0,3,"Attalah, Miss. Malake",female,17,0,0,2627,14.4583,,C
-116,0,3,"Pekoniemi, Mr. Edvard",male,21,0,0,STON/O 2. 3101294,7.925,,S
-117,0,3,"Connors, Mr. Patrick",male,70.5,0,0,370369,7.75,,Q
-118,0,2,"Turpin, Mr. William John Robert",male,29,1,0,11668,21,,S
-119,0,1,"Baxter, Mr. Quigg Edmond",male,24,0,1,PC 17558,247.5208,B58 B60,C

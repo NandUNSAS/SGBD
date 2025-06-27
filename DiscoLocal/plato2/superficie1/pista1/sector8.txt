@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-799,0,3,"Ibrahim Shawah, Mr. Yousseff",male,30,0,0,2685,7.2292,,C
-800,0,3,"Van Impe, Mrs. Jean Baptiste (Rosalie Paula Govaert)",female,30,1,1,345773,24.15,,S
-801,0,2,"Ponesell, Mr. Martin",male,34,0,0,250647,13,,S
-802,1,2,"Collyer, Mrs. Harvey (Charlotte Annie Tate)",female,31,1,1,C.A. 31921,26.25,,S
-803,1,1,"Carter, Master. William Thornton II",male,11,1,2,113760,120,B96 B98,S
-804,1,3,"Thomas, Master. Assad Alexander",male,0.42,0,1,2625,8.5167,,C
-805,1,3,"Hedman, Mr. Oskar Arvid",male,27,0,0,347089,6.975,,S

@@ -1,8 +1,0 @@
-0914#0-1#128#07#07
-673,0,2,"Mitchell, Mr. Henry Michael",male,70,0,0,C.A. 24580,10.5,,S
-674,1,2,"Wilhelms, Mr. Charles",male,31,0,0,244270,13,,S
-675,0,2,"Watson, Mr. Ennis Hastings",male,,0,0,239856,0,,S
-676,0,3,"Edvardsson, Mr. Gustaf Hjalmar",male,18,0,0,349912,7.775,,S
-677,0,3,"Sawyer, Mr. Frederick Charles",male,24.5,0,0,342826,8.05,,S
-678,1,3,"Turja, Miss. Anna Sofia",female,18,0,0,4138,9.8417,,S
-679,0,3,"Goodwin, Mrs. Frederick (Augusta Tyler)",female,43,1,6,CA 2144,46.9,,S

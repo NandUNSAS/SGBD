@@ -10,7 +10,7 @@ class gestorBloques {
 
     public:
     void agregarBloque(int id, const bloque& b);
-    void mostrarBloque(int id);
+    void mostrarBloque(int id) const;
 };
 #endif // !GESTORBLOQUES_H
 //

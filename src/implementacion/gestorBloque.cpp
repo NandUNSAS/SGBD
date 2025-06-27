@@ -9,7 +9,7 @@ void gestorBloques::agregarBloque(int id, const bloque& b) {
 }
 
 
-void gestorBloques::mostrarBloque(int id){
+void gestorBloques::mostrarBloque(int id) const{
     auto it = bloques.find(id);
         if (it != bloques.end()) {
             const bloque& b = it->second;

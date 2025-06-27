@@ -61,5 +61,6 @@ public:
     bool bloqueEnBuffer(int id) const;
     void pinBlock(int id);
     ReplacementPolicy getCurrentPolicy() const { return current_policy; }
+    void mostrarContenidoBloque(int id) const;
 };
 #endif // !BUFFERMANAGER_H

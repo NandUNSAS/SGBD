@@ -1,4 +1,5 @@
 #include "../include/bufferManager.h"
+#include "../include/bloque.h"
 #include <iostream>
 #include <limits>
 
@@ -53,70 +54,108 @@ int bufferManager::findLRUFrame() {
 // Métodos auxiliares para CLOCK
 int bufferManager::findClockFrame() {
     int attempts = 0;
-    while (attempts < 2 * capacity) { // Para evitar loops infinitos
+    while (attempts < 2 * capacity) { // Evitar loops infinitos
         Frame& frame = frames[clock_hand];
         
         if (!frame.pinned) {
             if (!frame.reference_bit) {
+                // ¡Frame candidato encontrado!
+                if (frame.dirty) {
+                    // Paso 1: Escribir a disco si es dirty
+                    writeToDisk(frame.block_id);
+                    frame.dirty = false; // Paso 2: Resetear dirty bit
+                }
                 int selected = clock_hand;
+                // Paso 3: Mover manecilla al siguiente frame
                 clock_hand = (clock_hand + 1) % capacity;
-                return selected;
+                return selected; // Retorna el frame a reemplazar
+            } else {
+                // Paso 4: Si ref_bit=1, darle segunda oportunidad
+                frame.reference_bit = false;
             }
-            frame.reference_bit = false;
         }
         
+        // Mover manecilla
         clock_hand = (clock_hand + 1) % capacity;
         attempts++;
     }
     
-    cerr << "ERROR: No se pudo encontrar frame para reemplazo (todos pinned)" << endl;
+    cerr << "ERROR: No se encontró frame para reemplazo (todos pinned)" << endl;
     return -1;
 }
 
 // Escribir bloque a disco si está dirty
 void bufferManager::writeToDisk(int block_id) {
-    cout << "Escribiendo bloque " << block_id << " modificado a disco..." << endl;
-    // Aquí iría la lógica real de escritura a disco
+    cout << "SIMULACIÓN: Escribiendo bloque " << block_id 
+         << " a disco (por dirty_bit=1)" << endl;
+    // En un sistema real, aquí se escribirían los datos reales al disco
 }
 
 // Agregar bloque al buffer pool
+// En bufferManager.cpp
+
 void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool pinned) {
     time_counter++;
     
     // Buscar si el bloque ya está en buffer
     for (auto& frame : frames) {
         if (frame.block_id == id) {
+            // Actualizar el frame
             frame.pin_count++;
             frame.dirty = frame.dirty || (mode == "write");
-            frame.pinned = frame.pinned || pinned;  // Mantiene el pin si ya estaba
+            frame.pinned = pinned;
             frame.last_accessed = time_counter;
             frame.reference_bit = true;
             frame.mode = mode;
             
-            cout << "Bloque " << id << " encontrado en frame " << frame.frame_id 
-                 << " (PinCount: " << frame.pin_count << ")" << endl;
+            // Mostrar estado solo si es modo lectura
+            if (mode == "read") {
+                cout << "\n--- Estado después de carga (HIT) ---" << endl;
+                mostrarEstadoBufferPool();
+                
+                // Mostrar contenido del bloque
+                cout << "\nContenido del bloque " << id << ":" << endl;
+                gb.mostrarBloque(id);
+                
+                // Decrementar sin mostrar tabla
+                frame.pin_count--;
+            }
+            
             return;
         }
     }
     
-    // Buscar frame libre
+    // Si no está en buffer, buscar frame libre
     for (auto& frame : frames) {
         if (frame.block_id == -1) {
             frame.block_id = id;
             frame.pin_count = 1;
             frame.dirty = (mode == "write");
-            frame.pinned = pinned;  // Usa el valor proporcionado por el usuario
+            frame.pinned = pinned;
             frame.last_accessed = time_counter;
             frame.reference_bit = true;
             frame.mode = mode;
             
             gb.agregarBloque(id, b);
-            cout << "Cargado bloque " << id << " en frame libre " << frame.frame_id << endl;
+            
+            // Mostrar estado solo si es modo lectura
+            if (mode == "read") {
+                cout << "\n--- Estado después de carga (MISS) ---" << endl;
+                mostrarEstadoBufferPool();
+                
+                // Mostrar contenido del bloque
+                cout << "\nContenido del bloque " << id << ":" << endl;
+                gb.mostrarBloque(id);
+                
+                // Decrementar sin mostrar tabla
+                frame.pin_count--;
+            }
+            
             return;
         }
     }
     
-    // Reemplazo según política seleccionada
+    // Si no hay frames libres, aplicar política de reemplazo
     int replace_index = (current_policy == ReplacementPolicy::LRU) ? findLRUFrame() : findClockFrame();
     if (replace_index == -1) {
         cerr << "ERROR: No hay frames disponibles para reemplazo" << endl;
@@ -124,25 +163,33 @@ void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool
     }
     
     Frame& victim = frames[replace_index];
-    cout << "Reemplazando bloque " << victim.block_id << " en frame " << victim.frame_id;
-    
     if (victim.dirty) {
-        cout << " (dirty - escribiendo a disco primero)";
         writeToDisk(victim.block_id);
     }
-    cout << endl;
     
     // Reemplazar el bloque
     victim.block_id = id;
     victim.pin_count = 1;
     victim.dirty = (mode == "write");
-    victim.pinned = pinned;  // Usa el valor proporcionado por el usuario
+    victim.pinned = pinned;
     victim.last_accessed = time_counter;
     victim.reference_bit = true;
     victim.mode = mode;
     
     gb.agregarBloque(id, b);
-    cout << "Cargado bloque " << id << " en frame " << victim.frame_id << endl;
+    
+    // Mostrar estado solo si es modo lectura
+    if (mode == "read") {
+        cout << "\n--- Estado después de reemplazo ---" << endl;
+        mostrarEstadoBufferPool();
+        
+        // Mostrar contenido del bloque
+        cout << "\nContenido del bloque " << id << ":" << endl;
+        gb.mostrarBloque(id);
+        
+        // Decrementar sin mostrar tabla
+        victim.pin_count--;
+    }
 }
 
 // Mostrar estado del buffer pool
@@ -182,22 +229,34 @@ void bufferManager::mostrarEstadoBufferPool() const {
 
 // Acceder a un bloque existente
 void bufferManager::accederBloque(int id, const string& mode) {
-    time_counter++;
-    
+    time_counter++;  // Actualiza el "reloj" global del buffer
+
+    // Busca el bloque en los frames del buffer
     for (auto& frame : frames) {
         if (frame.block_id == id) {
-            frame.pin_count++;
-            frame.dirty = frame.dirty || (mode == "write");
-            frame.pinned = frame.pinned || (mode == "write");
-            frame.last_accessed = time_counter;
-            frame.reference_bit = true;
-            frame.mode = mode;
-            
-            cout << "Acceso a bloque " << id << " en frame " << frame.frame_id 
-                 << " (PinCount: " << frame.pin_count << ")" << endl;
+            // 1. Actualiza metadatos
+            frame.pin_count++;           // Bloque "en uso"
+            frame.dirty = frame.dirty || (mode == "write"); // Marcar como modificado si es escritura
+            frame.pinned = frame.pinned || (mode == "write"); // Pinear si es escritura
+            frame.last_accessed = time_counter;  // Actualiza LRU
+            frame.reference_bit = true;          // Actualiza CLOCK
+            frame.mode = mode;                   // Guarda el tipo de acceso
+
+            // 2. Comportamiento específico para lectura
+            if (mode == "read") {
+                cout << "\n--- Estado después de acceso ---" << endl;
+                mostrarEstadoBufferPool();  // Muestra tabla con pin_count incrementado
+                
+                cout << "\nContenido del bloque " << id << ":" << endl;
+                gb.mostrarBloque(id);       // Muestra el contenido
+                
+                frame.pin_count--;          // Decrementa silenciosamente (sin mostrar tabla)
+            }
+
             return;
         }
     }
+    // Si el bloque no está en buffer:
     cerr << "Bloque " << id << " no encontrado en buffer pool" << endl;
 }
 
@@ -250,4 +309,18 @@ bool bufferManager::bloqueEnBuffer(int id) const {
 // Agregar bloque al gestor de bloques (sin LRU/CLOCK)
 void bufferManager::agregarGestorBloques(int id, bloque b) {
     gb.agregarBloque(id, b);
+}
+
+void bufferManager::mostrarContenidoBloque(int id) const {
+    for (const auto& frame : frames) {
+        if (frame.block_id == id) {
+            if (frame.mode == "read") {
+                cout << "\n--- Contenido del Bloque " << id << " ---" << endl;
+                // Buscar el bloque en el gestor de bloques y mostrarlo
+                gb.mostrarBloque(id);
+                return;
+            }
+        }
+    }
+    cerr << "Bloque " << id << " no encontrado o no está en modo lectura" << endl;
 }

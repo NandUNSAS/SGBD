@@ -244,12 +244,8 @@ void cargarPagina(bufferManager& bm) {
     cin >> pinOption;
     pinOption = toupper(pinOption);
     
-    if (pinOption != 'S' && pinOption != 'N') {
-        cout << "Opción no válida. Use S (Sí) o N (No)." << endl;
-        return;
-    }
-    
     bool pinned = (pinOption == 'S');
+    string mode_str = (modo == 'L') ? "read" : "write";
     
     string rutaBloque;
     try {
@@ -261,15 +257,7 @@ void cargarPagina(bufferManager& bm) {
     
     bloque b;
     b.inicializarBloque(idBloque, rutaBloque);
-    
-    string mode_str = (modo == 'L') ? "read" : "write";
     bm.agregarBufferPool(idBloque, b, mode_str, pinned);
-    
-    // Mostrar contenido si es lectura
-    if (modo == 'L') {
-        cout << "\nContenido del bloque:" << endl;
-        b.mostrarBloque();
-    }
 }
 
 void unpinBlock(bufferManager& bm) {

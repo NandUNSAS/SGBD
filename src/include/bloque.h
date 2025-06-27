@@ -1,6 +1,7 @@
 #ifndef BLOQUE_H
 #define BLOQUE_H
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -24,6 +25,12 @@ class bloque{
     int getIdBloque() const;
     string getRutaBloque() const;
     string getContenido() const;
+    void escribirPaginaSimulada(const string& nuevosDatos) {
+        cout << "Simulando escritura en el bloque " << idBloque << endl;
+        cout << "Contenido anterior: " << contenido.substr(0, 50) << "..." << endl;
+        contenido = nuevosDatos;
+        cout << "Nuevo contenido: " << contenido.substr(0, 50) << "..." << endl;
+    }
 //
 };
 

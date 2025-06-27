@@ -86,7 +86,7 @@ int bufferManager::findClockFrame() {
 
 // Escribir bloque a disco si está dirty
 void bufferManager::writeToDisk(int block_id) {
-    cout << "SIMULACIÓN: Escribiendo bloque " << block_id 
+    cout << "Escribiendo bloque " << block_id 
          << " a disco (por dirty_bit=1)" << endl;
     // En un sistema real, aquí se escribirían los datos reales al disco
 }
@@ -119,6 +119,16 @@ void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool
                 
                 // Decrementar sin mostrar tabla
                 frame.pin_count--;
+            } else if (mode == "write") {
+                cout << "\n--- Estado después de carga (HIT) ---" << endl;
+                mostrarEstadoBufferPool();
+                
+                // Simular escritura
+                b.escribirPaginaSimulada("Nuevos datos  para el bloque " + to_string(id));
+                frame.dirty = true; // Marcar como modificado
+                
+                // Decrementar sin mostrar tabla
+                frame.pin_count--;
             }
             
             return;
@@ -146,6 +156,16 @@ void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool
                 // Mostrar contenido del bloque
                 cout << "\nContenido del bloque " << id << ":" << endl;
                 gb.mostrarBloque(id);
+                
+                // Decrementar sin mostrar tabla
+                frame.pin_count--;
+            }  else if (mode == "write") {
+                cout << "\n--- Estado después de carga (HIT) ---" << endl;
+                mostrarEstadoBufferPool();
+                
+                // Simular escritura
+                b.escribirPaginaSimulada("Nuevos datos  para el bloque " + to_string(id));
+                frame.dirty = true; // Marcar como modificado
                 
                 // Decrementar sin mostrar tabla
                 frame.pin_count--;
@@ -188,6 +208,16 @@ void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool
         gb.mostrarBloque(id);
         
         // Decrementar sin mostrar tabla
+        victim.pin_count--;
+    } else if (mode == "write") {
+        cout << "\n--- Estado después de reemplazo ---" << endl;
+        mostrarEstadoBufferPool();
+        
+        // Simular escritura en bloque recién cargado
+        cout << "\n escritura en el bloque " << id << ":" << endl;
+        b.escribirPaginaSimulada("Datos post-reemplazo - " + to_string(time_counter));
+        victim.dirty = true;
+        
         victim.pin_count--;
     }
 }
@@ -251,6 +281,17 @@ void bufferManager::accederBloque(int id, const string& mode) {
                 gb.mostrarBloque(id);       // Muestra el contenido
                 
                 frame.pin_count--;          // Decrementa silenciosamente (sin mostrar tabla)
+            } else if (mode == "write") {
+                cout << "\n--- Estado después de acceso ---" << endl;
+                mostrarEstadoBufferPool();
+                
+                // Obtener el bloque actual y simular escritura
+                bloque& blk = gb.obtenerBloque(id); // Necesitarás implementar este método
+                blk.escribirPaginaSimulada("Datos actualizados para bloque " + to_string(id));
+                frame.dirty = true;
+                
+                // Decrementar sin mostrar tabla
+                frame.pin_count--;
             }
 
             return;

@@ -11,6 +11,15 @@ class gestorBloques {
     public:
     void agregarBloque(int id, const bloque& b);
     void mostrarBloque(int id) const;
+    // Añadir en gestorBloques.h
+
+    bloque& obtenerBloque(int id) {
+        auto it = bloques.find(id);
+        if (it != bloques.end()) {
+            return it->second;
+        }
+        throw std::runtime_error("Bloque no encontrado");
+    }
 };
 #endif // !GESTORBLOQUES_H
 //

@@ -35,13 +35,9 @@ void mostrarMenu() {
     cout << "1. Crear disco personalizado\n";
     cout << "2. Usar disco por defecto\n";
     cout << "3. Leer archivo CSV y añadir relación\n";
-    cout << "4. Caracterisiticas del disco\n";
-    cout << "5. inicializar bufferPool\n";
-    cout << "6. cargar pagina\n";
-    cout << "7. mostrar estado buffer pool (tabla)\n";
-    cout << "8. despinear (tabla)\n";
-    cout << "10. pinear\n";
-    cout << "9. Salir\n";
+    cout << "4. Características del disco\n";
+    cout << "5. Gestión de Buffer Pool\n";  // Opción unificada
+    cout << "6. Salir\n";
     cout << "Seleccione una opción: ";
 }
 
@@ -230,6 +226,7 @@ void mostrarEstadoBufferPool(const bufferManager& bm) {
 void cargarPagina(bufferManager& bm) {
     int idBloque;
     char modo;
+    char pinOption;
     
     cout << "Ingrese ID del bloque a cargar: ";
     cin >> idBloque;
@@ -243,6 +240,17 @@ void cargarPagina(bufferManager& bm) {
         return;
     }
     
+    cout << "¿Desea pinear el bloque? (S/N): ";
+    cin >> pinOption;
+    pinOption = toupper(pinOption);
+    
+    if (pinOption != 'S' && pinOption != 'N') {
+        cout << "Opción no válida. Use S (Sí) o N (No)." << endl;
+        return;
+    }
+    
+    bool pinned = (pinOption == 'S');
+    
     string rutaBloque;
     try {
         rutaBloque = obtenerRutaPorId(RUTASB, idBloque);
@@ -255,7 +263,7 @@ void cargarPagina(bufferManager& bm) {
     b.inicializarBloque(idBloque, rutaBloque);
     
     string mode_str = (modo == 'L') ? "read" : "write";
-    bm.agregarBufferPool(idBloque, b, mode_str);
+    bm.agregarBufferPool(idBloque, b, mode_str, pinned);
     
     // Mostrar contenido si es lectura
     if (modo == 'L') {
@@ -276,4 +284,68 @@ void pinBlock(bufferManager& bm) {
     cout << "Ingrese ID del bloque a pinear: ";
     cin >> idBloque;
     bm.pinBlock(idBloque);
+}
+
+void seleccionarPoliticaReemplazo(bufferManager& bm) {
+    int opcion;
+    cout << "\nSeleccione política de reemplazo:\n";
+    cout << "1. LRU (Least Recently Used)\n";
+    cout << "2. CLOCK\n";
+    cout << "Opción: ";
+    cin >> opcion;
+    
+    switch(opcion) {
+        case 1:
+            bm.setReplacementPolicy(ReplacementPolicy::LRU);
+            break;
+        case 2:
+            bm.setReplacementPolicy(ReplacementPolicy::CLOCK);
+            break;
+        default:
+            cout << "Opción no válida, usando LRU por defecto\n";
+            bm.setReplacementPolicy(ReplacementPolicy::LRU);
+    }
+}
+
+void menuBufferManager(bufferManager& bm) {
+    int opcion;
+    do {
+        cout << "\n----- GESTIÓN DE BUFFER POOL -----\n";
+        cout << "1. Inicializar Buffer Pool\n";
+        cout << "2. Seleccionar política de reemplazo (Actual: " 
+             << (bm.getCurrentPolicy() == ReplacementPolicy::LRU ? "LRU" : "CLOCK") << ")\n";
+        cout << "3. Cargar página\n";
+        cout << "4. Mostrar estado del Buffer Pool\n";
+        cout << "5. Despinear bloque\n";
+        cout << "6. Pinear bloque\n";
+        cout << "7. Volver al menú principal\n";
+        cout << "Seleccione una opción: ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                inicializarBufferPool(bm);
+                break;
+            case 2:
+                seleccionarPoliticaReemplazo(bm);
+                break;
+            case 3:
+                cargarPagina(bm);
+                break;
+            case 4:
+                mostrarEstadoBufferPool(bm);
+                break;
+            case 5:
+                unpinBlock(bm);
+                break;
+            case 6:
+                pinBlock(bm);
+                break;
+            case 7:
+                cout << "Volviendo al menú principal...\n";
+                break;
+            default:
+                cout << "Opción no válida. Intente nuevamente.\n";
+        }
+    } while(opcion != 7);
 }

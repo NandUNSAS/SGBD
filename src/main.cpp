@@ -29,6 +29,8 @@ using namespace std;
 #define RUTAS "/home/asus/Documentos/BD_1/rutas_sectores/rutas.txt"
 #define RUTAS_CILINDRO_MEDIO "/home/asus/Documentos/BD_1/rutas_sectores/cilindroMedio.txt"
 
+// [Tus includes permanecen iguales...]
+
 int main() {
     controladorDisco cd;
     disco disco1;
@@ -57,29 +59,16 @@ int main() {
                 caracteristicasDisco(gestor, disco1);
                 break;
             case 5: 
-                inicializarBufferPool(bm);
+                menuBufferManager(bm);  // Llamada al submenú
                 break;
             case 6:
-                cargarPagina(bm);
-                break;
-            case 7:
-                mostrarEstadoBufferPool(bm);
-                break;
-            case 8: // Nueva opción para despinear
-                unpinBlock(bm);
-                break;
-            case 10:
-                pinBlock(bm);
-                break;
-            case 9:
                 cout << "Gracias por usar Megatrom 3000. ¡Hasta luego!\n";
                 break;
             default:
                 cout << "Opción no válida. Intente nuevamente.\n";
         }
 
-    } while (opcion != 9);
+    } while (opcion != 6);
 
     return 0;
 }
-//*/

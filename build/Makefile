@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/asus/Documentos/BD_1
+CMAKE_SOURCE_DIR = /home/asus/Documentos/SGBD
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/asus/Documentos/BD_1/build
+CMAKE_BINARY_DIR = /home/asus/Documentos/SGBD/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/BD_1/build/CMakeFiles /home/asus/Documentos/BD_1/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/SGBD/build/CMakeFiles /home/asus/Documentos/SGBD/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/BD_1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/SGBD/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named BD_1
+# Target rules for targets named SGBD
 
 # Build rule for target.
-BD_1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BD_1
-.PHONY : BD_1
+SGBD: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SGBD
+.PHONY : SGBD
 
 # fast build rule for target.
-BD_1/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/build
-.PHONY : BD_1/fast
+SGBD/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/build
+.PHONY : SGBD/fast
 
 # Help Target
 help:
@@ -137,7 +137,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... BD_1"
+	@echo "... SGBD"
 .PHONY : help
 
 

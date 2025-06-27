@@ -15,7 +15,7 @@ set(SOURCES
 
 set(HEADERS include)
 
-add_executable(BD_1 ${SOURCES} ${HEADERS})
+add_executable(SGBD ${SOURCES} ${HEADERS})
 
-target_include_directories(BD_1 PUBLIC include)
+target_include_directories(SGBD PUBLIC include)
 

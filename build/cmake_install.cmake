@@ -1,4 +1,4 @@
-# Install script for directory: /home/asus/Documentos/BD_1
+# Install script for directory: /home/asus/Documentos/SGBD
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/asus/Documentos/BD_1/build/src/cmake_install.cmake")
+  include("/home/asus/Documentos/SGBD/build/src/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -62,6 +62,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "/home/asus/Documentos/BD_1/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/asus/Documentos/SGBD/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

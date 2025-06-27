@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/asus/Documentos/BD_1
+CMAKE_SOURCE_DIR = /home/asus/Documentos/SGBD
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/asus/Documentos/BD_1/build
+CMAKE_BINARY_DIR = /home/asus/Documentos/SGBD/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -78,7 +78,7 @@ clean: src/clean
 # Directory level rules for directory src
 
 # Recursive "all" directory target.
-src/all: src/CMakeFiles/BD_1.dir/all
+src/all: src/CMakeFiles/SGBD.dir/all
 .PHONY : src/all
 
 # Recursive "preinstall" directory target.
@@ -86,34 +86,34 @@ src/preinstall:
 .PHONY : src/preinstall
 
 # Recursive "clean" directory target.
-src/clean: src/CMakeFiles/BD_1.dir/clean
+src/clean: src/CMakeFiles/SGBD.dir/clean
 .PHONY : src/clean
 
 #=============================================================================
-# Target rules for target src/CMakeFiles/BD_1.dir
+# Target rules for target src/CMakeFiles/SGBD.dir
 
 # All Build rule for target.
-src/CMakeFiles/BD_1.dir/all:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/depend
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/asus/Documentos/BD_1/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target BD_1"
-.PHONY : src/CMakeFiles/BD_1.dir/all
+src/CMakeFiles/SGBD.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/asus/Documentos/SGBD/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target SGBD"
+.PHONY : src/CMakeFiles/SGBD.dir/all
 
 # Build rule for subdir invocation for target.
-src/CMakeFiles/BD_1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/BD_1/build/CMakeFiles 13
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/BD_1.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/BD_1/build/CMakeFiles 0
-.PHONY : src/CMakeFiles/BD_1.dir/rule
+src/CMakeFiles/SGBD.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/SGBD/build/CMakeFiles 13
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/SGBD.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/SGBD/build/CMakeFiles 0
+.PHONY : src/CMakeFiles/SGBD.dir/rule
 
 # Convenience name for target.
-BD_1: src/CMakeFiles/BD_1.dir/rule
-.PHONY : BD_1
+SGBD: src/CMakeFiles/SGBD.dir/rule
+.PHONY : SGBD
 
 # clean rule for target.
-src/CMakeFiles/BD_1.dir/clean:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/clean
-.PHONY : src/CMakeFiles/BD_1.dir/clean
+src/CMakeFiles/SGBD.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/clean
+.PHONY : src/CMakeFiles/SGBD.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

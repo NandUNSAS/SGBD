@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/asus/Documentos/BD_1
+CMAKE_SOURCE_DIR = /home/asus/Documentos/SGBD
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/asus/Documentos/BD_1/build
+CMAKE_BINARY_DIR = /home/asus/Documentos/SGBD/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/asus/Documentos/BD_1/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/BD_1/build/CMakeFiles /home/asus/Documentos/BD_1/build/src//CMakeFiles/progress.marks
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/BD_1/build/CMakeFiles 0
+	cd /home/asus/Documentos/SGBD/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/SGBD/build/CMakeFiles /home/asus/Documentos/SGBD/build/src//CMakeFiles/progress.marks
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/asus/Documentos/SGBD/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,39 +103,39 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/asus/Documentos/BD_1/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/asus/Documentos/SGBD/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/BD_1.dir/rule:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/BD_1.dir/rule
-.PHONY : src/CMakeFiles/BD_1.dir/rule
+src/CMakeFiles/SGBD.dir/rule:
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/SGBD.dir/rule
+.PHONY : src/CMakeFiles/SGBD.dir/rule
 
 # Convenience name for target.
-BD_1: src/CMakeFiles/BD_1.dir/rule
-.PHONY : BD_1
+SGBD: src/CMakeFiles/SGBD.dir/rule
+.PHONY : SGBD
 
 # fast build rule for target.
-BD_1/fast:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/build
-.PHONY : BD_1/fast
+SGBD/fast:
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/build
+.PHONY : SGBD/fast
 
 implementacion/bloque.o: implementacion/bloque.cpp.o
 .PHONY : implementacion/bloque.o
 
 # target to build an object file
 implementacion/bloque.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/bloque.cpp.o
 .PHONY : implementacion/bloque.cpp.o
 
 implementacion/bloque.i: implementacion/bloque.cpp.i
@@ -143,7 +143,7 @@ implementacion/bloque.i: implementacion/bloque.cpp.i
 
 # target to preprocess a source file
 implementacion/bloque.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/bloque.cpp.i
 .PHONY : implementacion/bloque.cpp.i
 
 implementacion/bloque.s: implementacion/bloque.cpp.s
@@ -151,7 +151,7 @@ implementacion/bloque.s: implementacion/bloque.cpp.s
 
 # target to generate assembly for a file
 implementacion/bloque.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/bloque.cpp.s
 .PHONY : implementacion/bloque.cpp.s
 
 implementacion/bufferManager.o: implementacion/bufferManager.cpp.o
@@ -159,7 +159,7 @@ implementacion/bufferManager.o: implementacion/bufferManager.cpp.o
 
 # target to build an object file
 implementacion/bufferManager.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/bufferManager.cpp.o
 .PHONY : implementacion/bufferManager.cpp.o
 
 implementacion/bufferManager.i: implementacion/bufferManager.cpp.i
@@ -167,7 +167,7 @@ implementacion/bufferManager.i: implementacion/bufferManager.cpp.i
 
 # target to preprocess a source file
 implementacion/bufferManager.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/bufferManager.cpp.i
 .PHONY : implementacion/bufferManager.cpp.i
 
 implementacion/bufferManager.s: implementacion/bufferManager.cpp.s
@@ -175,7 +175,7 @@ implementacion/bufferManager.s: implementacion/bufferManager.cpp.s
 
 # target to generate assembly for a file
 implementacion/bufferManager.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/bufferManager.cpp.s
 .PHONY : implementacion/bufferManager.cpp.s
 
 implementacion/controladorDisco.o: implementacion/controladorDisco.cpp.o
@@ -183,7 +183,7 @@ implementacion/controladorDisco.o: implementacion/controladorDisco.cpp.o
 
 # target to build an object file
 implementacion/controladorDisco.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/controladorDisco.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/controladorDisco.cpp.o
 .PHONY : implementacion/controladorDisco.cpp.o
 
 implementacion/controladorDisco.i: implementacion/controladorDisco.cpp.i
@@ -191,7 +191,7 @@ implementacion/controladorDisco.i: implementacion/controladorDisco.cpp.i
 
 # target to preprocess a source file
 implementacion/controladorDisco.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/controladorDisco.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/controladorDisco.cpp.i
 .PHONY : implementacion/controladorDisco.cpp.i
 
 implementacion/controladorDisco.s: implementacion/controladorDisco.cpp.s
@@ -199,7 +199,7 @@ implementacion/controladorDisco.s: implementacion/controladorDisco.cpp.s
 
 # target to generate assembly for a file
 implementacion/controladorDisco.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/controladorDisco.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/controladorDisco.cpp.s
 .PHONY : implementacion/controladorDisco.cpp.s
 
 implementacion/disco.o: implementacion/disco.cpp.o
@@ -207,7 +207,7 @@ implementacion/disco.o: implementacion/disco.cpp.o
 
 # target to build an object file
 implementacion/disco.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/disco.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/disco.cpp.o
 .PHONY : implementacion/disco.cpp.o
 
 implementacion/disco.i: implementacion/disco.cpp.i
@@ -215,7 +215,7 @@ implementacion/disco.i: implementacion/disco.cpp.i
 
 # target to preprocess a source file
 implementacion/disco.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/disco.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/disco.cpp.i
 .PHONY : implementacion/disco.cpp.i
 
 implementacion/disco.s: implementacion/disco.cpp.s
@@ -223,7 +223,7 @@ implementacion/disco.s: implementacion/disco.cpp.s
 
 # target to generate assembly for a file
 implementacion/disco.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/disco.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/disco.cpp.s
 .PHONY : implementacion/disco.cpp.s
 
 implementacion/funciones.o: implementacion/funciones.cpp.o
@@ -231,7 +231,7 @@ implementacion/funciones.o: implementacion/funciones.cpp.o
 
 # target to build an object file
 implementacion/funciones.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/funciones.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/funciones.cpp.o
 .PHONY : implementacion/funciones.cpp.o
 
 implementacion/funciones.i: implementacion/funciones.cpp.i
@@ -239,7 +239,7 @@ implementacion/funciones.i: implementacion/funciones.cpp.i
 
 # target to preprocess a source file
 implementacion/funciones.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/funciones.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/funciones.cpp.i
 .PHONY : implementacion/funciones.cpp.i
 
 implementacion/funciones.s: implementacion/funciones.cpp.s
@@ -247,7 +247,7 @@ implementacion/funciones.s: implementacion/funciones.cpp.s
 
 # target to generate assembly for a file
 implementacion/funciones.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/funciones.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/funciones.cpp.s
 .PHONY : implementacion/funciones.cpp.s
 
 implementacion/funcionesBloque.o: implementacion/funcionesBloque.cpp.o
@@ -255,7 +255,7 @@ implementacion/funcionesBloque.o: implementacion/funcionesBloque.cpp.o
 
 # target to build an object file
 implementacion/funcionesBloque.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/funcionesBloque.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/funcionesBloque.cpp.o
 .PHONY : implementacion/funcionesBloque.cpp.o
 
 implementacion/funcionesBloque.i: implementacion/funcionesBloque.cpp.i
@@ -263,7 +263,7 @@ implementacion/funcionesBloque.i: implementacion/funcionesBloque.cpp.i
 
 # target to preprocess a source file
 implementacion/funcionesBloque.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/funcionesBloque.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/funcionesBloque.cpp.i
 .PHONY : implementacion/funcionesBloque.cpp.i
 
 implementacion/funcionesBloque.s: implementacion/funcionesBloque.cpp.s
@@ -271,7 +271,7 @@ implementacion/funcionesBloque.s: implementacion/funcionesBloque.cpp.s
 
 # target to generate assembly for a file
 implementacion/funcionesBloque.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/funcionesBloque.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/funcionesBloque.cpp.s
 .PHONY : implementacion/funcionesBloque.cpp.s
 
 implementacion/funciones_menu.o: implementacion/funciones_menu.cpp.o
@@ -279,7 +279,7 @@ implementacion/funciones_menu.o: implementacion/funciones_menu.cpp.o
 
 # target to build an object file
 implementacion/funciones_menu.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/funciones_menu.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/funciones_menu.cpp.o
 .PHONY : implementacion/funciones_menu.cpp.o
 
 implementacion/funciones_menu.i: implementacion/funciones_menu.cpp.i
@@ -287,7 +287,7 @@ implementacion/funciones_menu.i: implementacion/funciones_menu.cpp.i
 
 # target to preprocess a source file
 implementacion/funciones_menu.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/funciones_menu.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/funciones_menu.cpp.i
 .PHONY : implementacion/funciones_menu.cpp.i
 
 implementacion/funciones_menu.s: implementacion/funciones_menu.cpp.s
@@ -295,7 +295,7 @@ implementacion/funciones_menu.s: implementacion/funciones_menu.cpp.s
 
 # target to generate assembly for a file
 implementacion/funciones_menu.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/funciones_menu.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/funciones_menu.cpp.s
 .PHONY : implementacion/funciones_menu.cpp.s
 
 implementacion/gestorAlmacenamiento.o: implementacion/gestorAlmacenamiento.cpp.o
@@ -303,7 +303,7 @@ implementacion/gestorAlmacenamiento.o: implementacion/gestorAlmacenamiento.cpp.o
 
 # target to build an object file
 implementacion/gestorAlmacenamiento.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/gestorAlmacenamiento.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/gestorAlmacenamiento.cpp.o
 .PHONY : implementacion/gestorAlmacenamiento.cpp.o
 
 implementacion/gestorAlmacenamiento.i: implementacion/gestorAlmacenamiento.cpp.i
@@ -311,7 +311,7 @@ implementacion/gestorAlmacenamiento.i: implementacion/gestorAlmacenamiento.cpp.i
 
 # target to preprocess a source file
 implementacion/gestorAlmacenamiento.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/gestorAlmacenamiento.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/gestorAlmacenamiento.cpp.i
 .PHONY : implementacion/gestorAlmacenamiento.cpp.i
 
 implementacion/gestorAlmacenamiento.s: implementacion/gestorAlmacenamiento.cpp.s
@@ -319,7 +319,7 @@ implementacion/gestorAlmacenamiento.s: implementacion/gestorAlmacenamiento.cpp.s
 
 # target to generate assembly for a file
 implementacion/gestorAlmacenamiento.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/gestorAlmacenamiento.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/gestorAlmacenamiento.cpp.s
 .PHONY : implementacion/gestorAlmacenamiento.cpp.s
 
 implementacion/gestorBloque.o: implementacion/gestorBloque.cpp.o
@@ -327,7 +327,7 @@ implementacion/gestorBloque.o: implementacion/gestorBloque.cpp.o
 
 # target to build an object file
 implementacion/gestorBloque.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/gestorBloque.cpp.o
 .PHONY : implementacion/gestorBloque.cpp.o
 
 implementacion/gestorBloque.i: implementacion/gestorBloque.cpp.i
@@ -335,7 +335,7 @@ implementacion/gestorBloque.i: implementacion/gestorBloque.cpp.i
 
 # target to preprocess a source file
 implementacion/gestorBloque.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/gestorBloque.cpp.i
 .PHONY : implementacion/gestorBloque.cpp.i
 
 implementacion/gestorBloque.s: implementacion/gestorBloque.cpp.s
@@ -343,7 +343,7 @@ implementacion/gestorBloque.s: implementacion/gestorBloque.cpp.s
 
 # target to generate assembly for a file
 implementacion/gestorBloque.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/gestorBloque.cpp.s
 .PHONY : implementacion/gestorBloque.cpp.s
 
 implementacion/insertar.o: implementacion/insertar.cpp.o
@@ -351,7 +351,7 @@ implementacion/insertar.o: implementacion/insertar.cpp.o
 
 # target to build an object file
 implementacion/insertar.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/insertar.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/insertar.cpp.o
 .PHONY : implementacion/insertar.cpp.o
 
 implementacion/insertar.i: implementacion/insertar.cpp.i
@@ -359,7 +359,7 @@ implementacion/insertar.i: implementacion/insertar.cpp.i
 
 # target to preprocess a source file
 implementacion/insertar.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/insertar.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/insertar.cpp.i
 .PHONY : implementacion/insertar.cpp.i
 
 implementacion/insertar.s: implementacion/insertar.cpp.s
@@ -367,7 +367,7 @@ implementacion/insertar.s: implementacion/insertar.cpp.s
 
 # target to generate assembly for a file
 implementacion/insertar.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/insertar.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/insertar.cpp.s
 .PHONY : implementacion/insertar.cpp.s
 
 implementacion/query.o: implementacion/query.cpp.o
@@ -375,7 +375,7 @@ implementacion/query.o: implementacion/query.cpp.o
 
 # target to build an object file
 implementacion/query.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/query.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/query.cpp.o
 .PHONY : implementacion/query.cpp.o
 
 implementacion/query.i: implementacion/query.cpp.i
@@ -383,7 +383,7 @@ implementacion/query.i: implementacion/query.cpp.i
 
 # target to preprocess a source file
 implementacion/query.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/query.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/query.cpp.i
 .PHONY : implementacion/query.cpp.i
 
 implementacion/query.s: implementacion/query.cpp.s
@@ -391,7 +391,7 @@ implementacion/query.s: implementacion/query.cpp.s
 
 # target to generate assembly for a file
 implementacion/query.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/query.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/implementacion/query.cpp.s
 .PHONY : implementacion/query.cpp.s
 
 main.o: main.cpp.o
@@ -399,7 +399,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/main.cpp.o
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -407,7 +407,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/main.cpp.i
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -415,7 +415,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/main.cpp.s
+	cd /home/asus/Documentos/SGBD/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SGBD.dir/build.make src/CMakeFiles/SGBD.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -426,7 +426,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... BD_1"
+	@echo "... SGBD"
 	@echo "... implementacion/bloque.o"
 	@echo "... implementacion/bloque.i"
 	@echo "... implementacion/bloque.s"
@@ -474,6 +474,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/asus/Documentos/BD_1/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/asus/Documentos/SGBD/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

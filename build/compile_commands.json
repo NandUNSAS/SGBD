@@ -1,74 +1,74 @@
 [
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/main.cpp.o -c /home/asus/Documentos/BD_1/src/main.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/main.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/main.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/main.cpp.o -c /home/asus/Documentos/SGBD/src/main.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/main.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/main.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/funciones.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/funciones.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/funciones.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/funciones.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/funciones.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/funciones.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/funciones.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/funciones.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/disco.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/disco.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/disco.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/disco.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/disco.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/disco.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/disco.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/disco.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/gestorAlmacenamiento.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/gestorAlmacenamiento.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/gestorAlmacenamiento.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/gestorAlmacenamiento.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/gestorAlmacenamiento.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/gestorAlmacenamiento.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/gestorAlmacenamiento.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/gestorAlmacenamiento.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/controladorDisco.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/controladorDisco.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/controladorDisco.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/controladorDisco.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/controladorDisco.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/controladorDisco.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/controladorDisco.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/controladorDisco.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/query.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/query.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/query.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/query.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/query.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/query.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/query.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/query.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/funcionesBloque.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/funcionesBloque.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/funcionesBloque.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/funcionesBloque.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/funcionesBloque.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/funcionesBloque.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/funcionesBloque.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/funcionesBloque.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/funciones_menu.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/funciones_menu.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/funciones_menu.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/funciones_menu.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/funciones_menu.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/funciones_menu.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/funciones_menu.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/funciones_menu.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/insertar.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/insertar.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/insertar.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/insertar.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/insertar.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/insertar.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/insertar.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/insertar.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/bloque.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/bloque.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/bloque.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/bloque.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/bloque.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/bloque.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/bufferManager.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/bufferManager.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/bufferManager.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/bufferManager.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/bufferManager.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/bufferManager.cpp.o"
 },
 {
-  "directory": "/home/asus/Documentos/BD_1/build/src",
-  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/gestorBloque.cpp",
-  "file": "/home/asus/Documentos/BD_1/src/implementacion/gestorBloque.cpp",
-  "output": "src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o"
+  "directory": "/home/asus/Documentos/SGBD/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/SGBD/src/include -g -std=gnu++20 -o CMakeFiles/SGBD.dir/implementacion/gestorBloque.cpp.o -c /home/asus/Documentos/SGBD/src/implementacion/gestorBloque.cpp",
+  "file": "/home/asus/Documentos/SGBD/src/implementacion/gestorBloque.cpp",
+  "output": "src/CMakeFiles/SGBD.dir/implementacion/gestorBloque.cpp.o"
 }
 ]

@@ -13,5 +13,7 @@ void construirEsquema(const string& archivoAtributos,
                       const string& nombreRelacion,
                       const string& archivoSalida);
 
+string obtenerRutaPorId(const string& archivoRutas, int idBloque);
+string obtenerRuta(const string& linea);
 #endif 
-
+//

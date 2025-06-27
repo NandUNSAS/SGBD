@@ -5,7 +5,7 @@ using namespace std;
 #include <string>
 #include <fstream>
 namespace fs = filesystem;
-
+//
 disco::disco(){
     platos = 0;
     superficies = 2;
@@ -57,7 +57,7 @@ void disco::crearDisco(){
 /
 */
 void disco::crearDisco() {
-    string ruta = "/home/asus/Documentos/BD_1/DiscoLocal";
+    string ruta = "../../DiscoLocal";
 
     if (fs::create_directory(ruta)) {
         cout << "Carpeta creada exitosamente.\n";
@@ -89,7 +89,7 @@ void disco::crearDisco() {
 }
 
 void disco::guardarEnArchivo() {
-ofstream archivo("/home/asus/Documentos/BD_1/archivo_info_Disco/info_disco.txt");
+ofstream archivo("archivo_info_Disco/info_disco.txt");
     if (archivo.is_open()) {
         archivo << getPlatos() << "#"
                 << getSuperficie() << "#"

@@ -195,6 +195,48 @@ src/CMakeFiles/BD_1.dir/implementacion/insertar.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BD_1.dir/implementacion/insertar.cpp.s"
 	cd /home/asus/Documentos/BD_1/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/asus/Documentos/BD_1/src/implementacion/insertar.cpp -o CMakeFiles/BD_1.dir/implementacion/insertar.cpp.s
 
+src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o: src/CMakeFiles/BD_1.dir/flags.make
+src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o: /home/asus/Documentos/BD_1/src/implementacion/bloque.cpp
+src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o: src/CMakeFiles/BD_1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/asus/Documentos/BD_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o"
+	cd /home/asus/Documentos/BD_1/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o -MF CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o.d -o CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/bloque.cpp
+
+src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BD_1.dir/implementacion/bloque.cpp.i"
+	cd /home/asus/Documentos/BD_1/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/asus/Documentos/BD_1/src/implementacion/bloque.cpp > CMakeFiles/BD_1.dir/implementacion/bloque.cpp.i
+
+src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BD_1.dir/implementacion/bloque.cpp.s"
+	cd /home/asus/Documentos/BD_1/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/asus/Documentos/BD_1/src/implementacion/bloque.cpp -o CMakeFiles/BD_1.dir/implementacion/bloque.cpp.s
+
+src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o: src/CMakeFiles/BD_1.dir/flags.make
+src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o: /home/asus/Documentos/BD_1/src/implementacion/bufferManager.cpp
+src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o: src/CMakeFiles/BD_1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/asus/Documentos/BD_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o"
+	cd /home/asus/Documentos/BD_1/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o -MF CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o.d -o CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/bufferManager.cpp
+
+src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.i"
+	cd /home/asus/Documentos/BD_1/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/asus/Documentos/BD_1/src/implementacion/bufferManager.cpp > CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.i
+
+src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.s"
+	cd /home/asus/Documentos/BD_1/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/asus/Documentos/BD_1/src/implementacion/bufferManager.cpp -o CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.s
+
+src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o: src/CMakeFiles/BD_1.dir/flags.make
+src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o: /home/asus/Documentos/BD_1/src/implementacion/gestorBloque.cpp
+src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o: src/CMakeFiles/BD_1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/asus/Documentos/BD_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o"
+	cd /home/asus/Documentos/BD_1/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o -MF CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o.d -o CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/gestorBloque.cpp
+
+src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.i"
+	cd /home/asus/Documentos/BD_1/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/asus/Documentos/BD_1/src/implementacion/gestorBloque.cpp > CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.i
+
+src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.s"
+	cd /home/asus/Documentos/BD_1/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/asus/Documentos/BD_1/src/implementacion/gestorBloque.cpp -o CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.s
+
 # Object files for target BD_1
 BD_1_OBJECTS = \
 "CMakeFiles/BD_1.dir/main.cpp.o" \
@@ -205,7 +247,10 @@ BD_1_OBJECTS = \
 "CMakeFiles/BD_1.dir/implementacion/query.cpp.o" \
 "CMakeFiles/BD_1.dir/implementacion/funcionesBloque.cpp.o" \
 "CMakeFiles/BD_1.dir/implementacion/funciones_menu.cpp.o" \
-"CMakeFiles/BD_1.dir/implementacion/insertar.cpp.o"
+"CMakeFiles/BD_1.dir/implementacion/insertar.cpp.o" \
+"CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o" \
+"CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o" \
+"CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o"
 
 # External object files for target BD_1
 BD_1_EXTERNAL_OBJECTS =
@@ -219,9 +264,12 @@ src/BD_1: src/CMakeFiles/BD_1.dir/implementacion/query.cpp.o
 src/BD_1: src/CMakeFiles/BD_1.dir/implementacion/funcionesBloque.cpp.o
 src/BD_1: src/CMakeFiles/BD_1.dir/implementacion/funciones_menu.cpp.o
 src/BD_1: src/CMakeFiles/BD_1.dir/implementacion/insertar.cpp.o
+src/BD_1: src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o
+src/BD_1: src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o
+src/BD_1: src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o
 src/BD_1: src/CMakeFiles/BD_1.dir/build.make
 src/BD_1: src/CMakeFiles/BD_1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/asus/Documentos/BD_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable BD_1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/asus/Documentos/BD_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable BD_1"
 	cd /home/asus/Documentos/BD_1/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BD_1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

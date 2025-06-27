@@ -138,14 +138,29 @@ src/CMakeFiles/BD_1.dir/main.cpp.o: \
  /home/asus/Documentos/BD_1/src/include/gestorAlmacenamiento.h \
  /home/asus/Documentos/BD_1/src/include/controladorDisco.h \
  /home/asus/Documentos/BD_1/src/include/disco.h \
+ /home/asus/Documentos/BD_1/src/include/bloque.h \
  /home/asus/Documentos/BD_1/src/include/funcionesBloque.h \
  /usr/include/c++/14/vector /usr/include/c++/14/bits/stl_uninitialized.h \
  /usr/include/c++/14/bits/stl_vector.h \
  /usr/include/c++/14/bits/stl_bvector.h \
  /usr/include/c++/14/bits/vector.tcc \
  /home/asus/Documentos/BD_1/src/include/controladorDisco.h \
+ /home/asus/Documentos/BD_1/src/include/bufferManager.h \
+ /home/asus/Documentos/BD_1/src/include/gestorBloques.h \
+ /usr/include/c++/14/unordered_map \
+ /usr/include/c++/14/bits/unordered_map.h \
+ /usr/include/c++/14/bits/hashtable.h \
+ /usr/include/c++/14/bits/hashtable_policy.h \
+ /usr/include/c++/14/ext/aligned_buffer.h \
+ /usr/include/c++/14/bits/enable_special_members.h \
+ /usr/include/c++/14/bits/node_handle.h \
+ /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/list \
+ /usr/include/c++/14/bits/stl_list.h \
+ /usr/include/c++/14/bits/allocated_ptr.h \
+ /usr/include/c++/14/bits/list.tcc \
  /home/asus/Documentos/BD_1/src/include/funciones_menu.h \
  /home/asus/Documentos/BD_1/src/include/gestorAlmacenamiento.h \
+ /home/asus/Documentos/BD_1/src/include/bufferManager.h \
  /home/asus/Documentos/BD_1/src/include/disco.h \
  /usr/include/c++/14/fstream /usr/include/c++/14/bits/codecvt.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \

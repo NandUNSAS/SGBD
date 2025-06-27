@@ -1,6 +1,6 @@
 #ifndef DISCO_H
 #define DISCO_H
-
+//
 class disco {
     private:
         int platos;
@@ -15,10 +15,8 @@ class disco {
             
     public:
         disco();
-     
        void discoEstatico();
         void discoPersonalizado(int _platos, int _pistasXplato, int _sectorXpista, int _tamSector);
-        //void setDisco();
         void crearDisco();
 
         void calcularCapacidadDisco();

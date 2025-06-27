@@ -6,7 +6,7 @@
 #include "../include/funcionesBloque.h"
 #include "../include/controladorDisco.h"
 #include "insertar.h"
-
+//
 using namespace std;
 
 void gestorAlmacenamiento::setDisco(const disco& _discoDuro){
@@ -79,9 +79,9 @@ void gestorAlmacenamiento::establecerHeaders(const string& rutaSector, string ru
 
 void gestorAlmacenamiento::generarArchivoRutas(){
     cout << "Crear archivo de rutas en orden por pista-sector...\n";
-    string rutaBase = "/home/asus/Documentos/BD_1/DiscoLocal";
-    string rutaArchivo = "/home/asus/Documentos/BD_1/rutas_sectores/rutas.txt";
-    string rutaBloques = "/home/asus/Documentos/BD_1/rutas_sectores/cilindroMedio.txt";
+    string rutaBase = "../../DiscoLocal";
+    string rutaArchivo = "../../rutas_sectores/rutas.txt";
+    string rutaBloques = "../../rutas_sectores/cilindroMedio.txt";
 
     ofstream rutasOut(rutaArchivo);
     if (!rutasOut.is_open()) {
@@ -114,12 +114,12 @@ void gestorAlmacenamiento::generarArchivoRutas(){
 
                     if (m == mitadDisco) {
                         _rutasBloques << "0#" << rutaSector << '\n';
-                        establecerHeaders(rutaSector, "/home/asus/Documentos/BD_1/archivos_estructura_bloque/head_bloque_fijo.txt");
+                        establecerHeaders(rutaSector, "../../archivos_estructura_bloque/head_bloque_fijo.txt");
                         int capacidad = discoDuro.getCapacidadDisco() - 17;
                         discoDuro.setCapacidadDisco(capacidad);
                     } else {
                         rutasOut << "0#" << rutaSector << '\n';
-                        establecerHeaders(rutaSector, "/home/asus/Documentos/BD_1/archivos_estructura_bloque/head_bloque_fijo.txt");
+                        establecerHeaders(rutaSector, "../../archivos_estructura_bloque/head_bloque_fijo.txt");
                         int capacidad = discoDuro.getCapacidadDisco() - 17;
                         discoDuro.setCapacidadDisco(capacidad);
                     }
@@ -135,10 +135,15 @@ void gestorAlmacenamiento::generarArchivoRutas(){
 
 void gestorAlmacenamiento::insertarRutasBloques(const string& rutaReservadoBloques, const string& rutaSectores) {
     ifstream archivoBloques(rutaReservadoBloques);
-    ifstream archivoSectores(rutaSectores);
+    if (!archivoBloques.is_open()) {
+        cerr << "Error: No se pudo abrir el archivo de bloques: " << rutaReservadoBloques << "\n";
+        return;
+    }
 
-    if (!archivoBloques.is_open() || !archivoSectores.is_open()) {
-        cerr << "No se pudo abrir uno de los archivos\n";
+    ifstream archivoSectores(rutaSectores);
+    if (!archivoSectores.is_open()) {
+        cerr << "Error: No se pudo abrir el archivo de sectores: " << rutaSectores << "\n";
+        archivoBloques.close();  // buena práctica
         return;
     }
 
@@ -148,21 +153,15 @@ void gestorAlmacenamiento::insertarRutasBloques(const string& rutaReservadoBloqu
     while (getline(archivoBloques, basura, '#') && getline(archivoBloques, rutaBloque)) {
         int contador = 0;
 
-        // Por cada bloque, insertar hasta sectoresXbloque sectores
-        while (contador < sectoresXbloque &&
-               //getline(archivoSectores, basura, '#') &&
-               getline(archivoSectores, rutaSector)) {
-                //if(rutaSector.size() < static_cast<size_t>(longitudRegistroMax))
-                   // rutaSector.append(longitudRegistroMax - rutaSector.size() - 1, '-');
-            
+        while (contador < sectoresXbloque && getline(archivoSectores, rutaSector)) {
             insertarRegistroB(rutaSector, rutaBloque, longitudRegistroMax);
+
             int capacidad = discoDuro.getCapacidadDisco() - longitudRegistroMax;
             discoDuro.setCapacidadDisco(capacidad);
-            
+
             contador++;
         }
 
-        // Si ya no hay sectores, salimos
         if (archivoSectores.eof()) break;
     }
 
@@ -182,15 +181,15 @@ void gestorAlmacenamiento::insertarRegistro(string registro, string rutaSector, 
     string ruta_sector_disponible = rutaSector;
     bool insercion_exitosa = actualizarCabecera(tamanoRegistro, rutaSector, discoDuro.getTamSector());
     if(!insercion_exitosa){
-        ruta_sector_disponible = bloqueDisponible("/home/asus/Documentos/BD_1/rutas_sectores/cilindroMedio.txt");
+        ruta_sector_disponible = bloqueDisponible("../../rutas_sectores/cilindroMedio.txt");
         insercion_exitosa = actualizarCabecera(tamanoRegistro, ruta_sector_disponible, discoDuro.getTamSector());
     
     }
     cd.insertar(registro, tamanoRegistro, ruta_sector_disponible);
     int capacidad = discoDuro.getCapacidadDisco() - tamanoRegistro;
     discoDuro.setCapacidadDisco(capacidad);
-    verificadorSectoresLlenos("/home/asus/Documentos/BD_1/rutas_sectores/cilindroMedio.txt");
-    verificadorBloquesLlenos("/home/asus/Documentos/BD_1/rutas_sectores/cilindroMedio.txt");
+    verificadorSectoresLlenos("../../rutas_sectores/cilindroMedio.txt");
+    verificadorBloquesLlenos("../../rutas_sectores/cilindroMedio.txt");
 }
 
 
@@ -198,7 +197,7 @@ void gestorAlmacenamiento::insertarRegistroB(string registro, string rutaSector,
     string ruta_sector_disponible = rutaSector;
     bool insercion_exitosa = actualizarCabeceraB(tamanoRegistro, rutaSector, discoDuro.getTamSector(), sectoresXbloque);
     if(!insercion_exitosa){
-        ruta_sector_disponible = bloqueDisponible("/home/asus/Documentos/BD_1/rutas_sectores/cilindroMedio.txt");
+        ruta_sector_disponible = bloqueDisponible("../../rutas_sectores/cilindroMedio.txt");
         insercion_exitosa = actualizarCabeceraB(tamanoRegistro, ruta_sector_disponible, discoDuro.getTamSector(), sectoresXbloque);
     
     }
@@ -207,7 +206,7 @@ void gestorAlmacenamiento::insertarRegistroB(string registro, string rutaSector,
 }
 
 void gestorAlmacenamiento::guardarEnArchivo(){
-    ofstream archivo("/home/asus/Documentos/BD_1/archivo_info_Disco/info_bloque.txt");
+    ofstream archivo("../../archivo_info_Disco/info_bloque.txt");
     if (archivo.is_open()){
         archivo << sectoresXbloque;
         archivo.close();

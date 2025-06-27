@@ -20,6 +20,36 @@ using namespace std;
 #define ARCHIVO_MAX_LONGITUD "../../maxLongitud.txt"
 */
 //NO TOMA EN CUENTA EL ENCABEZADO
+
+string obtenerRuta(const string& linea) {
+    size_t pos = linea.find('#');
+    if (pos == string::npos || pos + 1 >= linea.size()) {
+        throw runtime_error("Formato de línea inválido.");
+    }
+    return linea.substr(pos + 1); // ruta
+}
+
+string obtenerRutaPorId(const string& archivoRutas, int idBloque) {
+    ifstream archivo(archivoRutas);
+    if (!archivo.is_open()) {
+        throw runtime_error("No se pudo abrir el archivo de rutas.");
+    }
+
+    string linea;
+    int lineaActual = 1;
+    while (getline(archivo, linea)) {
+        if (lineaActual == idBloque) {
+           
+            archivo.close();
+            return obtenerRuta(linea); // Extrae el campo después de #
+        }
+        ++lineaActual;
+    }
+
+    archivo.close();
+    throw out_of_range("ID de bloque fuera de rango en el archivo.");
+}
+
 size_t obtenerRegistroMasLargo(const string& nombreArchivo, char c) {
     ifstream archivo(nombreArchivo);
     if (!archivo.is_open()) {
@@ -224,3 +254,4 @@ void construirEsquema(const string& archivoAtributos,
 
 
 
+//

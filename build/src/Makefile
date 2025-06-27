@@ -130,6 +130,54 @@ BD_1/fast:
 	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/build
 .PHONY : BD_1/fast
 
+implementacion/bloque.o: implementacion/bloque.cpp.o
+.PHONY : implementacion/bloque.o
+
+# target to build an object file
+implementacion/bloque.cpp.o:
+	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o
+.PHONY : implementacion/bloque.cpp.o
+
+implementacion/bloque.i: implementacion/bloque.cpp.i
+.PHONY : implementacion/bloque.i
+
+# target to preprocess a source file
+implementacion/bloque.cpp.i:
+	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.i
+.PHONY : implementacion/bloque.cpp.i
+
+implementacion/bloque.s: implementacion/bloque.cpp.s
+.PHONY : implementacion/bloque.s
+
+# target to generate assembly for a file
+implementacion/bloque.cpp.s:
+	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.s
+.PHONY : implementacion/bloque.cpp.s
+
+implementacion/bufferManager.o: implementacion/bufferManager.cpp.o
+.PHONY : implementacion/bufferManager.o
+
+# target to build an object file
+implementacion/bufferManager.cpp.o:
+	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o
+.PHONY : implementacion/bufferManager.cpp.o
+
+implementacion/bufferManager.i: implementacion/bufferManager.cpp.i
+.PHONY : implementacion/bufferManager.i
+
+# target to preprocess a source file
+implementacion/bufferManager.cpp.i:
+	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.i
+.PHONY : implementacion/bufferManager.cpp.i
+
+implementacion/bufferManager.s: implementacion/bufferManager.cpp.s
+.PHONY : implementacion/bufferManager.s
+
+# target to generate assembly for a file
+implementacion/bufferManager.cpp.s:
+	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.s
+.PHONY : implementacion/bufferManager.cpp.s
+
 implementacion/controladorDisco.o: implementacion/controladorDisco.cpp.o
 .PHONY : implementacion/controladorDisco.o
 
@@ -274,6 +322,30 @@ implementacion/gestorAlmacenamiento.cpp.s:
 	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/gestorAlmacenamiento.cpp.s
 .PHONY : implementacion/gestorAlmacenamiento.cpp.s
 
+implementacion/gestorBloque.o: implementacion/gestorBloque.cpp.o
+.PHONY : implementacion/gestorBloque.o
+
+# target to build an object file
+implementacion/gestorBloque.cpp.o:
+	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o
+.PHONY : implementacion/gestorBloque.cpp.o
+
+implementacion/gestorBloque.i: implementacion/gestorBloque.cpp.i
+.PHONY : implementacion/gestorBloque.i
+
+# target to preprocess a source file
+implementacion/gestorBloque.cpp.i:
+	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.i
+.PHONY : implementacion/gestorBloque.cpp.i
+
+implementacion/gestorBloque.s: implementacion/gestorBloque.cpp.s
+.PHONY : implementacion/gestorBloque.s
+
+# target to generate assembly for a file
+implementacion/gestorBloque.cpp.s:
+	cd /home/asus/Documentos/BD_1/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/BD_1.dir/build.make src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.s
+.PHONY : implementacion/gestorBloque.cpp.s
+
 implementacion/insertar.o: implementacion/insertar.cpp.o
 .PHONY : implementacion/insertar.o
 
@@ -355,6 +427,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... BD_1"
+	@echo "... implementacion/bloque.o"
+	@echo "... implementacion/bloque.i"
+	@echo "... implementacion/bloque.s"
+	@echo "... implementacion/bufferManager.o"
+	@echo "... implementacion/bufferManager.i"
+	@echo "... implementacion/bufferManager.s"
 	@echo "... implementacion/controladorDisco.o"
 	@echo "... implementacion/controladorDisco.i"
 	@echo "... implementacion/controladorDisco.s"
@@ -373,6 +451,9 @@ help:
 	@echo "... implementacion/gestorAlmacenamiento.o"
 	@echo "... implementacion/gestorAlmacenamiento.i"
 	@echo "... implementacion/gestorAlmacenamiento.s"
+	@echo "... implementacion/gestorBloque.o"
+	@echo "... implementacion/gestorBloque.i"
+	@echo "... implementacion/gestorBloque.s"
 	@echo "... implementacion/insertar.o"
 	@echo "... implementacion/insertar.i"
 	@echo "... implementacion/insertar.s"

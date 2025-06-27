@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+176,0,3,"Klasen, Mr. Klas Albin",male,18,1,1,350404,7.8542,,S
+177,0,3,"Lefebre, Master. Henry Forbes",male,,3,1,4133,25.4667,,S
+178,0,1,"Isham, Miss. Ann Elizabeth",female,50,0,0,PC 17595,28.7125,C49,C
+179,0,2,"Hale, Mr. Reginald",male,30,0,0,250653,13,,S
+180,0,3,"Leonard, Mr. Lionel",male,36,0,0,LINE,0,,S
+181,0,3,"Sage, Miss. Constance Gladys",female,,8,2,CA. 2343,69.55,,S
+182,0,2,"Pernot, Mr. Rene",male,,0,0,SC/PARIS 2131,15.05,,C

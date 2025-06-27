@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+232,0,3,"Larsson, Mr. Bengt Edvin",male,29,0,0,347067,7.775,,S
+233,0,2,"Sjostedt, Mr. Ernst Adolf",male,59,0,0,237442,13.5,,S
+234,1,3,"Asplund, Miss. Lillian Gertrud",female,5,4,2,347077,31.3875,,S
+235,0,2,"Leyson, Mr. Robert William Norman",male,24,0,0,C.A. 29566,10.5,,S
+236,0,3,"Harknett, Miss. Alice Phoebe",female,,0,0,W./C. 6609,7.55,,S
+237,0,2,"Hold, Mr. Stephen",male,44,1,0,26707,26,,S
+238,1,2,"Collyer, Miss. Marjorie ""Lottie""",female,8,0,2,C.A. 31921,26.25,,S

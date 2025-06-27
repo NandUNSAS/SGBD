@@ -1,5 +1,5 @@
-334#0-1#079#04#04
-0#/home/asus/Documentos/BD_1/DiscoLocal/plato7/superficie1/pista1/sector10.txt
-0#/home/asus/Documentos/BD_1/DiscoLocal/plato7/superficie2/pista1/sector10.txt
-0#/home/asus/Documentos/BD_1/DiscoLocal/plato8/superficie1/pista1/sector10.txt
-0#/home/asus/Documentos/BD_1/DiscoLocal/plato8/superficie2/pista1/sector10.txt
+0250#0-1#058#04#04
+0#../../DiscoLocal/plato7/superficie1/pista1/sector10.txt
+0#../../DiscoLocal/plato7/superficie2/pista1/sector10.txt
+0#../../DiscoLocal/plato8/superficie1/pista1/sector10.txt
+0#../../DiscoLocal/plato8/superficie2/pista1/sector10.txt

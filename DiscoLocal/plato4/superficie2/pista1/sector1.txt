@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+50,0,3,"Arnold-Franchi, Mrs. Josef (Josefine Franchi)",female,18,1,0,349237,17.8,,S
+51,0,3,"Panula, Master. Juha Niilo",male,7,4,1,3101295,39.6875,,S
+52,0,3,"Nosworthy, Mr. Richard Cater",male,21,0,0,A/4. 39886,7.8,,S
+53,1,1,"Harper, Mrs. Henry Sleeper (Myna Haxtun)",female,49,1,0,PC 17572,76.7292,D33,C
+54,1,2,"Faunthorpe, Mrs. Lizzie (Elizabeth Anne Wilkinson)",female,29,1,0,2926,26,,S
+55,0,1,"Ostby, Mr. Engelhart Cornelius",male,65,0,1,113509,61.9792,B30,C
+56,1,1,"Woolner, Mr. Hugh",male,,0,0,19947,35.5,C52,S

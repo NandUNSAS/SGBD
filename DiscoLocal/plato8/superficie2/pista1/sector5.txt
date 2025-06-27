@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+554,1,3,"Leeni, Mr. Fahim (""Philip Zenni"")",male,22,0,0,2620,7.225,,C
+555,1,3,"Ohman, Miss. Velin",female,22,0,0,347085,7.775,,S
+556,0,1,"Wright, Mr. George",male,62,0,0,113807,26.55,,S
+557,1,1,"Duff Gordon, Lady. (Lucille Christiana Sutherland) (""Mrs Morgan"")",female,48,1,0,11755,39.6,A16,C
+558,0,1,"Robbins, Mr. Victor",male,,0,0,PC 17757,227.525,,C
+559,1,1,"Taussig, Mrs. Emil (Tillie Mandelbaum)",female,39,1,1,110413,79.65,E67,S
+560,1,3,"de Messemaeker, Mrs. Guillaume Joseph (Emma)",female,36,1,0,345572,17.4,,S

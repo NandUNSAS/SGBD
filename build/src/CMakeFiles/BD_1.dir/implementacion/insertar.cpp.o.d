@@ -104,6 +104,7 @@ src/CMakeFiles/BD_1.dir/implementacion/insertar.cpp.o: \
  /usr/include/c++/14/bits/uses_allocator_args.h /usr/include/c++/14/tuple \
  /usr/include/c++/14/bits/ranges_util.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/../include/disco.h \
+ /home/asus/Documentos/BD_1/src/implementacion/../include/../include/bloque.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/../include/funciones.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/../include/funcionesBloque.h \
  /usr/include/c++/14/vector /usr/include/c++/14/bits/stl_uninitialized.h \

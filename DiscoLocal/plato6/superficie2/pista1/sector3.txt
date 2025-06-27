@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+302,1,3,"McCoy, Mr. Bernard",male,,2,0,367226,23.25,,Q
+303,0,3,"Johnson, Mr. William Cahoone Jr",male,19,0,0,LINE,0,,S
+304,1,2,"Keane, Miss. Nora A",female,,0,0,226593,12.35,E101,Q
+305,0,3,"Williams, Mr. Howard Hugh ""Harry""",male,,0,0,A/5 2466,8.05,,S
+306,1,1,"Allison, Master. Hudson Trevor",male,0.92,1,2,113781,151.55,C22 C26,S
+307,1,1,"Fleming, Miss. Margaret",female,,0,0,17421,110.8833,,C
+308,1,1,"Penasco y Castellana, Mrs. Victor de Satode (Maria Josefa Perez de Soto y Vallejo)",female,17,1,0,PC 17758,108.9,C65,C

@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+365,0,3,"O'Brien, Mr. Thomas",male,,1,0,370365,15.5,,Q
+366,0,3,"Adahl, Mr. Mauritz Nils Martin",male,30,0,0,C 7076,7.25,,S
+367,1,1,"Warren, Mrs. Frank Manley (Anna Sophia Atkinson)",female,60,1,0,110813,75.25,D37,C
+368,1,3,"Moussa, Mrs. (Mantoura Boulos)",female,,0,0,2626,7.2292,,C
+369,1,3,"Jermyn, Miss. Annie",female,,0,0,14313,7.75,,Q
+370,1,1,"Aubart, Mme. Leontine Pauline",female,24,0,0,PC 17477,69.3,B35,C
+371,1,1,"Harder, Mr. George Achilles",male,25,1,0,11765,55.4417,E50,C

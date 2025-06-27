@@ -8,6 +8,9 @@ set(SOURCES
         implementacion/funcionesBloque.cpp
         implementacion/funciones_menu.cpp
         implementacion/insertar.cpp
+        implementacion/bloque.cpp
+        implementacion/bufferManager.cpp
+        implementacion/gestorBloque.cpp
 )
 
 set(HEADERS include)

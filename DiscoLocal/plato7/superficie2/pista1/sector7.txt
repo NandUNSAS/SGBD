@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+764,1,1,"Carter, Mrs. William Ernest (Lucile Polk)",female,36,1,2,113760,120,B96 B98,S
+765,0,3,"Eklund, Mr. Hans Linus",male,16,0,0,347074,7.775,,S
+766,1,1,"Hogeboom, Mrs. John C (Anna Andrews)",female,51,1,0,13502,77.9583,D11,S
+767,0,1,"Brewe, Dr. Arthur Jackson",male,,0,0,112379,39.6,,C
+768,0,3,"Mangan, Miss. Mary",female,30.5,0,0,364850,7.75,,Q
+769,0,3,"Moran, Mr. Daniel J",male,,1,0,371110,24.15,,Q
+770,0,3,"Gronnestad, Mr. Daniel Danielsen",male,32,0,0,8471,8.3625,,S

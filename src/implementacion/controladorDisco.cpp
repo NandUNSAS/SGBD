@@ -3,7 +3,7 @@
 #include <iosfwd>
 #include <string>
 #include <fstream>
-
+//
 using namespace std;
 
 void controladorDisco::insertar(string registro,int tamaño_fijo_registro, string rutaSector){

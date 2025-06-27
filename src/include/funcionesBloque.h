@@ -16,3 +16,4 @@ bool actualizarCabecera(int tamanoRegistro, string ruta_sector, int capacidadSec
 bool actualizarCabeceraB(int tamanoRegistro, string ruta_sector, int capacidadSector, int sectoresXbloque);
 
 #endif // !FUNCIONESBLOQUE_H
+//

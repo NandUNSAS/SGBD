@@ -4,27 +4,30 @@
 #include <stdio.h>
 #include "../include/funciones.h"
 #include "../include/gestorAlmacenamiento.h"
+#include "../include/bloque.h"
 #include "funcionesBloque.h"
 #include "../include/controladorDisco.h"
 #include "../include/funciones_menu.h"
 #include "../include/funcionesBloque.h"
 #include "../include/insertar.h"
+#include "../include/bufferManager.h"
+#include "gestorBloques.h"
 #include <string>
 #include <disco.h>
 #include <fstream>
 using namespace std;
 
-const string ARCHIVO_CSVT = "/home/asus/Documentos/BD_1/archivos_csv/TitanicG.csv";
-const string ARCHIVO_CSVH = "/home/asus/Documentos/BD_1/archivos_csv/Housing.csv";
-const string ARCHIVO_DATOS_T = "/home/asus/Documentos/BD_1/archivos_esquema/datos_titanic.txt";
-const string ARCHIVO_DATOS_H = "/home/asus/Documentos/BD_1/archivos_esquema/datos_housing.txt";
-const string ARCHIVO_LONG_MAX = "/home/asus/Documentos/BD_1/archivos_esquema/longitudes_maximas.txt";
-const string ARCHIVO_ESQUEMAT = "/home/asus/Documentos/BD_1/archivos_esquema/esquema_titanic.txt";
-const string ARCHIVO_ESQUEMAH = "/home/asus/Documentos/BD_1/archivos_esquema/esquema_hosing.txt";
-const string RUTAS = "/home/asus/Documentos/BD_1/rutas_sectores/rutas.txt";
-const string RUTASB = "/home/asus/Documentos/BD_1/rutas_sectores/cilindroMedio.txt";
-const string ARCHIVO_INFO_DISCO = "/home/asus/Documentos/BD_1/archivo_info_Disco/info_disco.txt";
-const string ARCHIVO_B_X_SECTORES = "/home/asus/Documentos/BD_1/archivo_info_Disco/info_bloque.txt";
+const string ARCHIVO_CSVT = "../../archivos_csv/TitanicG.csv";
+const string ARCHIVO_CSVH = "../../archivos_csv/Housing.csv";
+const string ARCHIVO_DATOS_T = "../../archivos_esquema/datos_titanic.txt";
+const string ARCHIVO_DATOS_H = "../../archivos_esquema/datos_housing.txt";
+const string ARCHIVO_LONG_MAX = "../../archivos_esquema/longitudes_maximas.txt";
+const string ARCHIVO_ESQUEMAT = "../../archivos_esquema/esquema_titanic.txt";
+const string ARCHIVO_ESQUEMAH = "../../archivos_esquema/esquema_hosing.txt";
+const string RUTAS = "../../rutas_sectores/rutas.txt";
+const string RUTASB = "../../rutas_sectores/cilindroMedio.txt";
+const string ARCHIVO_INFO_DISCO = "../../archivo_info_Disco/info_disco.txt";
+const string ARCHIVO_B_X_SECTORES = "../../archivo_info_Disco/info_bloque.txt";
 
 void mostrarMenu() {
     cout << "\n----- MEGATROM 3000 -----\n";
@@ -33,7 +36,12 @@ void mostrarMenu() {
     cout << "2. Usar disco por defecto\n";
     cout << "3. Leer archivo CSV y añadir relación\n";
     cout << "4. Caracterisiticas del disco\n";
-    cout << "8. Salir\n";
+    cout << "5. inicializar bufferPool\n";
+    cout << "6. cargar pagina\n";
+    cout << "7. mostrar estado buffer pool (tabla)\n";
+    cout << "8. despinear (tabla)\n";
+    cout << "10. pinear\n";
+    cout << "9. Salir\n";
     cout << "Seleccione una opción: ";
 }
 
@@ -206,3 +214,66 @@ void caracteristicasDisco(gestorAlmacenamiento& gestor, disco& disco1){
     cout << "capacidad ocupada del disco: " << infoDisco[5] - gestor.capacidadDisco() << endl;
 }
 
+// ... (código existente)
+
+void inicializarBufferPool(bufferManager& bm) {
+    int cantFrames;
+    cout << "Ingrese cantidad de frames para el buffer pool: ";
+    cin >> cantFrames;
+    bm = bufferManager(cantFrames);
+}
+
+void mostrarEstadoBufferPool(const bufferManager& bm) {
+    bm.mostrarEstadoBufferPool();
+}
+
+void cargarPagina(bufferManager& bm) {
+    int idBloque;
+    char modo;
+    
+    cout << "Ingrese ID del bloque a cargar: ";
+    cin >> idBloque;
+    
+    cout << "Modo de acceso (L para lectura, E para escritura): ";
+    cin >> modo;
+    modo = toupper(modo);
+    
+    if (modo != 'L' && modo != 'E') {
+        cout << "Modo no válido. Use L (lectura) o E (escritura)." << endl;
+        return;
+    }
+    
+    string rutaBloque;
+    try {
+        rutaBloque = obtenerRutaPorId(RUTASB, idBloque);
+    } catch (const exception& e) {
+        cerr << "Error: " << e.what() << endl;
+        return;
+    }
+    
+    bloque b;
+    b.inicializarBloque(idBloque, rutaBloque);
+    
+    string mode_str = (modo == 'L') ? "read" : "write";
+    bm.agregarBufferPool(idBloque, b, mode_str);
+    
+    // Mostrar contenido si es lectura
+    if (modo == 'L') {
+        cout << "\nContenido del bloque:" << endl;
+        b.mostrarBloque();
+    }
+}
+
+void unpinBlock(bufferManager& bm) {
+    int idBloque;
+    cout << "Ingrese ID del bloque a despinear: ";
+    cin >> idBloque;
+    bm.unpinBlock(idBloque);
+}
+
+void pinBlock(bufferManager& bm) {
+    int idBloque;
+    cout << "Ingrese ID del bloque a pinear: ";
+    cin >> idBloque;
+    bm.pinBlock(idBloque);
+}

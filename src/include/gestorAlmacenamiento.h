@@ -2,6 +2,7 @@
 #define GESTORALMACENAMIENTO_H
 #include "controladorDisco.h"
 #include "disco.h"
+#include "bloque.h"
 #include <string>
 
 using namespace std;
@@ -10,7 +11,7 @@ class gestorAlmacenamiento{
     private:
     disco discoDuro;
     controladorDisco cd;
-    
+    bloque b;
     int sectoresXbloque;
     int capacidadBloque;
 
@@ -49,5 +50,5 @@ class gestorAlmacenamiento{
 
         int capacidadDisco();
     };
-
+//
 #endif // !GESTOR_ALMACENAMIENTO_H

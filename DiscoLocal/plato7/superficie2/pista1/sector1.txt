@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+92,0,3,"Andreasson, Mr. Paul Edvin",male,20,0,0,347466,7.8542,,S
+93,0,1,"Chaffee, Mr. Herbert Fuller",male,46,1,0,W.E.P. 5734,61.175,E31,S
+94,0,3,"Dean, Mr. Bertram Frank",male,26,1,2,C.A. 2315,20.575,,S
+95,0,3,"Coxon, Mr. Daniel",male,59,0,0,364500,7.25,,S
+96,0,3,"Shorney, Mr. Charles Joseph",male,,0,0,374910,8.05,,S
+97,0,1,"Goldschmidt, Mr. George B",male,71,0,0,PC 17754,34.6542,A5,C
+98,1,1,"Greenfield, Mr. William Bertram",male,23,0,1,PC 17759,63.3583,D10 D12,C

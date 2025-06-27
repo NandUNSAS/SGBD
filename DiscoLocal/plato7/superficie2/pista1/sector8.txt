@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+876,1,3,"Najib, Miss. Adele Kiamie ""Jane""",female,15,0,0,2667,7.225,,C
+877,0,3,"Gustafsson, Mr. Alfred Ossian",male,20,0,0,7534,9.8458,,S
+878,0,3,"Petroff, Mr. Nedelio",male,19,0,0,349212,7.8958,,S
+879,0,3,"Laleff, Mr. Kristo",male,,0,0,349217,7.8958,,S
+880,1,1,"Potter, Mrs. Thomas Jr (Lily Alexenia Wilson)",female,56,0,1,11767,83.1583,C50,C
+881,1,2,"Shelley, Mrs. William (Imanita Parrish Hall)",female,25,0,1,230433,26,,S
+882,0,3,"Markun, Mr. Johann",male,33,0,0,349257,7.8958,,S

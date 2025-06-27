@@ -104,9 +104,26 @@ src/CMakeFiles/BD_1.dir/implementacion/funciones_menu.cpp.o: \
  /usr/include/c++/14/bits/uses_allocator_args.h /usr/include/c++/14/tuple \
  /usr/include/c++/14/bits/ranges_util.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/gestorAlmacenamiento.h \
- /usr/include/c++/14/iostream /usr/include/c++/14/ostream \
- /usr/include/c++/14/ios /usr/include/c++/14/exception \
- /usr/include/c++/14/bits/exception_ptr.h \
+ /home/asus/Documentos/BD_1/src/implementacion/../include/bloque.h \
+ /home/asus/Documentos/BD_1/src/implementacion/../include/bufferManager.h \
+ /home/asus/Documentos/BD_1/src/implementacion/../include/gestorBloques.h \
+ /usr/include/c++/14/unordered_map \
+ /usr/include/c++/14/bits/unordered_map.h \
+ /usr/include/c++/14/bits/hashtable.h \
+ /usr/include/c++/14/bits/hashtable_policy.h \
+ /usr/include/c++/14/ext/aligned_buffer.h \
+ /usr/include/c++/14/bits/enable_special_members.h \
+ /usr/include/c++/14/bits/node_handle.h \
+ /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/list \
+ /usr/include/c++/14/bits/stl_list.h \
+ /usr/include/c++/14/bits/allocated_ptr.h \
+ /usr/include/c++/14/bits/list.tcc /usr/include/c++/14/vector \
+ /usr/include/c++/14/bits/stl_uninitialized.h \
+ /usr/include/c++/14/bits/stl_vector.h \
+ /usr/include/c++/14/bits/stl_bvector.h \
+ /usr/include/c++/14/bits/vector.tcc /usr/include/c++/14/iostream \
+ /usr/include/c++/14/ostream /usr/include/c++/14/ios \
+ /usr/include/c++/14/exception /usr/include/c++/14/bits/exception_ptr.h \
  /usr/include/c++/14/bits/cxxabi_init_exception.h \
  /usr/include/c++/14/typeinfo /usr/include/c++/14/bits/nested_exception.h \
  /usr/include/c++/14/bits/ios_base.h /usr/include/c++/14/ext/atomicity.h \
@@ -139,17 +156,16 @@ src/CMakeFiles/BD_1.dir/implementacion/funciones_menu.cpp.o: \
  /usr/include/c++/14/bits/istream.tcc \
  /home/asus/Documentos/BD_1/src/implementacion/../include/funciones.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/gestorAlmacenamiento.h \
+ /home/asus/Documentos/BD_1/src/implementacion/../include/bloque.h \
  /home/asus/Documentos/BD_1/src/include/funcionesBloque.h \
- /usr/include/c++/14/vector /usr/include/c++/14/bits/stl_uninitialized.h \
- /usr/include/c++/14/bits/stl_vector.h \
- /usr/include/c++/14/bits/stl_bvector.h \
- /usr/include/c++/14/bits/vector.tcc \
  /home/asus/Documentos/BD_1/src/implementacion/../include/controladorDisco.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/funcionesBloque.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/insertar.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/../include/gestorAlmacenamiento.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/../include/funciones.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/../include/funcionesBloque.h \
+ /home/asus/Documentos/BD_1/src/implementacion/../include/bufferManager.h \
+ /home/asus/Documentos/BD_1/src/include/gestorBloques.h \
  /home/asus/Documentos/BD_1/src/include/disco.h \
  /usr/include/c++/14/fstream /usr/include/c++/14/bits/codecvt.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \

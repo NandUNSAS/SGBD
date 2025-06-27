@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+519,1,2,"Angle, Mrs. William A (Florence ""Mary"" Agnes Hughes)",female,36,1,0,226875,26,,S
+520,0,3,"Pavlovic, Mr. Stefo",male,32,0,0,349242,7.8958,,S
+521,1,1,"Perreault, Miss. Anne",female,30,0,0,12749,93.5,B73,S
+522,0,3,"Vovk, Mr. Janko",male,22,0,0,349252,7.8958,,S
+523,0,3,"Lahoud, Mr. Sarkis",male,,0,0,2624,7.225,,C
+524,1,1,"Hippach, Mrs. Louis Albert (Ida Sophia Fischer)",female,44,0,1,111361,57.9792,B18,C
+525,0,3,"Kassem, Mr. Fared",male,,0,0,2700,7.2292,,C

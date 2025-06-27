@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+757,0,3,"Carlsson, Mr. August Sigfrid",male,28,0,0,350042,7.7958,,S
+758,0,2,"Bailey, Mr. Percy Andrew",male,18,0,0,29108,11.5,,S
+759,0,3,"Theobald, Mr. Thomas Leonard",male,34,0,0,363294,8.05,,S
+760,1,1,"Rothes, the Countess. of (Lucy Noel Martha Dyer-Edwards)",female,33,0,0,110152,86.5,B77,S
+761,0,3,"Garfirth, Mr. John",male,,0,0,358585,14.5,,S
+762,0,3,"Nirva, Mr. Iisakki Antino Aijo",male,41,0,0,SOTON/O2 3101272,7.125,,S
+763,1,3,"Barah, Mr. Hanna Assi",male,20,0,0,2663,7.2292,,C

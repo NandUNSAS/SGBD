@@ -7,7 +7,7 @@
 #include <sstream>
 #include <vector>
 
-#define ARCHIVO_ESQUEMA_HEAD "/home/asus/Documentos/BD_1/archivos_esquema/esquema_registro_bloques.txt"
+#define ARCHIVO_ESQUEMA_HEAD "../../archivos_esquema/esquema_registro_bloques.txt"
 
 using namespace std;
 
@@ -153,6 +153,7 @@ bool actualizarCabecera(int tamanoRegistro, string ruta_sector, int capacidadSec
 
     }
     archivo_sector.close();
+    return false;
 }
 
 
@@ -212,4 +213,6 @@ bool actualizarCabeceraB(int tamanoRegistro, string ruta_sector, int capacidadSe
 
     }
     archivo_sector.close();
+    return false;
 }
+//

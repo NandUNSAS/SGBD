@@ -9,7 +9,7 @@
 #include <fstream>
 #include <string>
 using namespace std;
-
+///
 string cambiarIndicePorUno(const string& ruta) {
     size_t pos = ruta.find('#');
     if (pos != string::npos && pos > 0) {

@@ -52,5 +52,23 @@
   "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/insertar.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/insertar.cpp",
   "file": "/home/asus/Documentos/BD_1/src/implementacion/insertar.cpp",
   "output": "src/CMakeFiles/BD_1.dir/implementacion/insertar.cpp.o"
+},
+{
+  "directory": "/home/asus/Documentos/BD_1/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/bloque.cpp",
+  "file": "/home/asus/Documentos/BD_1/src/implementacion/bloque.cpp",
+  "output": "src/CMakeFiles/BD_1.dir/implementacion/bloque.cpp.o"
+},
+{
+  "directory": "/home/asus/Documentos/BD_1/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/bufferManager.cpp",
+  "file": "/home/asus/Documentos/BD_1/src/implementacion/bufferManager.cpp",
+  "output": "src/CMakeFiles/BD_1.dir/implementacion/bufferManager.cpp.o"
+},
+{
+  "directory": "/home/asus/Documentos/BD_1/build/src",
+  "command": "/usr/bin/g++  -I/home/asus/Documentos/BD_1/src/include -g -std=gnu++20 -o CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o -c /home/asus/Documentos/BD_1/src/implementacion/gestorBloque.cpp",
+  "file": "/home/asus/Documentos/BD_1/src/implementacion/gestorBloque.cpp",
+  "output": "src/CMakeFiles/BD_1.dir/implementacion/gestorBloque.cpp.o"
 }
 ]

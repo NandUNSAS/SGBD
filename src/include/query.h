@@ -6,3 +6,4 @@ class query{
 };
 
 #endif // DEBUG
+//

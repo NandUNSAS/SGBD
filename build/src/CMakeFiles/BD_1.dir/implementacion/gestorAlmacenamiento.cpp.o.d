@@ -103,6 +103,7 @@ src/CMakeFiles/BD_1.dir/implementacion/gestorAlmacenamiento.cpp.o: \
  /usr/include/c++/14/bits/uses_allocator_args.h /usr/include/c++/14/tuple \
  /usr/include/c++/14/bits/ranges_util.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/disco.h \
+ /home/asus/Documentos/BD_1/src/implementacion/../include/bloque.h \
  /home/asus/Documentos/BD_1/src/implementacion/../include/disco.h \
  /usr/include/c++/14/iostream /usr/include/c++/14/ostream \
  /usr/include/c++/14/ios /usr/include/c++/14/exception \

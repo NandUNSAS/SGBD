@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+435,0,1,"Silvey, Mr. William Baird",male,50,1,0,13507,55.9,E44,S
+436,1,1,"Carter, Miss. Lucile Polk",female,14,1,2,113760,120,B96 B98,S
+437,0,3,"Ford, Miss. Doolina Margaret ""Daisy""",female,21,2,2,W./C. 6608,34.375,,S
+438,1,2,"Richards, Mrs. Sidney (Emily Hocking)",female,24,2,3,29106,18.75,,S
+439,0,1,"Fortune, Mr. Mark",male,64,1,4,19950,263,C23 C25 C27,S
+440,0,2,"Kvillner, Mr. Johan Henrik Johannesson",male,31,0,0,C.A. 18723,10.5,,S
+441,1,2,"Hart, Mrs. Benjamin (Esther Ada Bloomfield)",female,45,1,1,F.C.C. 13529,26.25,,S

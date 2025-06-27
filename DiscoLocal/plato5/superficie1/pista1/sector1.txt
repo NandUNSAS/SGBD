@@ -1,1 +1,8 @@
-018#0-1#000#00#00
+0914#0-1#128#07#07
+57,1,2,"Rugg, Miss. Emily",female,21,0,0,C.A. 31026,10.5,,S
+58,0,3,"Novel, Mr. Mansouer",male,28.5,0,0,2697,7.2292,,C
+59,1,2,"West, Miss. Constance Mirium",female,5,1,2,C.A. 34651,27.75,,S
+60,0,3,"Goodwin, Master. William Frederick",male,11,5,2,CA 2144,46.9,,S
+61,0,3,"Sirayanian, Mr. Orsen",male,22,0,0,2669,7.2292,,C
+62,1,1,"Icard, Miss. Amelie",female,38,0,0,113572,80,B28,
+63,0,1,"Harris, Mr. Henry Birkhardt",male,45,1,0,36973,83.475,C83,S

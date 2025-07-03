@@ -38,15 +38,6 @@ int bufferManager::findLRUFrame() {
         }
     }
     
-    if (lru_index == -1) {
-        // Si todos están pinned, buscamos el de menor pin_count
-        for (int i = 0; i < capacity; i++) {
-            if (frames[i].pin_count < min_pin_count) {
-                min_pin_count = frames[i].pin_count;
-                lru_index = i;
-            }
-        }
-    }
     
     return lru_index;
 }
@@ -109,27 +100,7 @@ void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool
             frame.mode = mode;
             
             // Mostrar estado solo si es modo lectura
-            if (mode == "read") {
-                cout << "\n--- Estado después de carga (HIT) ---" << endl;
-                mostrarEstadoBufferPool();
-                
-                // Mostrar contenido del bloque
-                cout << "\nContenido del bloque " << id << ":" << endl;
-                gb.mostrarBloque(id);
-                
-                // Decrementar sin mostrar tabla
-                frame.pin_count--;
-            } else if (mode == "write") {
-                cout << "\n--- Estado después de carga (HIT) ---" << endl;
-                mostrarEstadoBufferPool();
-                
-                // Simular escritura
-                b.escribirPaginaSimulada("Nuevos datos  para el bloque " + to_string(id));
-                frame.dirty = true; // Marcar como modificado
-                
-                // Decrementar sin mostrar tabla
-                frame.pin_count--;
-            }
+    
             
             return;
         }
@@ -149,27 +120,6 @@ void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool
             gb.agregarBloque(id, b);
             
             // Mostrar estado solo si es modo lectura
-            if (mode == "read") {
-                cout << "\n--- Estado después de carga (MISS) ---" << endl;
-                mostrarEstadoBufferPool();
-                
-                // Mostrar contenido del bloque
-                cout << "\nContenido del bloque " << id << ":" << endl;
-                gb.mostrarBloque(id);
-                
-                // Decrementar sin mostrar tabla
-                frame.pin_count--;
-            }  else if (mode == "write") {
-                cout << "\n--- Estado después de carga (HIT) ---" << endl;
-                mostrarEstadoBufferPool();
-                
-                // Simular escritura
-                b.escribirPaginaSimulada("Nuevos datos  para el bloque " + to_string(id));
-                frame.dirty = true; // Marcar como modificado
-                
-                // Decrementar sin mostrar tabla
-                frame.pin_count--;
-            }
             
             return;
         }
@@ -198,28 +148,6 @@ void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool
     
     gb.agregarBloque(id, b);
     
-    // Mostrar estado solo si es modo lectura
-    if (mode == "read") {
-        cout << "\n--- Estado después de reemplazo ---" << endl;
-        mostrarEstadoBufferPool();
-        
-        // Mostrar contenido del bloque
-        cout << "\nContenido del bloque " << id << ":" << endl;
-        gb.mostrarBloque(id);
-        
-        // Decrementar sin mostrar tabla
-        victim.pin_count--;
-    } else if (mode == "write") {
-        cout << "\n--- Estado después de reemplazo ---" << endl;
-        mostrarEstadoBufferPool();
-        
-        // Simular escritura en bloque recién cargado
-        cout << "\n escritura en el bloque " << id << ":" << endl;
-        b.escribirPaginaSimulada("Datos post-reemplazo - " + to_string(time_counter));
-        victim.dirty = true;
-        
-        victim.pin_count--;
-    }
 }
 
 // Mostrar estado del buffer pool

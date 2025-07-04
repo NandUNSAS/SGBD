@@ -34,16 +34,27 @@ class bufferManager {
         // Para Clock
         bool reference_bit;
         
+        /*
         Frame(int id) : frame_id(id), block_id(-1), pin_count(0), 
                        dirty(false), pinned(false), mode("none"),
                        last_accessed(0), reference_bit(false) {}
+        */
+        Frame(int id) : 
+            frame_id(id),     // Asigna el ID recibido como parámetro
+            block_id(-1),     // -1 indica que el frame está vacío (no contiene bloque)
+            pin_count(0),     // Contador de pines en 0 (nadie lo está usando)
+            dirty(false),     // No modificado desde la última escritura a disco
+            pinned(false),    // No está bloqueado para reemplazo
+            mode("none"),     // Sin modo de acceso definido
+            last_accessed(0), // Para LRU: nunca accedido inicialmente
+            reference_bit(false) {} // Para CLOCK: bit de referencia apagado
     };
 
     vector<Frame> frames;
-    int time_counter;
+    int time_counter; //temporizador para LRU
     int capacity;
     int clock_hand;  // Puntero para algoritmo Clock
-    ReplacementPolicy current_policy;
+    ReplacementPolicy current_policy; //indica la polotica de reemplazo
 
     // Métodos auxiliares
     int findLRUFrame();

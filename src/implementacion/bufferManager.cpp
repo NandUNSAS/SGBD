@@ -9,7 +9,7 @@ using namespace std;
 bufferManager::bufferManager(int frames, ReplacementPolicy policy) 
     : capacity(frames), time_counter(0), clock_hand(0), current_policy(policy) {
     for (int i = 0; i < capacity; i++) {
-        this->frames.emplace_back(i);
+        this->frames.emplace_back(i); //crea un vector de frames de tam "capacity".
     }
     cout << "BufferManager creado con " << frames << " frames y política ";
     cout << (current_policy == ReplacementPolicy::LRU ? "LRU" : "CLOCK") << endl;
@@ -100,7 +100,6 @@ void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool
             frame.mode = mode;
             
             // Mostrar estado solo si es modo lectura
-    
             
             return;
         }

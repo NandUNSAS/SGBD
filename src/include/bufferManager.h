@@ -7,6 +7,7 @@
 #include <list>
 #include <unordered_map>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
@@ -16,11 +17,7 @@ enum class ReplacementPolicy {
     CLOCK
 };
 
-class bufferManager {
-    gestorBloques gb;
-    
-    // Estructura común para ambos algoritmos
-    struct Frame {
+struct Frame {
         int frame_id;
         int block_id;       // ID del bloque cargado
         int pin_count;
@@ -39,6 +36,10 @@ class bufferManager {
                        dirty(false), pinned(false), mode("none"),
                        last_accessed(0), reference_bit(false) {}
         */
+
+        // ✅ Nueva cola de historial de accesos
+        
+
         Frame(int id) : 
             frame_id(id),     // Asigna el ID recibido como parámetro
             block_id(-1),     // -1 indica que el frame está vacío (no contiene bloque)
@@ -48,13 +49,21 @@ class bufferManager {
             mode("none"),     // Sin modo de acceso definido
             last_accessed(0), // Para LRU: nunca accedido inicialmente
             reference_bit(false) {} // Para CLOCK: bit de referencia apagado
-    };
+};
+
+class bufferManager {
+    gestorBloques gb;
+    
+    // Estructura común para ambos algoritmos
+    
 
     vector<Frame> frames;
     int time_counter; //temporizador para LRU
     int capacity;
     int clock_hand;  // Puntero para algoritmo Clock
     ReplacementPolicy current_policy; //indica la polotica de reemplazo
+    unordered_map<int, vector<Frame>> historial_frames_por_frame;
+
 
     // Métodos auxiliares
     int findLRUFrame();
@@ -73,5 +82,6 @@ public:
     void pinBlock(int id);
     ReplacementPolicy getCurrentPolicy() const { return current_policy; }
     void mostrarContenidoBloque(int id) const;
+    void actualizarFramesDesdeHistorial();
 };
 #endif // !BUFFERMANAGER_H

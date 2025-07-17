@@ -1,3 +1,4 @@
+
 #ifndef BUFFERMANAGER_H
 #define BUFFERMANAGER_H
 
@@ -8,7 +9,6 @@
 #include <unordered_map>
 #include <vector>
 #include <queue>
-
 using namespace std;
 
 // Enum para las políticas de reemplazo
@@ -17,7 +17,11 @@ enum class ReplacementPolicy {
     CLOCK
 };
 
-struct Frame {
+class bufferManager {
+    gestorBloques gb;
+    
+    // Estructura común para ambos algoritmos
+    struct Frame {
         int frame_id;
         int block_id;       // ID del bloque cargado
         int pin_count;
@@ -30,44 +34,20 @@ struct Frame {
         
         // Para Clock
         bool reference_bit;
-        
-        /*
+        // Cola de requests para este frame
+        queue<tuple<string, bool, int>> requestQueue; // <mode, dirty, last_accessed>
         Frame(int id) : frame_id(id), block_id(-1), pin_count(0), 
                        dirty(false), pinned(false), mode("none"),
                        last_accessed(0), reference_bit(false) {}
-        */
-
-        // ✅ Nueva cola de historial de accesos
-        
-
-        Frame(int id) : 
-            frame_id(id),     // Asigna el ID recibido como parámetro
-            block_id(-1),     // -1 indica que el frame está vacío (no contiene bloque)
-            pin_count(0),     // Contador de pines en 0 (nadie lo está usando)
-            dirty(false),     // No modificado desde la última escritura a disco
-            pinned(false),    // No está bloqueado para reemplazo
-            mode("none"),     // Sin modo de acceso definido
-            last_accessed(0), // Para LRU: nunca accedido inicialmente
-            reference_bit(false) {} // Para CLOCK: bit de referencia apagado
-};
-
-class bufferManager {
-    gestorBloques gb;
-    
-    // Estructura común para ambos algoritmos
-    
+    };
 
     vector<Frame> frames;
-    int time_counter; //temporizador para LRU
+    int time_counter;
     int capacity;
     int clock_hand;  // Puntero para algoritmo Clock
-    ReplacementPolicy current_policy; //indica la polotica de reemplazo
-    unordered_map<int, vector<Frame>> historial_frames_por_frame;
-
+    ReplacementPolicy current_policy;
 
     // Métodos auxiliares
-    int findLRUFrame();
-    int findClockFrame();
     void writeToDisk(int block_id);
 
 public:
@@ -76,12 +56,13 @@ public:
     void agregarGestorBloques(int id, bloque b);
     void agregarBufferPool(int id, bloque b, const string& mode, bool pinned = false);
     void mostrarEstadoBufferPool() const;
-    void accederBloque(int id, const string& mode);
     void unpinBlock(int id);
     bool bloqueEnBuffer(int id) const;
     void pinBlock(int id);
     ReplacementPolicy getCurrentPolicy() const { return current_policy; }
     void mostrarContenidoBloque(int id) const;
-    void actualizarFramesDesdeHistorial();
+    bool handleFullBufferCLOCK(int new_block_id, const string& mode, bool pinned);
+    bool handleFullBufferLRU(int new_block_id, const string& mode, bool pinned);
+
 };
 #endif // !BUFFERMANAGER_H

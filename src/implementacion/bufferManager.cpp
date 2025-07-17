@@ -1,244 +1,241 @@
+
 #include "../include/bufferManager.h"
 #include "../include/bloque.h"
+#include "../include/funciones.h"
 #include <iostream>
 #include <limits>
 
 using namespace std;
-
+const string RUTASB = "../../rutas_sectores/cilindroMedio.txt";
 // Constructor
 bufferManager::bufferManager(int frames, ReplacementPolicy policy) 
     : capacity(frames), time_counter(0), clock_hand(0), current_policy(policy) {
     for (int i = 0; i < capacity; i++) {
-        this->frames.emplace_back(i); //crea un vector de frames de tam "capacity".
+        this->frames.emplace_back(i);
     }
     cout << "BufferManager creado con " << frames << " frames y política ";
     cout << (current_policy == ReplacementPolicy::LRU ? "LRU" : "CLOCK") << endl;
 }
+
+//funciones recientes
+bool bufferManager::handleFullBufferCLOCK(int new_block_id, const string& mode, bool pinned) {
+    while (true) {
+        Frame& current_frame = frames[clock_hand];
+        
+        cout << "\n CLOCK apuntando al frame " << current_frame.frame_id << endl;
+
+        // Procesar solicitudes pendientes si hay
+        if (!current_frame.requestQueue.empty()) {
+            auto request = current_frame.requestQueue.front();
+
+            if (current_frame.pin_count > 0) {
+                char respuesta;
+                cout << "Request pendiente (modo: " << get<0>(request)
+                     << "). pin_count = " << current_frame.pin_count << ". ¿Procesar request? (s/n): ";
+                cin >> respuesta;
+
+                if (tolower(respuesta) == 's') {
+                    if(get<0>(request) == "read") {
+                        cout << "Contenido del bloque " << current_frame.block_id << ":" << endl;
+                        gb.mostrarBloque(current_frame.block_id);  // Mostrar el contenido del bloque actual
+                    } else {
+                        bloque& blk = gb.obtenerBloque(current_frame.block_id);
+                        blk.escribirPaginaSimulada("Datos modificados en frame " + to_string(current_frame.frame_id));  // Escribir datos al bloque
+                        writeToDisk(current_frame.block_id);  // Escribir a disco si está dirty
+                        current_frame.dirty = false; // Limpiar dirty bit
+                        cout << "Bloque marcado como dirty false" << endl;
+                    }
+                    current_frame.pin_count--;
+                    current_frame.requestQueue.pop();
+
+                    cout << " pin_count decremented a " << current_frame.pin_count << endl;
+
+                    // Si pin_count llega a 0, limpiamos el bit de referencia
+                    if (current_frame.pin_count == 0) {
+                        current_frame.reference_bit = false;
+                        cout << " reference_bit puesto en false" << endl;
+                    }
+
+                    // Si quedan más requests en la cola, actualizamos el frame
+                    if (!current_frame.requestQueue.empty()) {
+                        auto next_request = current_frame.requestQueue.front();
+                        current_frame.mode = get<0>(next_request);
+                        current_frame.dirty = get<1>(next_request);
+                        current_frame.last_accessed = get<2>(next_request);
+                        cout << " Frame actualizado con siguiente request en cola." << endl;
+                    }
+                    
+                    // En cualquier caso, avanzamos al siguiente frame
+                    clock_hand = (clock_hand + 1) % frames.size();
+                    mostrarEstadoBufferPool();
+                    continue;
+                } else {
+                    cout << " Usuario rechazó procesar el request. Avanzando." << endl;
+                    clock_hand = (clock_hand + 1) % frames.size();
+                    mostrarEstadoBufferPool();
+                    continue;
+                }
+            }
+        }
+
+        // Verificamos si es candidato a reemplazo
+        if (current_frame.pin_count == 0 && current_frame.reference_bit == false && !current_frame.pinned) {
+            cout << " Frame " << current_frame.frame_id << " elegido para reemplazo." << endl;
+
+            // Cargar nuevo bloque en el frame
+            string rutaBloque;
+            try {
+                rutaBloque = obtenerRutaPorId(RUTASB, new_block_id);
+            } catch (const exception& e) {
+                cerr << "Error: " << e.what() << endl;
+                return false;
+            }
+            bloque b;
+            b.inicializarBloque(new_block_id, rutaBloque);
+            gb.agregarBloque(new_block_id, b);  // Agregar bloque al gestor de bloques
+
+            current_frame.block_id = new_block_id;
+            current_frame.mode = mode;
+            current_frame.pin_count = 1;
+            current_frame.pinned = pinned;
+            current_frame.dirty = (mode == "write");
+            current_frame.reference_bit = true;
+            current_frame.last_accessed = ++time_counter;
+
+            // Agregar el nuevo request
+            current_frame.requestQueue = queue<tuple<string, bool, int>>(); // Limpiar cola
+            current_frame.requestQueue.push(make_tuple(mode, (mode == "write"), time_counter));
+            
+            cout << " Nuevo bloque " << new_block_id << " cargado en frame " << current_frame.frame_id << endl;
+            // 
+            // Avanzamos el puntero CLOCK
+            clock_hand = (clock_hand + 1) % frames.size();
+            return true;
+        } else {
+            // Si no se puede reemplazar, seguimos al siguiente frame
+            if (current_frame.reference_bit) {
+                cout << " Segunda oportunidad: limpiando reference_bit del frame " << current_frame.frame_id << endl;
+                current_frame.reference_bit = false;
+            } else {
+                cout << " No elegible aún para reemplazo. Avanzando." << endl;
+            }
+
+            clock_hand = (clock_hand + 1) % frames.size();
+        }
+    }
+}
+
+
+bool bufferManager::handleFullBufferLRU(int new_block_id, const string& mode, bool pinned) {
+    while (true) { 
+        int lru_index = -1;
+        int min_time = numeric_limits<int>::max();
+        
+        // Encontrar el frame LRU
+        for (int i = 0; i < frames.size(); i++) {
+            if (frames[i].last_accessed < min_time && frames[i].pinned == false) {
+                min_time = frames[i].last_accessed;
+                lru_index = i;
+            }
+        }
+        
+        if (lru_index == -1) {
+            cerr << "ERROR: No se pudo encontrar frame LRU" << endl;
+            return false;
+        }
+        
+        Frame& lru_frame = frames[lru_index];
+        if (!lru_frame.requestQueue.empty()) {
+            auto request = lru_frame.requestQueue.front();
+            cout << "\n--- Procesando Request en Frame " << lru_frame.frame_id << " ---" << endl;
+            cout << "Modo: " << get<0>(request) <<endl;
+            cout << "Requests en cola: " << lru_frame.requestQueue.size() << endl;
+
+            if (lru_frame.pin_count > 0) {
+                // 4. Preguntar al usuario
+                char respuesta;
+                cout << "Request pendiente (modo: " << get<0>(request)
+                     <<"\n¿Procesar request? (s/n): ";
+                cin >> respuesta;
+                if (tolower(respuesta) == 's') {
+                    
+                    if (get<0>(request) == "read") {
+                        cout << "Contenido del bloque " << lru_frame.block_id << ":" << endl;
+                        gb.mostrarBloque(lru_frame.block_id);  // Mostrar el contenido del bloque actual
+                    } else {
+                        bloque& blk = gb.obtenerBloque(lru_frame.block_id);
+                        blk.escribirPaginaSimulada("Datos modificados en frame " + to_string(lru_frame.frame_id));  // Escribir datos al bloque
+                        writeToDisk(lru_frame.block_id);  // Escribir a disco si está dirty
+                        lru_frame.dirty = false; // Limpiar dirty bit
+                        cout << "Bloque marcado como dirty false" << endl;
+                    }
+                    lru_frame.pin_count--;
+                    lru_frame.requestQueue.pop();  // Procesar el request
+                    cout << "Request procesado. PinCount decrementado a: " << lru_frame.pin_count << endl;
+                    // si quedan más requests en la cola, actualizamos el frame
+                    if (!lru_frame.requestQueue.empty()) {
+                        auto next_request = lru_frame.requestQueue.front();
+                        lru_frame.mode = get<0>(next_request);
+                        lru_frame.dirty = get<1>(next_request);
+                        lru_frame.last_accessed = get<2>(next_request);
+                        cout << "Frame actualizado con request de la cola: " << get<0>(request) << endl;
+                    }else {
+                        lru_frame.mode = "none"; // No hay más requests
+                        lru_frame.last_accessed = 0; // Reset last_accessed
+                        cout << "No quedan más requests en la cola." << endl;
+                    }
+                    mostrarEstadoBufferPool();
+                    continue;
+                }
+                else {
+                    cout << "Reemplazo cancelado por el usuario" << endl;
+                    continue;
+                }
+            }
+            
+        }
+        
+        // 5. Verificar si el frame es candidato a reemplazo
+        if (lru_frame.pin_count == 0 && !lru_frame.pinned) {
+            cout << "Frame " << lru_frame.frame_id << " elegido para reemplazo." << endl;
+            
+            // Cargar nuevo bloque en el frame
+            string rutaBloque;
+            try {
+                rutaBloque = obtenerRutaPorId(RUTASB, new_block_id);
+            } catch (const exception& e) {
+                cerr << "Error: " << e.what() << endl;
+                return false;
+            }
+            
+            bloque b;
+            b.inicializarBloque(new_block_id, rutaBloque);
+            gb.agregarBloque(new_block_id, b);
+            
+            lru_frame.block_id = new_block_id;
+            lru_frame.pin_count = 1; // Asignar pin_count inicial
+            lru_frame.reference_bit = false; // Resetear reference bit para Clock
+            lru_frame.mode = mode;
+            lru_frame.pinned = pinned;
+            lru_frame.dirty = (mode == "write");
+            lru_frame.last_accessed = ++time_counter;
+            
+            lru_frame.requestQueue = queue<tuple<string, bool, int>>(); // Limpiar cola de requests 
+            lru_frame.requestQueue.push(make_tuple(mode, (mode == "write"), time_counter));  // Agregar el request a la cola
+            
+            cout << "Nuevo bloque " << new_block_id << " cargado en frame " << lru_index << endl;
+            
+            return true;  // Reemplazo exitoso
+        }
+    }
+}
+
 
 void bufferManager::setReplacementPolicy(ReplacementPolicy policy) {
     current_policy = policy;
     cout << "Política de reemplazo cambiada a ";
     cout << (current_policy == ReplacementPolicy::LRU ? "LRU" : "CLOCK") << endl;
 }
-
-void bufferManager::actualizarFramesDesdeHistorial() {
-    for (auto& frame : frames) {
-        int id = frame.frame_id;
-
-        // Verificamos si hay historial para este frame
-        auto it = historial_frames_por_frame.find(id);
-        if (it != historial_frames_por_frame.end() && !it->second.empty()) {
-            const Frame& primer_historial = it->second[0];
-
-            // Solo actualizamos los valores excepto pin_count
-            frame.block_id = primer_historial.block_id;
-            frame.dirty = primer_historial.dirty;
-            frame.pinned = primer_historial.pinned;
-            frame.mode = primer_historial.mode;
-            frame.last_accessed = primer_historial.last_accessed;
-            frame.reference_bit = primer_historial.reference_bit;
-            // ⚠️ NO actualizamos pin_count
-        }
-    }
-}
-
-int bufferManager::findLRUFrame() {
-    while (true) {
-        int lru_index = -1;
-        int min_last_used = numeric_limits<int>::max();
-
-        // Paso 1: Buscar frame no pineado con menor last_accessed
-        for (const auto& frame : frames) {
-            if (!frame.pinned && frame.block_id != -1 && frame.last_accessed < min_last_used) {
-                min_last_used = frame.last_accessed;
-                lru_index = frame.frame_id;
-            }
-        }
-
-        if (lru_index == -1) {
-            cerr << "No hay ningún frame candidato para reemplazo (todos pineados)" << endl;
-            return -1;
-        }
-
-        Frame& victim = frames[lru_index];
-
-        // Paso 2: Si está pineado, no podemos hacer nada
-        if (victim.pinned) {
-            continue; // omitimos y volvemos a buscar
-        }
-
-        // Paso 3: Si está dirty, preguntar si se desea escribir
-        if (victim.dirty) {
-            char respuesta;
-            cout << "El bloque " << victim.block_id << " está dirty. "
-                 << "¿Deseas escribirlo en disco? (s/n): ";
-            cin >> respuesta;
-
-            if (respuesta == 's' || respuesta == 'S') {
-                writeToDisk(victim.block_id);
-                victim.dirty = false;
-            } else {
-                cout << "No se escribió en disco. No se puede reemplazar aún." << endl;
-                // No podemos continuar con este frame, pasamos al siguiente
-                continue;
-            }
-        }
-
-        // Paso 4: Si dirty ya está limpio, reducir pin_count
-        if (victim.pin_count > 0) {
-            victim.pin_count--;
-            mostrarEstadoBufferPool();
-        }
-
-        // Paso 5: Eliminar primer historial de este frame
-        auto it = historial_frames_por_frame.find(lru_index);
-        if (it != historial_frames_por_frame.end() && !it->second.empty()) {
-            it->second.erase(it->second.begin());
-
-            // Si queda historial, actualizamos con el nuevo primero
-            if (!it->second.empty()) {
-                const Frame& nuevo = it->second.front();
-
-                // Actualizar todos los campos excepto pin_count
-                victim.block_id = nuevo.block_id;
-                victim.dirty = nuevo.dirty;
-                victim.pinned = nuevo.pinned;
-                victim.mode = nuevo.mode;
-                victim.last_accessed = nuevo.last_accessed;
-                victim.reference_bit = nuevo.reference_bit;
-            } else {
-                // Ya no hay historial: dejar el frame vacío
-                cout << "ya no hay historial" << endl;
-                victim.block_id = -1;
-                victim.dirty = false;
-                victim.pin_count = 0;
-                victim.pinned = false;
-                victim.mode = "none";
-                victim.last_accessed = 0;
-                victim.reference_bit = false;
-            }
-            mostrarEstadoBufferPool();
-        }
-        cout << victim.pin_count << " | " << victim.block_id << endl;
-        // Paso 6: Si pin_count ya es 0, devolver el índice
-        if (victim.pin_count == 0) {
-            return lru_index;
-        }
-        cout << "entro en bucle" << endl;
-        // Si aún no se puede reemplazar, seguir iterando
-    }
-
-    // Nunca debería llegar aquí
-    return -1;
-}
-
-
-int bufferManager::findClockFrame() {
-    int inicio = clock_hand;
-    bool dio_vuelta = false;
-
-    while (true) {
-        Frame& frame = frames[clock_hand];
-
-        if (!frame.pinned) {
-            // Si tiene dirty, se escribe antes de cualquier acción
-            if (frame.dirty) {
-                char respuesta;
-                cout << "El bloque " << frame.block_id << " está dirty. ¿Deseas escribirlo a disco? (s/n): ";
-                cin >> respuesta;
-
-                if (respuesta == 's' || respuesta == 'S') {
-                    writeToDisk(frame.block_id);
-                    frame.dirty = false;
-                } else {
-                    cout << "No se escribió en disco. No se puede continuar con este frame." << endl;
-                    clock_hand = (clock_hand + 1) % capacity;
-                    if (clock_hand == inicio) {
-                        if (dio_vuelta) break;
-                        dio_vuelta = true;
-                    }
-                    continue;
-                }
-            }
-
-            // Si dirty ya es 0, se puede descontar pin_count y actualizar historial
-            if (frame.pin_count > 0) {
-                frame.pin_count--;
-
-                // Actualizar el frame con el siguiente en la cola si existe
-                auto& historial = historial_frames_por_frame[clock_hand];
-                if (!historial.empty()) {
-                    historial.erase(historial.begin());
-                    if (!historial.empty()) {
-                        const Frame& nuevo = historial.front();
-                        frame.block_id = nuevo.block_id;
-                        frame.dirty = nuevo.dirty;
-                        frame.pinned = nuevo.pinned;
-                        frame.mode = nuevo.mode;
-                        frame.last_accessed = nuevo.last_accessed;
-                        frame.reference_bit = nuevo.reference_bit;
-                    } else {
-                        // Sin historial
-                        frame.block_id = -1;
-                        frame.dirty = false;
-                        frame.pinned = false;
-                        frame.mode = "none";
-                        frame.last_accessed = 0;
-                        frame.reference_bit = false;
-                    }
-                }
-            }
-
-            // Si pin_count llegó a 0, evaluar refbit
-            if (frame.pin_count == 0) {
-                if (frame.reference_bit == 0) {
-                    // Frame candidato para reemplazo
-                    int seleccionado = clock_hand;
-
-                    // Eliminar de la cola y actualizar (nuevamente por seguridad)
-                    auto& historial = historial_frames_por_frame[clock_hand];
-                    if (!historial.empty()) {
-                        historial.erase(historial.begin());
-                        if (!historial.empty()) {
-                            const Frame& nuevo = historial.front();
-                            frame.block_id = nuevo.block_id;
-                            frame.dirty = nuevo.dirty;
-                            frame.pinned = nuevo.pinned;
-                            frame.mode = nuevo.mode;
-                            frame.last_accessed = nuevo.last_accessed;
-                            frame.reference_bit = nuevo.reference_bit;
-                        } else {
-                            frame.block_id = -1;
-                            frame.dirty = false;
-                            frame.pinned = false;
-                            frame.mode = "none";
-                            frame.last_accessed = 0;
-                            frame.reference_bit = false;
-                        }
-                    }
-
-                    clock_hand = (clock_hand + 1) % capacity;
-                    return seleccionado;
-                } else {
-                    // Dar segunda oportunidad
-                    frame.reference_bit = 0;
-                }
-            }
-        }
-
-        // Avanzar la manecilla circularmente
-        clock_hand = (clock_hand + 1) % capacity;
-
-        if (clock_hand == inicio) {
-            if (dio_vuelta) break;
-            dio_vuelta = true;
-        }
-    }
-
-    cerr << "ERROR: No se encontró ningún frame reemplazable (todos en uso o pineados)." << endl;
-    return -1;
-}
-
 
 
 // Escribir bloque a disco si está dirty
@@ -254,175 +251,106 @@ void bufferManager::writeToDisk(int block_id) {
 void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool pinned) {
     time_counter++;
     
-    // Buscar si el bloque ya está en buffer
+    // 1. Buscar si el bloque ya está en buffer
     for (auto& frame : frames) {
         if (frame.block_id == id) {
-            // Actualizar el frame
-            frame.pin_count++;
-            frame.dirty = (mode == "write");
-            frame.pinned = pinned;
-            frame.last_accessed = time_counter;
-            frame.reference_bit = true;
-            frame.mode = mode;
-
-            
-            historial_frames_por_frame[frame.frame_id].push_back(frame);
-            actualizarFramesDesdeHistorial();
-            
+            frame.pin_count++; // Incrementar pin_count
+            frame.pinned = pinned; // Actualizar estado de pinned
+            frame.requestQueue.push(make_tuple(mode, (mode=="write"), time_counter));
+            cout << "Request agregado a frame existente " << frame.frame_id << endl;
             return;
         }
     }
     
-    // Si no está en buffer, buscar frame libre
+    // 2. Buscar frame libre
     for (auto& frame : frames) {
         if (frame.block_id == -1) {
+            frame.requestQueue.push(make_tuple(mode, (mode=="write"), time_counter));
+            
             frame.block_id = id;
-            frame.pin_count = 1;
+            frame.pin_count = 1; // Inicializar pin_count
             frame.dirty = (mode == "write");
             frame.pinned = pinned;
-            frame.last_accessed = time_counter;
-            frame.reference_bit = true;
             frame.mode = mode;
-
-            historial_frames_por_frame[frame.frame_id].push_back(frame);;
-            actualizarFramesDesdeHistorial();
-
+            frame.last_accessed = time_counter; // Actualizar last_accessed
+            frame.reference_bit = true; // Para CLOCK
             gb.agregarBloque(id, b);
-            
+            cout << "Bloque cargado en frame libre " << frame.frame_id << endl;
             return;
         }
     }
     
-    // Si no hay frames libres, aplicar política de reemplazo
-    int replace_index = (current_policy == ReplacementPolicy::LRU) ? findLRUFrame() : findClockFrame();
-    if (replace_index == -1) {
-        cerr << "ERROR: No hay frames disponibles para reemplazo" << endl;
-        return;
+    // 3. Buffer lleno - manejar según LRU
+    cout << "\n--- BUFFER LLENO ---" << endl;
+    cout << "Todos los frames tienen pinCount > 0" << endl;
+    time_counter--;
+        // Llamar a la función correcta según la política
+    if (current_policy == ReplacementPolicy::LRU) {
+        while (!handleFullBufferLRU(id, mode, pinned)) {
+            cout << "Buscando siguiente frame candidato (LRU)..." << endl;
+        }
+    } else if (current_policy == ReplacementPolicy::CLOCK) {
+        while (!handleFullBufferCLOCK(id, mode, pinned)) {
+            cout << "Buscando siguiente frame candidato (CLOCK)..." << endl;
+        }
+    } else {
+        cerr << "ERROR: Política de reemplazo desconocida" << endl;
     }
-    
-    Frame& victim = frames[replace_index];
-    if (victim.dirty) {
-        writeToDisk(victim.block_id);
-    }
-    
-    // Reemplazar el bloque
-    victim.block_id = id;
-    victim.pin_count = 1;
-    victim.dirty = (mode == "write");
-    victim.pinned = pinned;
-    victim.last_accessed = time_counter;
-    victim.reference_bit = true;
-    victim.mode = mode;
-    
-    historial_frames_por_frame[victim.frame_id].push_back(victim);
-    actualizarFramesDesdeHistorial();
-    gb.agregarBloque(id, b);
-    
 }
 
 // Mostrar estado del buffer pool
 void bufferManager::mostrarEstadoBufferPool() const {
     cout << "\n--- Estado del Buffer Pool (" 
          << (current_policy == ReplacementPolicy::LRU ? "LRU" : "CLOCK") << ") ---" << endl;
-
+         
     if (current_policy == ReplacementPolicy::CLOCK) {
         cout << "Clock hand posición: " << clock_hand << endl;
     }
-
-    cout << "Frame | Block | PinCount | Dirty | Pinned | ";
+    
+    cout << "Frame | Block | PinCount | Dirty | Pinned | Request | ";
     if (current_policy == ReplacementPolicy::LRU) {
         cout << "LastUsed | ";
     } else {
         cout << "RefBit | ";
     }
-    cout << "Mode | Historial del frame" << endl;
-
-    cout << "----------------------------------------------------------------------------------------------------------" << endl;
-
+    cout<<endl;
+    //cout << "Mode" << endl;
+    cout << "-----------------------------------------------------------" << endl;
+    
     for (const auto& frame : frames) {
-        // Imprimir estado actual del frame
-        cout << "  " << frame.frame_id << "   |  "
+        cout << "  " << frame.frame_id << "   |  " 
              << (frame.block_id == -1 ? "-" : to_string(frame.block_id)) << "   |    "
              << frame.pin_count << "     |  "
              << (frame.dirty ? "Si" : "No") << "    |  "
              << (frame.pinned ? "Si" : "No") << "    |    ";
 
+        // Construir string con la cola de requests en formato L/E
+        // Para no modificar la cola original, hacemos una copia temporal
+        queue<tuple<string, bool, int>> tempQueue = frame.requestQueue;
+        string requestsStr;
+        while (!tempQueue.empty()) {
+            const auto& req = tempQueue.front();
+            const string& mode = std::get<0>(req);
+            if (mode == "read") {
+                requestsStr += "L";
+            } else if (mode == "write") {
+                requestsStr += "E";
+            } else {
+                requestsStr += "?"; // caso raro o inesperado
+            }
+            tempQueue.pop();
+        }
+
+        cout << requestsStr << "     |  ";        
+        
         if (current_policy == ReplacementPolicy::LRU) {
             cout << frame.last_accessed << "    |  ";
         } else {
             cout << (frame.reference_bit ? "1" : "0") << "     |  ";
         }
-
-        cout << frame.mode << " | ";
-
-        // Buscar historial del frame actual
-        auto it = historial_frames_por_frame.find(frame.frame_id);
-        if (it != historial_frames_por_frame.end() && !it->second.empty()) {
-            const auto& historial = it->second;
-
-            // Mostrar el primer registro como "Bloque X (modo)"
-            const Frame& primero = historial[0];
-            cout << "RE1 " << primero.block_id << " (modo: " << primero.mode << ")";
-
-            // Mostrar los siguientes como RE2(...), RE3(...)
-            for (size_t i = 1; i < historial.size(); ++i) {
-                const Frame& re = historial[i];
-                cout << ", RE" << i + 1 << "("
-                     << (re.dirty ? "Si" : "No") << ", "
-                     << re.last_accessed << ", "
-                     << re.mode << ")";
-            }
-        } else {
-            cout << "Sin historial";
-        }
-
-        cout << endl;
+        cout<<endl;
+        //cout << frame.mode << endl;
     }
-}
-
-
-// Acceder a un bloque existente
-void bufferManager::accederBloque(int id, const string& mode) {
-    time_counter++;  // Actualiza el "reloj" global del buffer
-
-    // Busca el bloque en los frames del buffer
-    for (auto& frame : frames) {
-        if (frame.block_id == id) {
-            // 1. Actualiza metadatos
-            frame.pin_count++;           // Bloque "en uso"
-            frame.dirty = frame.dirty || (mode == "write"); // Marcar como modificado si es escritura
-            frame.pinned = frame.pinned || (mode == "write"); // Pinear si es escritura
-            frame.last_accessed = time_counter;  // Actualiza LRU
-            frame.reference_bit = true;          // Actualiza CLOCK
-            frame.mode = mode;                   // Guarda el tipo de acceso
-
-            // 2. Comportamiento específico para lectura
-            if (mode == "read") {
-                cout << "\n--- Estado después de acceso ---" << endl;
-                mostrarEstadoBufferPool();  // Muestra tabla con pin_count incrementado
-                
-                cout << "\nContenido del bloque " << id << ":" << endl;
-                gb.mostrarBloque(id);       // Muestra el contenido
-                
-                frame.pin_count--;          // Decrementa silenciosamente (sin mostrar tabla)
-            } else if (mode == "write") {
-                cout << "\n--- Estado después de acceso ---" << endl;
-                mostrarEstadoBufferPool();
-                
-                // Obtener el bloque actual y simular escritura
-                bloque& blk = gb.obtenerBloque(id); // Necesitarás implementar este método
-                blk.escribirPaginaSimulada("Datos actualizados para bloque " + to_string(id));
-                frame.dirty = true;
-                
-                // Decrementar sin mostrar tabla
-                frame.pin_count--;
-            }
-
-            return;
-        }
-    }
-    // Si el bloque no está en buffer:
-    cerr << "Bloque " << id << " no encontrado en buffer pool" << endl;
 }
 
 // Despinear un bloque

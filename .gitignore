@@ -1,2 +1,9 @@
 build/
 DiscoLocal/
+.cache/
+.vscode/
+
+*.log
+*.tmp
+
+prueba1.txt

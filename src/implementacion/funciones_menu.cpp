@@ -37,7 +37,8 @@ void mostrarMenu() {
     cout << "3. Leer archivo CSV y añadir relación\n";
     cout << "4. Características del disco\n";
     cout << "5. Gestión de Buffer Pool\n";  // Opción unificada
-    cout << "6. Salir\n";
+    cout << "6. Metodos de acceso\n";
+    cout << "7. Salir\n";
     cout << "Seleccione una opción: ";
 }
 
@@ -336,4 +337,51 @@ void menuBufferManager(bufferManager& bm) {
                 cout << "Opción no válida. Intente nuevamente.\n";
         }
     } while(opcion != 7);
+}
+void cargarPaginas(bufferManager& bm){
+    bloque b;
+    int id = 0;
+    while(true){
+        id++;
+        string ruta = obtenerRutaPorId(RUTASB, id);
+        b.inicializarBloque(id, ruta);
+        
+    }
+
+}
+void accesoSecuencial(bufferManager& bm){
+    inicializarBufferPool(bm);
+    seleccionarPoliticaReemplazo(bm);
+    
+
+}
+
+void menuMetodosAcceso(bufferManager& bm){
+    int opcion;
+    do {
+        cout << "\n----- GESTIÓN METODOS DE ACCESO -----\n";
+        cout << "1. Escaneo secuencial\n";
+        cout << "2. Indexación Extendible Hashing\n";
+        cout << "3. B-tree\n";
+        cout << "4. volver a menu principal\n";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                accesoSecuencial(bm);
+                break;
+            case 2:
+                //estendible hash
+                break;
+            case 3:
+                //B-tree
+                break;
+            case 4:
+                cout << "Volviendo al menú principal...\n";
+                break;
+            default:
+                cout << "Opción no válida. Intente nuevamente.\n";
+        }
+    } while(opcion != 4);
+
 }

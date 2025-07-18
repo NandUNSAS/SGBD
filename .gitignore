@@ -2,7 +2,7 @@ build/
 DiscoLocal/
 .cache/
 .vscode/
-
+rutas_sectores/
 *.log
 *.tmp
 

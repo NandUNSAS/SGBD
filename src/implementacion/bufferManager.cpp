@@ -133,7 +133,7 @@ bool bufferManager::handleFullBufferLRU(int new_block_id, const string& mode, bo
         
         // Encontrar el frame LRU
         for (int i = 0; i < frames.size(); i++) {
-            if (frames[i].last_accessed < min_time && frames[i].pinned == false) {
+            if (frames[i].last_accessed < min_time && frames[i].last_accessed != -1) {
                 min_time = frames[i].last_accessed;
                 lru_index = i;
             }
@@ -181,10 +181,42 @@ bool bufferManager::handleFullBufferLRU(int new_block_id, const string& mode, bo
                         cout << "Frame actualizado con request de la cola: " << get<0>(request) << endl;
                     }else {
                         lru_frame.mode = "none"; // No hay más requests
-                        lru_frame.last_accessed = 0; // Reset last_accessed
+                        lru_frame.last_accessed = -1; // Reset last_accessed
                         cout << "No quedan más requests en la cola." << endl;
                     }
                     mostrarEstadoBufferPool();
+                    // 5. Verificar si el frame es candidato a reemplazo
+                    if (lru_frame.pin_count == 0 && !lru_frame.pinned) {
+                        cout << "Frame " << lru_frame.frame_id << " elegido para reemplazo." << endl;
+                        
+                        // Cargar nuevo bloque en el frame
+                        string rutaBloque;
+                        try {
+                            rutaBloque = obtenerRutaPorId(RUTASB, new_block_id);
+                        } catch (const exception& e) {
+                            cerr << "Error: " << e.what() << endl;
+                            return false;
+                        }
+                        
+                        bloque b;
+                        b.inicializarBloque(new_block_id, rutaBloque);
+                        gb.agregarBloque(new_block_id, b);
+                        
+                        lru_frame.block_id = new_block_id;
+                        lru_frame.pin_count = 1; // Asignar pin_count inicial
+                        lru_frame.reference_bit = false; // Resetear reference bit para Clock
+                        lru_frame.mode = mode;
+                        lru_frame.pinned = pinned;
+                        lru_frame.dirty = (mode == "write");
+                        lru_frame.last_accessed = ++time_counter;
+                        
+                        lru_frame.requestQueue = queue<tuple<string, bool, int>>(); // Limpiar cola de requests 
+                        lru_frame.requestQueue.push(make_tuple(mode, (mode == "write"), time_counter));  // Agregar el request a la cola
+                        
+                        cout << "Nuevo bloque " << new_block_id << " cargado en frame " << lru_index << endl;
+                        
+                        return true;  // Reemplazo exitoso
+                    }
                     continue;
                 }
                 else {
@@ -195,38 +227,6 @@ bool bufferManager::handleFullBufferLRU(int new_block_id, const string& mode, bo
             
         }
         
-        // 5. Verificar si el frame es candidato a reemplazo
-        if (lru_frame.pin_count == 0 && !lru_frame.pinned) {
-            cout << "Frame " << lru_frame.frame_id << " elegido para reemplazo." << endl;
-            
-            // Cargar nuevo bloque en el frame
-            string rutaBloque;
-            try {
-                rutaBloque = obtenerRutaPorId(RUTASB, new_block_id);
-            } catch (const exception& e) {
-                cerr << "Error: " << e.what() << endl;
-                return false;
-            }
-            
-            bloque b;
-            b.inicializarBloque(new_block_id, rutaBloque);
-            gb.agregarBloque(new_block_id, b);
-            
-            lru_frame.block_id = new_block_id;
-            lru_frame.pin_count = 1; // Asignar pin_count inicial
-            lru_frame.reference_bit = false; // Resetear reference bit para Clock
-            lru_frame.mode = mode;
-            lru_frame.pinned = pinned;
-            lru_frame.dirty = (mode == "write");
-            lru_frame.last_accessed = ++time_counter;
-            
-            lru_frame.requestQueue = queue<tuple<string, bool, int>>(); // Limpiar cola de requests 
-            lru_frame.requestQueue.push(make_tuple(mode, (mode == "write"), time_counter));  // Agregar el request a la cola
-            
-            cout << "Nuevo bloque " << new_block_id << " cargado en frame " << lru_index << endl;
-            
-            return true;  // Reemplazo exitoso
-        }
     }
 }
 
@@ -250,13 +250,24 @@ void bufferManager::writeToDisk(int block_id) {
 
 void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool pinned) {
     time_counter++;
+    int aux_time_counter = -1;
     
     // 1. Buscar si el bloque ya está en buffer
     for (auto& frame : frames) {
         if (frame.block_id == id) {
             frame.pin_count++; // Incrementar pin_count
             frame.pinned = pinned; // Actualizar estado de pinned
+            if(frame.last_accessed == -1) {
+                frame.last_accessed = time_counter;
+                frame.requestQueue.push(make_tuple(mode, (mode=="write"), time_counter));
+                cout << "Request agregado a frame existente " << frame.frame_id << endl;
+                return;
+            }
             frame.requestQueue.push(make_tuple(mode, (mode=="write"), time_counter));
+            if(clock_hand == frame.frame_id) {
+                // Si el frame actual es el que apunta CLOCK, avanzamos el puntero
+                clock_hand = (clock_hand + 1) % frames.size();
+            }
             cout << "Request agregado a frame existente " << frame.frame_id << endl;
             return;
         }

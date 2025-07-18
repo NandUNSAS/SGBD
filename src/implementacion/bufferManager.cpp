@@ -1,4 +1,3 @@
-
 #include "../include/bufferManager.h"
 #include "../include/bloque.h"
 #include "../include/funciones.h"
@@ -61,7 +60,6 @@ bool bufferManager::handleFullBufferCLOCK(int new_block_id, const string& mode, 
                         auto next_request = current_frame.requestQueue.front();
                         current_frame.mode = get<0>(next_request);
                         current_frame.dirty = get<1>(next_request);
-                        current_frame.last_accessed = get<2>(next_request);
                         cout << " Frame actualizado con siguiente request en cola." << endl;
                     }
                     
@@ -100,7 +98,6 @@ bool bufferManager::handleFullBufferCLOCK(int new_block_id, const string& mode, 
             current_frame.pinned = pinned;
             current_frame.dirty = (mode == "write");
             current_frame.reference_bit = true;
-            current_frame.last_accessed = ++time_counter;
 
             // Agregar el nuevo request
             current_frame.requestQueue = queue<tuple<string, bool, int>>(); // Limpiar cola
@@ -204,7 +201,6 @@ bool bufferManager::handleFullBufferLRU(int new_block_id, const string& mode, bo
                         
                         lru_frame.block_id = new_block_id;
                         lru_frame.pin_count = 1; // Asignar pin_count inicial
-                        lru_frame.reference_bit = false; // Resetear reference bit para Clock
                         lru_frame.mode = mode;
                         lru_frame.pinned = pinned;
                         lru_frame.dirty = (mode == "write");
@@ -257,6 +253,7 @@ void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool
         if (frame.block_id == id) {
             frame.pin_count++; // Incrementar pin_count
             frame.pinned = pinned; // Actualizar estado de pinned
+            frame.reference_bit = true; // Para CLOCK
             if(frame.last_accessed == -1) {
                 frame.last_accessed = time_counter;
                 frame.requestQueue.push(make_tuple(mode, (mode=="write"), time_counter));

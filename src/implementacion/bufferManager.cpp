@@ -2,10 +2,12 @@
 #include "../include/bloque.h"
 #include "../include/funciones.h"
 #include <iostream>
+#include <fstream>
 #include <limits>
 
 using namespace std;
 const string RUTASB = "../../rutas_sectores/cilindroMedio.txt";
+const string SALIDA = "../../salidaTerminal.txt";
 // Constructor
 bufferManager::bufferManager(int frames, ReplacementPolicy policy) 
     : capacity(frames), time_counter(0), clock_hand(0), current_policy(policy) {
@@ -14,6 +16,14 @@ bufferManager::bufferManager(int frames, ReplacementPolicy policy)
     }
     cout << "BufferManager creado con " << frames << " frames y política ";
     cout << (current_policy == ReplacementPolicy::LRU ? "LRU" : "CLOCK") << endl;
+}
+
+void bufferManager::setQuery(const Query& q) {
+    query = q;
+}
+
+Query bufferManager::getQuery() const {
+    return query;
 }
 
 //funciones recientes
@@ -30,13 +40,34 @@ bool bufferManager::handleFullBufferCLOCK(int new_block_id, const string& mode, 
             if (current_frame.pin_count > 0) {
                 char respuesta;
                 cout << "Request pendiente (modo: " << get<0>(request)
-                     << "). pin_count = " << current_frame.pin_count << ". ¿Procesar request? (s/n): ";
-                cin >> respuesta;
+                     << "). pin_count = " << current_frame.pin_count << endl;
 
+                respuesta = 's';
                 if (tolower(respuesta) == 's') {
                     if(get<0>(request) == "read") {
                         cout << "Contenido del bloque " << current_frame.block_id << ":" << endl;
                         gb.mostrarBloque(current_frame.block_id);  // Mostrar el contenido del bloque actual
+                        
+                        ///
+                        if(query.getTieneWhere()){
+                            string atributo = query.getAtributo();
+                            string valor = query.getValor();
+                            cout << "getwhere true" << endl;
+                        }
+
+                        else {
+                            int id = current_frame.block_id;
+                            bloque b = gb.obtenerBloque(id);
+                            string contenido = b.getContenido();
+                            ofstream archivo(SALIDA, ios::app);
+                            if (!archivo.is_open()) {
+                                cerr << "Error: el archivo no está abierto." << endl;
+                            }
+                            archivo << contenido << endl;
+                            archivo.close();
+                        }
+                        
+                        ///
                     } else {
                         bloque& blk = gb.obtenerBloque(current_frame.block_id);
                         blk.escribirPaginaSimulada("Datos modificados en frame " + to_string(current_frame.frame_id));  // Escribir datos al bloque
@@ -151,14 +182,21 @@ bool bufferManager::handleFullBufferLRU(int new_block_id, const string& mode, bo
             if (lru_frame.pin_count > 0) {
                 // 4. Preguntar al usuario
                 char respuesta;
+                /*
                 cout << "Request pendiente (modo: " << get<0>(request)
                      <<"\n¿Procesar request? (s/n): ";
                 cin >> respuesta;
+                */
+                respuesta = 's';
                 if (tolower(respuesta) == 's') {
-                    
+                    cout << "tabla: " << query.getTabla() << endl;
+                    string tipo_consulta;
+
                     if (get<0>(request) == "read") {
                         cout << "Contenido del bloque " << lru_frame.block_id << ":" << endl;
                         gb.mostrarBloque(lru_frame.block_id);  // Mostrar el contenido del bloque actual
+                        
+
                     } else {
                         bloque& blk = gb.obtenerBloque(lru_frame.block_id);
                         blk.escribirPaginaSimulada("Datos modificados en frame " + to_string(lru_frame.frame_id));  // Escribir datos al bloque

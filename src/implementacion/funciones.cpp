@@ -39,7 +39,6 @@ string obtenerRutaPorId(const string& archivoRutas, int idBloque) {
     int lineaActual = 1;
     while (getline(archivo, linea)) {
         if (lineaActual == idBloque) {
-           
             archivo.close();
             return obtenerRuta(linea); // Extrae el campo después de #
         }
@@ -47,7 +46,8 @@ string obtenerRutaPorId(const string& archivoRutas, int idBloque) {
     }
 
     archivo.close();
-    throw out_of_range("ID de bloque fuera de rango en el archivo.");
+    cout << "ID de bloque fuera de rango en el archivo." << endl;
+    return "no encontrado";    
 }
 
 size_t obtenerRegistroMasLargo(const string& nombreArchivo, char c) {

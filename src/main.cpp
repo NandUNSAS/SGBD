@@ -61,14 +61,18 @@ int main() {
             case 5: 
                 menuBufferManager(bm);  // Llamada al submenú
                 break;
-            case 6:
+
+            case 6: 
+                menuMetodosAcceso(bm);
+                break;
+            case 7:
                 cout << "Gracias por usar Megatrom 3000. ¡Hasta luego!\n";
                 break;
             default:
                 cout << "Opción no válida. Intente nuevamente.\n";
         }
 
-    } while (opcion != 6);
+    } while (opcion != 7);
 
     return 0;
 }

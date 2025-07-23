@@ -3,6 +3,7 @@
 #define BUFFERMANAGER_H
 
 #include "gestorBloques.h"
+#include "query.h"
 #include "bloque.h"
 #include <string>
 #include <list>
@@ -19,7 +20,8 @@ enum class ReplacementPolicy {
 
 class bufferManager {
     gestorBloques gb;
-    
+    Query query;
+    string consulta;
     // Estructura común para ambos algoritmos
     struct Frame {
         int frame_id;
@@ -52,6 +54,8 @@ class bufferManager {
 
 public:
     bufferManager(int frames, ReplacementPolicy policy = ReplacementPolicy::LRU);
+    void setQuery(const Query& query);
+    Query getQuery() const;
     void setReplacementPolicy(ReplacementPolicy policy);
     void agregarGestorBloques(int id, bloque b);
     void agregarBufferPool(int id, bloque b, const string& mode, bool pinned = false);

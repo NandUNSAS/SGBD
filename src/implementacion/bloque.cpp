@@ -36,6 +36,9 @@ string bloque::getRutaBloque() const {
     return rutaBloque;
 }
 
+string bloque::getContenido() const {
+    return contenido;
+}
 void bloque::construirBloque() {
     
     contenido = ""; // Inicializa como vacío

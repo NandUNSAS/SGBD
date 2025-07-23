@@ -1,6 +1,7 @@
 #include "../include/funciones_menu.h"
 #include <cstddef>
 #include <iostream>
+#include <queue>
 #include <stdio.h>
 #include "../include/funciones.h"
 #include "../include/gestorAlmacenamiento.h"
@@ -11,6 +12,7 @@
 #include "../include/funcionesBloque.h"
 #include "../include/insertar.h"
 #include "../include/bufferManager.h"
+#include "../include/query.h"
 #include "gestorBloques.h"
 #include <string>
 #include <disco.h>
@@ -213,6 +215,14 @@ void caracteristicasDisco(gestorAlmacenamiento& gestor, disco& disco1){
 
 // ... (código existente)
 
+void inicializarBufferPool(bufferManager& bm, Query& query) {
+    int cantFrames;
+    cout << "Ingrese cantidad de frames para el buffer pool: ";
+    cin >> cantFrames;
+    bm = bufferManager(cantFrames);
+    bm.setQuery(query);
+}
+
 void inicializarBufferPool(bufferManager& bm) {
     int cantFrames;
     cout << "Ingrese cantidad de frames para el buffer pool: ";
@@ -338,25 +348,49 @@ void menuBufferManager(bufferManager& bm) {
         }
     } while(opcion != 7);
 }
-void cargarPaginas(bufferManager& bm){
+
+string tipoConsulta(){
+    int opcion = 0;
+    cout << "\n----- TIPO CONSULTA -----\n";
+    cout << "1. SELECT\n";
+    cout << "2. INSERT - DELETE - UPDATE\n";
+    cout << "3. volver a menu principal\n";
+    cin >> opcion;
+
+    if(opcion == 1){
+        return "read";
+    }
+    else if(opcion == 2){
+        return "write";
+    }
+}
+
+void cargarPaginas(bufferManager& bm, Query& query, string modo){
     bloque b;
     int id = 0;
     while(true){
         id++;
         string ruta = obtenerRutaPorId(RUTASB, id);
+        if(ruta == "no encontrado")
+            break;
         b.inicializarBloque(id, ruta);
-        
+        bm.agregarBufferPool(id, b, modo);
     }
-
 }
-void accesoSecuencial(bufferManager& bm){
-    inicializarBufferPool(bm);
+
+void accesoSecuencial(bufferManager& bm, Query& query){
+    query.pedirTipoConsulta();
+    query.pedirDatos();
+    string modo = (query.getTipo() == "SELECT")? "read" : "write";
+
+    inicializarBufferPool(bm,query);
     seleccionarPoliticaReemplazo(bm);
-    
-
+    cargarPaginas(bm,query,modo);  
 }
+
 
 void menuMetodosAcceso(bufferManager& bm){
+    Query query;
     int opcion;
     do {
         cout << "\n----- GESTIÓN METODOS DE ACCESO -----\n";
@@ -368,7 +402,7 @@ void menuMetodosAcceso(bufferManager& bm){
 
         switch(opcion) {
             case 1:
-                accesoSecuencial(bm);
+                accesoSecuencial(bm,query);
                 break;
             case 2:
                 //estendible hash

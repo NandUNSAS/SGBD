@@ -15,4 +15,5 @@ void caracteristicasDisco(gestorAlmacenamiento& gestor, disco& disco1);
 void menuBufferManager(bufferManager& bm);
 void seleccionarPoliticaReemplazo(bufferManager& bm);
 void menuMetodosAcceso(bufferManager& bm);
+void menuConsultas();
 #endif // FUNCIONES_MENU_H

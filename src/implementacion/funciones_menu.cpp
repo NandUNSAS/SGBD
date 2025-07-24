@@ -40,7 +40,8 @@ void mostrarMenu() {
     cout << "4. Características del disco\n";
     cout << "5. Gestión de Buffer Pool\n";  // Opción unificada
     cout << "6. Metodos de acceso\n";
-    cout << "7. Salir\n";
+    cout << "7. Consultas\n";
+    cout << "8. Salir\n";
     cout << "Seleccione una opción: ";
 }
 
@@ -418,4 +419,35 @@ void menuMetodosAcceso(bufferManager& bm){
         }
     } while(opcion != 4);
 
+}
+
+void menuConsultas(){
+     Query query;
+    int opcion;
+    do {
+        cout << "\n----- consultas -----\n";
+        cout << "1. Crear Tabla (ESQUEMA)\n";
+        cout << "2. SELECT\n";
+        cout << "3. INSERT\n";
+        cout << "4. UPDATE\n";
+        cout << "5. DELETE\n";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                crearTabla();
+                break;
+            case 2:
+                //estendible hash
+                break;
+            case 3:
+                //B-tree
+                break;
+            case 4:
+                cout << "Volviendo al menú principal...\n";
+                break;
+            default:
+                cout << "Opción no válida. Intente nuevamente.\n";
+        }
+    } while(opcion != 4);
 }

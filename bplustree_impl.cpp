@@ -5,14 +5,9 @@
 #include <map>
 #include <cstdlib>
 
-struct nombre {
-    int atributo;
-    std::string info;
-};
-
 struct NodoBPlus {
     bool esHoja;
-    std::vector<nombre> claves;
+    std::vector<int> claves;
     std::vector<NodoBPlus*> hijos;
     NodoBPlus* siguiente;
 
@@ -30,7 +25,7 @@ private:
         nodo->claves.resize(1);
         (*nuevoNodo)->siguiente = nodo->siguiente;
         nodo->siguiente = *nuevoNodo;
-        *clavePromovida = (*nuevoNodo)->claves[0].atributo;
+        *clavePromovida = (*nuevoNodo)->claves[0];
     }
 
     void dividirInterno(NodoBPlus* nodo, NodoBPlus** nuevoNodo, int* clavePromovida) {

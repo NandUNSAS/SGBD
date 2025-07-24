@@ -7,5 +7,6 @@ rutas_sectores/
 *.tmp
 
 prueba1.txt
-
+output/
+dataset.csv
 salidaTerminal.txt

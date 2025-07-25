@@ -17,6 +17,8 @@
 #include <string>
 #include <disco.h>
 #include <fstream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 
 const string ARCHIVO_CSVT = "../../archivos_csv/TitanicG.csv";
@@ -30,6 +32,8 @@ const string RUTAS = "../../rutas_sectores/rutas.txt";
 const string RUTASB = "../../rutas_sectores/cilindroMedio.txt";
 const string ARCHIVO_INFO_DISCO = "../../archivo_info_Disco/info_disco.txt";
 const string ARCHIVO_B_X_SECTORES = "../../archivo_info_Disco/info_bloque.txt";
+
+#define ESQUEMAS "../archivos_esquema/"
 
 void mostrarMenu() {
     cout << "\n----- MEGATROM 3000 -----\n";
@@ -421,24 +425,110 @@ void menuMetodosAcceso(bufferManager& bm){
 
 }
 
+struct Columna {
+    string nombre;
+    string tipo;
+    int tamano;
+};
+
+string generarNombreArchivo(const string& nombreTabla) {
+    // Reemplazar caracteres no válidos en nombres de archivo
+    string nombreArchivo = nombreTabla;
+    replace(nombreArchivo.begin(), nombreArchivo.end(), ' ', '_');
+    replace(nombreArchivo.begin(), nombreArchivo.end(), '/', '_');
+    replace(nombreArchivo.begin(), nombreArchivo.end(), '\\', '_');
+    return "../../archivos_esquema/esquema_" + nombreArchivo + ".txt";
+}
+
+void crearTabla() {
+    string nombreTabla;
+    vector<Columna> columnas;
+
+    cout << "=== CREACION DE ESQUEMA DE TABLA ===" << endl;
+    cout << "Ingrese el nombre de la tabla: ";
+    getline(cin, nombreTabla);
+
+    cout << "\nAhora agregue las columnas. Deje el nombre en blanco para terminar.\n";
+
+    while (true) {
+        Columna col;
+        
+        cout << "\nNombre de la columna (dejar vacio para terminar): ";
+        getline(cin, col.nombre);
+        
+        if (col.nombre.empty()) break;
+        
+        cout << "Tipo de dato (int/string/float/date): ";
+        getline(cin, col.tipo);
+        
+        // Validar tipo de dato
+        if (col.tipo != "int" && col.tipo != "string" && col.tipo != "float" && col.tipo != "date") {
+            cout << "Tipo no válido. Use int, string, float o date.\n";
+            continue;
+        }
+        
+        cout << "Tamaño máximo para el campo (ej. 10 para string, 8 para int): ";
+        cin >> col.tamano;
+        cin.ignore(); // Limpiar el buffer
+        
+        columnas.push_back(col);
+    }
+
+    if (columnas.empty()) {
+        cout << "No se agregaron columnas. Operación cancelada.\n";
+        return;
+    }
+
+    // Generar el contenido del esquema
+    string esquema = nombreTabla;
+    for (const auto& col : columnas) {
+        esquema += "#" + col.nombre + "#" + col.tipo + "#" + to_string(col.tamano);
+    }
+
+    // Guardar en archivo
+    string nombreArchivo = generarNombreArchivo(nombreTabla);
+    ofstream archivo(nombreArchivo);
+    
+    if (archivo.is_open()) {
+        archivo << esquema;
+        archivo.close();
+        cout << "\nEsquema generado exitosamente en: " << nombreArchivo << endl;
+        cout << "Formato: " << esquema << endl;
+    } else {
+        cerr << "Error al crear el archivo de esquema." << endl;
+    }
+}
+
+void generarEntradaIndex(Query& query){
+    int tipoCondicion = query.getOpcionCondicion();
+    if(tipoCondicion == 1){
+        //llamar indexacion hash
+    }
+
+    else if (tipoCondicion >= 2 && tipoCondicion <= 6 ){
+        //llamar indexacion arboltree
+    }
+}
+
 void menuConsultas(){
-     Query query;
+    Query query;
     int opcion;
     do {
         cout << "\n----- consultas -----\n";
         cout << "1. Crear Tabla (ESQUEMA)\n";
-        cout << "2. SELECT\n";
-        cout << "3. INSERT\n";
-        cout << "4. UPDATE\n";
-        cout << "5. DELETE\n";
+        cout << "2. Realizar Consulta\n";
         cin >> opcion;
+        cin.ignore();
 
         switch(opcion) {
             case 1:
                 crearTabla();
                 break;
             case 2:
-                //estendible hash
+                query.pedirTipoConsulta();
+                query.pedirDatos();
+                
+                generarEntradaIndex(query);
                 break;
             case 3:
                 //B-tree

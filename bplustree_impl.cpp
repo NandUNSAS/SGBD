@@ -21,15 +21,20 @@ private:
 
     void dividirHoja(NodoBPlus* nodo, NodoBPlus** nuevoNodo, int* clavePromovida) {
         *nuevoNodo = new NodoBPlus(true);
-        (*nuevoNodo)->claves.assign(nodo->claves.begin() + 1, nodo->claves.end());
-        nodo->claves.resize(1);
+
+        int mid = nodo->claves.size() / 2;
+
+        (*nuevoNodo)->claves.assign(nodo->claves.begin() + mid, nodo->claves.end());
+        nodo->claves.resize(mid);
+
         (*nuevoNodo)->siguiente = nodo->siguiente;
         nodo->siguiente = *nuevoNodo;
-        *clavePromovida = (*nuevoNodo)->claves[0];
+
+        *clavePromovida = (*nuevoNodo)->claves[0];  // Primer valor del nuevo nodo
     }
 
     void dividirInterno(NodoBPlus* nodo, NodoBPlus** nuevoNodo, int* clavePromovida) {
-        int mid = nodo->claves.size() / 2;
+        int mid = nodo->claves.size() / 2 ;
         *nuevoNodo = new NodoBPlus(false);
         *clavePromovida = nodo->claves[mid];
         (*nuevoNodo)->claves.assign(nodo->claves.begin() + mid + 1, nodo->claves.end());

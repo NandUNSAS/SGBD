@@ -40,7 +40,6 @@ string bloque::getContenido() const {
     return contenido;
 }
 void bloque::construirBloque() {
-    
     contenido = ""; // Inicializa como vacío
 
     ifstream archivoBloque(rutaBloque);
@@ -50,24 +49,56 @@ void bloque::construirBloque() {
     }
 
     string lineaRuta;
-    getline(archivoBloque,lineaRuta);
+    getline(archivoBloque, lineaRuta); // Primera línea del archivo bloque
+    
     while (getline(archivoBloque, lineaRuta)) {
         vector<string> campos = obtenerCampos(lineaRuta);
         if (campos.size() < 2) continue;
 
         string estado = campos[0];
         string rutaSector = campos[1];
-        cout << "ruta sector del bloque "<< rutaSector << endl;
+        cout << "Procesando sector: " << rutaSector << endl;
 
+        // Procesar archivo del sector
         ifstream archivoSector(rutaSector);
         if (!archivoSector.is_open()) {
             cerr << "No se pudo abrir el archivo del sector: " << rutaSector << endl;
             continue;
         }
 
+        // Leer y guardar la cabecera del sector
+        string cabeceraSector;
+        if (!getline(archivoSector, cabeceraSector)) {
+            cerr << "Error leyendo cabecera del sector" << endl;
+            archivoSector.close();
+            continue;
+        }
+
+        // Añadir la cabecera al contenido del bloque
+        contenido += cabeceraSector + "\n";
+
+        vector<string> datosCabecera = obtenerCampos(cabeceraSector);
+        if (datosCabecera.size() < 5) {
+            cerr << "Cabecera de sector inválida" << endl;
+            archivoSector.close();
+            continue;
+        }
+
+        int registrosEsperados = stoi(datosCabecera[4]);
+        int registrosLeidos = 0;
+
+        // Leer registros del sector
         string lineaSector;
         while (getline(archivoSector, lineaSector)) {
-            contenido += lineaSector + "\n"; // Añade línea al bloque
+            if (!lineaSector.empty()) {
+                contenido += lineaSector + "\n";
+                registrosLeidos++;
+            }
+        }
+
+        // Completar con líneas vacías si faltan registros
+        for (int i = registrosLeidos; i < registrosEsperados; i++) {
+            contenido += "\n"; // Línea vacía para registro faltante
         }
 
         archivoSector.close();
@@ -75,6 +106,7 @@ void bloque::construirBloque() {
 
     archivoBloque.close();
 }
+
 
 void bloque::mostrarBloque() const {
     cout << "ID: " << idBloque << endl;

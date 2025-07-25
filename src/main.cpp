@@ -65,14 +65,18 @@ int main() {
             case 6: 
                 menuMetodosAcceso(bm);
                 break;
+            
             case 7:
+                menuConsultas();
+                break;
+            case 8:
                 cout << "Gracias por usar Megatrom 3000. ¡Hasta luego!\n";
                 break;
             default:
                 cout << "Opción no válida. Intente nuevamente.\n";
         }
 
-    } while (opcion != 7);
+    } while (opcion != 8);
 
     return 0;
 }

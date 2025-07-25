@@ -1,0 +1,1 @@
+ventas#id_venta#int#8#producto#string#20

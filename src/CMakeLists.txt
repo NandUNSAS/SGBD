@@ -12,6 +12,8 @@ set(SOURCES
         implementacion/bufferManager.cpp
         implementacion/gestorBloque.cpp
         implementacion/query.cpp
+        implementacion/esquema.cpp
+        implementacion/controlador_Query.cpp
 )
 
 set(HEADERS include)

@@ -1,0 +1,401 @@
+id_caba,Nombre,Categoria,talla,stock_actual,precio_venta
+CZ-001,Botas Vans Sk8-Hi,Formal,44,89,341.58
+CZ-002,Botas Timberland Botas Premium,Formal,41,37,324.89
+CZ-003,Zapatilla Converse One Star,Deportivo,40,56,484.87
+CZ-004,Zapatilla Timberland Botas Premium,Casual,40,72,374.02
+CZ-005,Botas Reebok Club C 85,Formal,37,48,327.84
+CZ-006,Zapatilla New Balance 574,Deportivo,40,58,434.61
+CZ-007,Zapatilla Reebok Club C 85,Deportivo,45,86,179.92
+CZ-008,Botas New Balance 574,Formal,36,61,349.07
+CZ-009,Zapatilla New Balance 990,Deportivo,44,62,372.66
+CZ-010,Zapatilla Nike Air Max,Deportivo,36,98,413.93
+CZ-011,Zapatilla Timberland Botas Premium,Casual,46,75,154.17
+CZ-012,Zapatilla Adidas Superstar,Deportivo,42,29,520.49
+CZ-013,Zapatilla Puma RS-X,Deportivo,43,44,107.87
+CZ-014,Botas Puma Cali,Formal,37,76,546.13
+CZ-015,Zapatilla Vans Sk8-Hi,Casual,37,58,120.66
+CZ-016,Botas Timberland Botas Premium,Formal,45,42,238.93
+CZ-017,Zapatilla Vans Old Skool,Casual,44,26,548.96
+CZ-018,Botas Vans Old Skool,Formal,42,63,480.51
+CZ-019,Zapatilla Timberland Botas Premium,Casual,38,24,545.46
+CZ-020,Botas Reebok Classic Leather,Formal,37,42,410.2
+CZ-021,Zapatilla Reebok Classic Leather,Deportivo,42,26,275.33
+CZ-022,Zapatilla Timberland Botas Premium,Casual,41,72,571.77
+CZ-023,Botas New Balance 574,Formal,41,94,325.85
+CZ-024,Zapatilla Reebok Classic Leather,Deportivo,42,42,387.97
+CZ-025,Botas Nike Air Force 1,Formal,44,14,144.53
+CZ-026,Zapatilla Vans Old Skool,Casual,40,18,104.78
+CZ-027,Botas Puma Cali,Formal,39,10,462.16
+CZ-028,Botas Vans Era,Formal,41,17,236.77
+CZ-029,Zapatilla Adidas Stan Smith,Casual,41,80,207.06
+CZ-030,Zapatilla Vans Era,Casual,45,42,305.36
+CZ-031,Zapatilla Reebok Club C 85,Deportivo,44,57,127.56
+CZ-032,Zapatilla Nike Air Force 1,Deportivo,45,29,431.51
+CZ-033,Zapatilla Reebok Club C 85,Deportivo,41,8,349.16
+CZ-034,Zapatilla Timberland Botas Classic,Deportivo,42,51,329.36
+CZ-035,Zapatilla Vans Old Skool,Deportivo,37,26,185.57
+CZ-036,Zapatilla Adidas Stan Smith,Casual,37,88,548.41
+CZ-037,Zapatilla Vans Old Skool,Casual,38,45,401.87
+CZ-038,Zapatilla Nike React Vision,Casual,44,17,119.27
+CZ-039,Zapatilla Timberland Botas Classic,Deportivo,44,71,146.31
+CZ-040,Zapatilla Adidas Ultraboost,Deportivo,36,44,111.5
+CZ-041,Zapatilla Timberland Botas Premium,Casual,44,51,378.13
+CZ-042,Zapatilla Adidas Superstar,Casual,42,21,333.73
+CZ-043,Botas Vans Sk8-Hi,Formal,42,99,330.18
+CZ-044,Botas Vans Sk8-Hi,Formal,44,46,457.26
+CZ-045,Zapatilla New Balance 990,Deportivo,45,13,117.81
+CZ-046,Botas Timberland Botas Premium,Formal,38,77,573.02
+CZ-047,Zapatilla Timberland Botas Premium,Casual,42,36,537.28
+CZ-048,Zapatilla Converse Chuck Taylor All Star,Casual,44,31,183.67
+CZ-049,Zapatilla Adidas Stan Smith,Casual,43,100,584.66
+CZ-050,Botas Converse One Star,Formal,40,65,568.29
+CZ-051,Zapatilla Nike Air Max,Casual,43,45,280.85
+CZ-052,Zapatilla Timberland Botas Classic,Casual,38,11,172.09
+CZ-053,Zapatilla Converse One Star,Deportivo,38,45,216.18
+CZ-054,Zapatilla Converse One Star,Deportivo,37,73,264.29
+CZ-055,Zapatilla Adidas Stan Smith,Deportivo,38,16,496.03
+CZ-056,Zapatilla Converse One Star,Casual,37,54,493.62
+CZ-057,Zapatilla Adidas Superstar,Deportivo,44,37,242.31
+CZ-058,Zapatilla Vans Era,Deportivo,38,73,499.26
+CZ-059,Botas Vans Old Skool,Formal,37,29,547.98
+CZ-060,Zapatilla Converse One Star,Deportivo,38,12,497.97
+CZ-061,Zapatilla Puma Suede,Casual,38,72,563.23
+CZ-062,Zapatilla Nike Air Max,Deportivo,42,91,314.66
+CZ-063,Zapatilla Vans Era,Deportivo,39,85,429.33
+CZ-064,Zapatilla Timberland Botas Classic,Deportivo,36,66,133.48
+CZ-065,Botas Adidas Ultraboost,Formal,38,43,207.77
+CZ-066,Zapatilla Converse Chuck Taylor All Star,Deportivo,42,79,418.97
+CZ-067,Zapatilla Vans Era,Deportivo,40,61,376.3
+CZ-068,Botas New Balance 574,Formal,36,58,332.08
+CZ-069,Botas Adidas Superstar,Formal,41,36,483.09
+CZ-070,Botas Vans Era,Formal,37,68,267.91
+CZ-071,Zapatilla New Balance 990,Deportivo,43,34,304.54
+CZ-072,Botas Vans Old Skool,Formal,43,18,188.69
+CZ-073,Botas Reebok Classic Leather,Formal,43,42,236.02
+CZ-074,Zapatilla Timberland Botas Premium,Deportivo,43,97,295.93
+CZ-075,Zapatilla Adidas Ultraboost,Deportivo,37,13,338.59
+CZ-076,Zapatilla Adidas Stan Smith,Casual,43,94,264.58
+CZ-077,Zapatilla Timberland Botas Classic,Deportivo,39,56,220.25
+CZ-078,Zapatilla Vans Old Skool,Casual,41,53,563.49
+CZ-079,Botas Nike Air Max,Formal,46,52,255.13
+CZ-080,Zapatilla Vans Old Skool,Casual,36,34,528.95
+CZ-081,Zapatilla Adidas Ultraboost,Casual,38,81,382.76
+CZ-082,Zapatilla Nike Air Force 1,Deportivo,46,15,428.15
+CZ-083,Zapatilla Nike Air Max,Casual,37,77,197.62
+CZ-084,Zapatilla Converse One Star,Deportivo,38,41,461.14
+CZ-085,Botas Converse Chuck Taylor All Star,Formal,45,86,109.36
+CZ-086,Botas Puma Suede,Formal,42,77,538.74
+CZ-087,Botas New Balance 990,Formal,43,94,414.24
+CZ-088,Zapatilla Nike React Vision,Casual,43,69,307.83
+CZ-089,Botas Timberland Botas Premium,Formal,43,41,219.84
+CZ-090,Zapatilla New Balance 574,Deportivo,41,38,239.74
+CZ-091,Zapatilla Puma RS-X,Deportivo,41,83,534.84
+CZ-092,Botas Converse One Star,Formal,44,44,507.52
+CZ-093,Botas Reebok Club C 85,Formal,36,12,502.68
+CZ-094,Zapatilla Nike Air Max,Casual,36,16,534.31
+CZ-095,Botas Vans Old Skool,Formal,43,52,106.89
+CZ-096,Botas New Balance 574,Formal,45,79,162.65
+CZ-097,Botas New Balance 990,Formal,37,60,533.8
+CZ-098,Zapatilla Nike Air Max,Casual,40,60,455.3
+CZ-099,Zapatilla Converse Chuck Taylor All Star,Casual,36,73,136.54
+CZ-100,Zapatilla Timberland Botas Classic,Deportivo,43,38,279.12
+CZ-101,Zapatilla Converse One Star,Deportivo,46,58,227.32
+CZ-102,Zapatilla Adidas Ultraboost,Deportivo,40,20,342.86
+CZ-103,Zapatilla Vans Era,Deportivo,44,57,505.7
+CZ-104,Zapatilla Vans Era,Deportivo,41,71,363.51
+CZ-105,Zapatilla Reebok Club C 85,Casual,41,31,491.17
+CZ-106,Zapatilla Nike Air Max,Casual,40,25,462.76
+CZ-107,Zapatilla Converse Chuck Taylor All Star,Casual,37,85,103.1
+CZ-108,Zapatilla Timberland Botas Classic,Deportivo,36,53,341.52
+CZ-109,Botas Reebok Club C 85,Formal,43,92,170.75
+CZ-110,Zapatilla Timberland Botas Premium,Deportivo,44,65,516.24
+CZ-111,Botas Vans Old Skool,Formal,46,51,346.25
+CZ-112,Botas Adidas Stan Smith,Formal,44,15,220.26
+CZ-113,Botas Reebok Club C 85,Formal,40,91,130.34
+CZ-114,Zapatilla Nike Air Force 1,Casual,44,40,592.06
+CZ-115,Zapatilla Timberland Botas Premium,Casual,38,40,562.45
+CZ-116,Botas Timberland Botas Premium,Formal,46,93,339.43
+CZ-117,Zapatilla New Balance 990,Deportivo,40,12,595.65
+CZ-118,Botas Reebok Classic Leather,Formal,45,54,204.45
+CZ-119,Zapatilla Nike Air Force 1,Casual,39,76,459.26
+CZ-120,Botas Timberland Botas Premium,Formal,38,70,143.94
+CZ-121,Botas Timberland Botas Premium,Formal,43,71,190.62
+CZ-122,Botas Nike Air Force 1,Formal,43,48,347.02
+CZ-123,Zapatilla Vans Old Skool,Deportivo,46,98,498.17
+CZ-124,Zapatilla Reebok Classic Leather,Casual,44,66,464.11
+CZ-125,Botas Reebok Club C 85,Formal,42,72,122.92
+CZ-126,Zapatilla Converse One Star,Casual,38,17,375.08
+CZ-127,Zapatilla Adidas Superstar,Casual,42,45,475.29
+CZ-128,Zapatilla Vans Old Skool,Deportivo,44,71,423.17
+CZ-129,Zapatilla Adidas Superstar,Deportivo,38,71,322.7
+CZ-130,Botas Reebok Club C 85,Formal,43,46,542.65
+CZ-131,Botas Timberland Botas Classic,Formal,44,86,488.82
+CZ-132,Zapatilla Nike Air Force 1,Casual,43,18,221.76
+CZ-133,Botas Adidas Stan Smith,Formal,46,65,527.65
+CZ-134,Zapatilla Reebok Classic Leather,Casual,45,10,500.38
+CZ-135,Botas Adidas Ultraboost,Formal,39,72,499.75
+CZ-136,Zapatilla Converse One Star,Deportivo,43,29,336.94
+CZ-137,Botas Vans Era,Formal,42,22,251.16
+CZ-138,Botas Puma Suede,Formal,39,31,383.54
+CZ-139,Zapatilla Converse One Star,Casual,42,71,316.95
+CZ-140,Zapatilla Timberland Botas Classic,Casual,37,77,450.68
+CZ-141,Botas Nike React Vision,Formal,37,92,369.29
+CZ-142,Zapatilla Converse Chuck Taylor All Star,Casual,46,48,242.05
+CZ-143,Zapatilla New Balance 990,Deportivo,43,12,126.55
+CZ-144,Zapatilla Reebok Classic Leather,Casual,46,85,341.81
+CZ-145,Zapatilla Adidas Superstar,Casual,42,41,322.98
+CZ-146,Zapatilla Vans Sk8-Hi,Deportivo,41,83,322.12
+CZ-147,Botas Converse Chuck Taylor All Star,Formal,46,69,465.1
+CZ-148,Zapatilla New Balance 574,Casual,38,53,260.0
+CZ-149,Zapatilla Converse One Star,Deportivo,36,5,439.62
+CZ-150,Botas Adidas Stan Smith,Formal,43,44,411.79
+CZ-151,Zapatilla Vans Era,Deportivo,40,99,505.64
+CZ-152,Botas Puma RS-X,Formal,45,69,338.63
+CZ-153,Botas Timberland Botas Premium,Formal,41,43,368.9
+CZ-154,Zapatilla Timberland Botas Classic,Deportivo,42,68,442.97
+CZ-155,Botas Adidas Superstar,Formal,37,35,157.2
+CZ-156,Zapatilla Adidas Superstar,Casual,42,68,147.81
+CZ-157,Zapatilla Puma Cali,Casual,43,62,164.13
+CZ-158,Zapatilla Nike Air Force 1,Deportivo,42,10,251.73
+CZ-159,Zapatilla Timberland Botas Classic,Deportivo,39,22,153.54
+CZ-160,Zapatilla Nike Air Force 1,Deportivo,37,79,451.54
+CZ-161,Zapatilla Vans Old Skool,Deportivo,39,32,342.21
+CZ-162,Zapatilla Timberland Botas Premium,Casual,43,78,475.94
+CZ-163,Zapatilla New Balance 574,Casual,38,7,497.49
+CZ-164,Botas Converse One Star,Formal,39,62,407.48
+CZ-165,Zapatilla Puma Cali,Casual,40,48,363.77
+CZ-166,Zapatilla Nike Air Max,Deportivo,41,42,303.52
+CZ-167,Botas Timberland Botas Premium,Formal,40,64,404.49
+CZ-168,Botas Puma RS-X,Formal,39,74,208.05
+CZ-169,Botas Nike React Vision,Formal,38,29,476.92
+CZ-170,Botas Nike Air Max,Formal,40,31,503.0
+CZ-171,Zapatilla New Balance 574,Casual,40,63,406.54
+CZ-172,Zapatilla Puma RS-X,Deportivo,43,92,412.84
+CZ-173,Zapatilla Adidas Ultraboost,Casual,46,57,462.24
+CZ-174,Zapatilla Timberland Botas Classic,Deportivo,37,22,526.75
+CZ-175,Zapatilla New Balance 574,Deportivo,46,22,193.8
+CZ-176,Zapatilla Adidas Stan Smith,Casual,37,86,365.88
+CZ-177,Zapatilla Nike Air Max,Casual,43,38,579.62
+CZ-178,Zapatilla New Balance 990,Deportivo,36,71,189.28
+CZ-179,Botas Nike React Vision,Formal,41,77,563.63
+CZ-180,Botas Adidas Superstar,Formal,42,80,186.5
+CZ-181,Zapatilla Reebok Club C 85,Casual,40,44,109.73
+CZ-182,Zapatilla Adidas Stan Smith,Deportivo,44,33,399.9
+CZ-183,Zapatilla Timberland Botas Premium,Casual,46,64,496.81
+CZ-184,Zapatilla Puma Cali,Deportivo,45,80,112.33
+CZ-185,Zapatilla Converse One Star,Deportivo,44,37,120.97
+CZ-186,Botas Converse Chuck Taylor All Star,Formal,37,61,297.31
+CZ-187,Zapatilla Puma Cali,Casual,36,99,588.21
+CZ-188,Zapatilla Timberland Botas Premium,Deportivo,46,56,472.59
+CZ-189,Zapatilla Adidas Superstar,Deportivo,41,85,431.01
+CZ-190,Zapatilla Puma RS-X,Deportivo,43,94,445.47
+CZ-191,Botas Reebok Classic Leather,Formal,39,94,330.78
+CZ-192,Zapatilla Reebok Classic Leather,Deportivo,41,81,201.16
+CZ-193,Botas Adidas Ultraboost,Formal,41,55,212.72
+CZ-194,Botas Nike React Vision,Formal,44,45,318.74
+CZ-195,Zapatilla Converse Chuck Taylor All Star,Casual,36,62,141.61
+CZ-196,Botas Puma RS-X,Formal,45,75,277.76
+CZ-197,Botas Converse One Star,Formal,38,60,465.62
+CZ-198,Botas New Balance 990,Formal,40,65,422.48
+CZ-199,Botas Reebok Classic Leather,Formal,42,9,468.57
+CZ-200,Botas Timberland Botas Classic,Formal,43,28,192.31
+CZ-201,Zapatilla Timberland Botas Classic,Deportivo,42,23,274.99
+CZ-202,Botas Reebok Classic Leather,Formal,40,72,462.61
+CZ-203,Botas New Balance 574,Formal,38,48,571.12
+CZ-204,Zapatilla Reebok Club C 85,Casual,37,8,564.1
+CZ-205,Botas Timberland Botas Premium,Formal,46,83,344.35
+CZ-206,Zapatilla Adidas Stan Smith,Deportivo,42,10,351.88
+CZ-207,Zapatilla Puma RS-X,Casual,40,65,594.59
+CZ-208,Botas Timberland Botas Classic,Formal,46,88,242.88
+CZ-209,Zapatilla Vans Sk8-Hi,Deportivo,42,22,594.36
+CZ-210,Zapatilla Puma Cali,Deportivo,44,23,175.99
+CZ-211,Zapatilla Converse One Star,Deportivo,45,43,537.61
+CZ-212,Botas Adidas Stan Smith,Formal,36,20,386.82
+CZ-213,Zapatilla Reebok Classic Leather,Deportivo,37,28,469.15
+CZ-214,Zapatilla New Balance 574,Deportivo,40,66,385.6
+CZ-215,Zapatilla Reebok Classic Leather,Casual,40,25,315.79
+CZ-216,Zapatilla Nike React Vision,Casual,37,42,190.95
+CZ-217,Zapatilla Puma RS-X,Deportivo,41,32,513.78
+CZ-218,Zapatilla Nike React Vision,Deportivo,37,27,589.37
+CZ-219,Zapatilla Reebok Classic Leather,Deportivo,40,56,515.64
+CZ-220,Zapatilla Puma Cali,Casual,44,29,344.63
+CZ-221,Botas Adidas Superstar,Formal,46,82,184.6
+CZ-222,Zapatilla Vans Sk8-Hi,Casual,37,100,587.22
+CZ-223,Zapatilla Reebok Club C 85,Deportivo,38,75,129.99
+CZ-224,Botas New Balance 990,Formal,36,92,307.32
+CZ-225,Botas Timberland Botas Classic,Formal,46,93,442.74
+CZ-226,Botas Adidas Superstar,Formal,37,5,582.0
+CZ-227,Botas Reebok Classic Leather,Formal,39,98,545.17
+CZ-228,Botas Adidas Stan Smith,Formal,45,32,183.07
+CZ-229,Zapatilla Puma Cali,Casual,44,36,164.65
+CZ-230,Zapatilla Adidas Ultraboost,Casual,45,15,235.97
+CZ-231,Zapatilla Puma Suede,Deportivo,38,46,591.91
+CZ-232,Botas Nike React Vision,Formal,46,29,376.66
+CZ-233,Zapatilla Puma RS-X,Deportivo,40,42,373.95
+CZ-234,Botas New Balance 574,Formal,43,70,428.37
+CZ-235,Botas New Balance 574,Formal,38,85,588.93
+CZ-236,Zapatilla Vans Era,Deportivo,42,36,471.06
+CZ-237,Zapatilla Adidas Ultraboost,Deportivo,43,32,519.21
+CZ-238,Zapatilla Puma RS-X,Casual,40,69,292.18
+CZ-239,Zapatilla Nike Air Max,Casual,40,96,466.33
+CZ-240,Zapatilla Vans Old Skool,Deportivo,42,94,216.37
+CZ-241,Zapatilla New Balance 574,Casual,38,74,379.13
+CZ-242,Zapatilla Vans Era,Casual,38,11,199.49
+CZ-243,Zapatilla Reebok Club C 85,Deportivo,43,59,250.21
+CZ-244,Zapatilla Reebok Classic Leather,Deportivo,39,45,325.41
+CZ-245,Botas New Balance 574,Formal,45,92,584.56
+CZ-246,Zapatilla Timberland Botas Classic,Casual,40,79,411.36
+CZ-247,Botas Converse Chuck Taylor All Star,Formal,37,46,245.53
+CZ-248,Zapatilla Converse Chuck Taylor All Star,Casual,42,76,248.61
+CZ-249,Zapatilla Adidas Superstar,Deportivo,36,24,384.82
+CZ-250,Zapatilla New Balance 574,Casual,36,80,551.91
+CZ-251,Zapatilla Timberland Botas Classic,Deportivo,44,91,107.44
+CZ-252,Botas Converse One Star,Formal,46,90,383.43
+CZ-253,Zapatilla Vans Era,Deportivo,39,33,332.44
+CZ-254,Zapatilla Puma RS-X,Deportivo,42,71,538.23
+CZ-255,Zapatilla Timberland Botas Classic,Casual,40,92,256.04
+CZ-256,Botas Nike Air Max,Formal,39,6,431.23
+CZ-257,Zapatilla Reebok Club C 85,Casual,44,67,542.82
+CZ-258,Botas Puma Cali,Formal,45,65,240.33
+CZ-259,Botas Vans Era,Formal,45,28,517.74
+CZ-260,Zapatilla Puma RS-X,Deportivo,44,28,439.35
+CZ-261,Botas Adidas Ultraboost,Formal,43,20,568.88
+CZ-262,Zapatilla Converse One Star,Deportivo,42,81,200.2
+CZ-263,Zapatilla Puma Suede,Deportivo,42,95,468.33
+CZ-264,Zapatilla Puma Suede,Casual,46,11,586.59
+CZ-265,Zapatilla Timberland Botas Classic,Casual,43,11,146.18
+CZ-266,Botas New Balance 990,Formal,42,84,317.38
+CZ-267,Zapatilla Timberland Botas Classic,Casual,36,89,381.7
+CZ-268,Botas Vans Era,Formal,46,17,321.79
+CZ-269,Zapatilla Nike Air Force 1,Deportivo,39,72,100.56
+CZ-270,Botas New Balance 574,Formal,46,32,465.7
+CZ-271,Zapatilla Converse One Star,Casual,37,82,193.83
+CZ-272,Botas Converse One Star,Formal,39,67,387.07
+CZ-273,Zapatilla New Balance 574,Casual,43,53,460.46
+CZ-274,Zapatilla Nike Air Force 1,Casual,38,30,397.0
+CZ-275,Botas Nike React Vision,Formal,36,70,341.58
+CZ-276,Zapatilla Vans Sk8-Hi,Deportivo,36,68,514.43
+CZ-277,Botas Vans Old Skool,Formal,43,47,161.47
+CZ-278,Zapatilla Adidas Ultraboost,Casual,36,95,217.93
+CZ-279,Botas Adidas Stan Smith,Formal,46,28,514.38
+CZ-280,Zapatilla Converse Chuck Taylor All Star,Casual,43,14,313.05
+CZ-281,Zapatilla Timberland Botas Classic,Deportivo,40,84,483.13
+CZ-282,Botas Vans Old Skool,Formal,37,63,312.1
+CZ-283,Zapatilla Adidas Ultraboost,Casual,43,65,542.19
+CZ-284,Botas Nike Air Max,Formal,46,28,401.71
+CZ-285,Zapatilla Reebok Club C 85,Deportivo,39,5,579.08
+CZ-286,Botas Timberland Botas Classic,Formal,45,95,205.31
+CZ-287,Botas Puma RS-X,Formal,38,55,595.79
+CZ-288,Botas Puma RS-X,Formal,46,66,343.79
+CZ-289,Zapatilla Reebok Club C 85,Casual,41,73,298.37
+CZ-290,Zapatilla Reebok Classic Leather,Casual,42,53,289.34
+CZ-291,Zapatilla New Balance 990,Deportivo,36,100,245.27
+CZ-292,Zapatilla Reebok Classic Leather,Casual,36,59,112.04
+CZ-293,Zapatilla New Balance 574,Deportivo,42,50,454.75
+CZ-294,Botas Puma RS-X,Formal,40,21,400.72
+CZ-295,Botas Puma Cali,Formal,38,79,304.1
+CZ-296,Botas Nike Air Force 1,Formal,36,82,221.37
+CZ-297,Zapatilla Converse One Star,Casual,40,16,417.46
+CZ-298,Zapatilla Adidas Superstar,Casual,39,73,458.61
+CZ-299,Botas Timberland Botas Premium,Formal,44,70,403.29
+CZ-300,Zapatilla New Balance 574,Deportivo,41,19,325.09
+CZ-301,Zapatilla Vans Era,Deportivo,39,45,116.05
+CZ-302,Zapatilla Adidas Superstar,Casual,46,51,204.91
+CZ-303,Botas Reebok Classic Leather,Formal,45,46,519.97
+CZ-304,Zapatilla Puma Cali,Deportivo,46,33,164.39
+CZ-305,Botas Puma Cali,Formal,37,94,550.67
+CZ-306,Zapatilla Nike Air Force 1,Casual,40,76,543.98
+CZ-307,Zapatilla Converse One Star,Casual,45,33,546.9
+CZ-308,Botas Timberland Botas Classic,Formal,38,80,504.55
+CZ-309,Zapatilla Timberland Botas Classic,Casual,45,43,346.55
+CZ-310,Botas Nike Air Max,Formal,42,79,341.12
+CZ-311,Botas Converse One Star,Formal,40,82,317.36
+CZ-312,Zapatilla Converse Chuck Taylor All Star,Deportivo,45,45,440.94
+CZ-313,Botas Converse Chuck Taylor All Star,Formal,41,50,345.97
+CZ-314,Zapatilla Puma Cali,Deportivo,44,35,382.11
+CZ-315,Botas Puma RS-X,Formal,39,35,111.91
+CZ-316,Botas New Balance 990,Formal,40,62,364.19
+CZ-317,Zapatilla Adidas Ultraboost,Casual,40,25,236.23
+CZ-318,Zapatilla New Balance 990,Casual,36,25,417.32
+CZ-319,Botas Adidas Ultraboost,Formal,41,38,494.32
+CZ-320,Zapatilla Vans Old Skool,Casual,46,99,325.74
+CZ-321,Zapatilla Reebok Classic Leather,Casual,46,74,163.67
+CZ-322,Botas Nike Air Force 1,Formal,44,40,426.98
+CZ-323,Zapatilla Adidas Ultraboost,Deportivo,36,9,301.25
+CZ-324,Zapatilla Converse One Star,Casual,44,60,458.77
+CZ-325,Botas New Balance 990,Formal,40,73,139.48
+CZ-326,Zapatilla Vans Sk8-Hi,Deportivo,45,61,488.66
+CZ-327,Botas Reebok Classic Leather,Formal,43,95,595.92
+CZ-328,Zapatilla Vans Old Skool,Deportivo,37,20,466.05
+CZ-329,Botas Puma Suede,Formal,40,16,532.76
+CZ-330,Zapatilla Adidas Stan Smith,Casual,40,99,161.8
+CZ-331,Botas Adidas Stan Smith,Formal,38,67,426.09
+CZ-332,Zapatilla New Balance 574,Casual,37,50,153.26
+CZ-333,Zapatilla Timberland Botas Classic,Deportivo,38,96,299.34
+CZ-334,Zapatilla Adidas Ultraboost,Deportivo,36,38,380.73
+CZ-335,Zapatilla New Balance 574,Deportivo,37,92,312.8
+CZ-336,Botas Reebok Club C 85,Formal,38,22,480.43
+CZ-337,Botas New Balance 574,Formal,41,7,549.06
+CZ-338,Zapatilla Converse One Star,Deportivo,41,96,110.67
+CZ-339,Zapatilla Puma Cali,Deportivo,39,66,279.0
+CZ-340,Botas Timberland Botas Premium,Formal,45,51,420.0
+CZ-341,Botas Converse Chuck Taylor All Star,Formal,44,11,545.34
+CZ-342,Zapatilla Timberland Botas Premium,Casual,40,89,310.93
+CZ-343,Botas Adidas Ultraboost,Formal,38,48,301.28
+CZ-344,Zapatilla Nike React Vision,Casual,39,29,363.52
+CZ-345,Botas Vans Sk8-Hi,Formal,39,64,307.03
+CZ-346,Zapatilla Adidas Stan Smith,Deportivo,36,47,565.95
+CZ-347,Zapatilla Adidas Stan Smith,Deportivo,42,88,141.91
+CZ-348,Botas Vans Sk8-Hi,Formal,46,54,348.28
+CZ-349,Botas Adidas Ultraboost,Formal,36,29,130.86
+CZ-350,Zapatilla Vans Era,Casual,41,99,545.04
+CZ-351,Zapatilla Nike React Vision,Deportivo,45,69,384.2
+CZ-352,Zapatilla New Balance 574,Deportivo,45,27,272.05
+CZ-353,Zapatilla Adidas Stan Smith,Deportivo,39,41,278.29
+CZ-354,Zapatilla Vans Old Skool,Casual,41,46,316.49
+CZ-355,Zapatilla Vans Sk8-Hi,Deportivo,38,82,514.79
+CZ-356,Zapatilla Reebok Classic Leather,Deportivo,43,50,313.38
+CZ-357,Zapatilla Timberland Botas Premium,Deportivo,45,60,141.63
+CZ-358,Zapatilla Timberland Botas Premium,Casual,45,52,475.44
+CZ-359,Botas Vans Era,Formal,40,82,408.52
+CZ-360,Zapatilla Vans Era,Deportivo,46,65,461.39
+CZ-361,Botas New Balance 990,Formal,40,47,535.43
+CZ-362,Botas Converse Chuck Taylor All Star,Formal,42,69,578.58
+CZ-363,Zapatilla Timberland Botas Premium,Deportivo,46,88,129.98
+CZ-364,Botas Vans Era,Formal,43,52,167.52
+CZ-365,Zapatilla Reebok Club C 85,Casual,38,54,437.06
+CZ-366,Zapatilla Converse Chuck Taylor All Star,Casual,41,53,101.57
+CZ-367,Botas Timberland Botas Classic,Formal,46,84,429.25
+CZ-368,Zapatilla Vans Sk8-Hi,Deportivo,41,31,309.66
+CZ-369,Zapatilla Converse Chuck Taylor All Star,Deportivo,37,48,105.84
+CZ-370,Zapatilla Timberland Botas Classic,Deportivo,45,5,555.57
+CZ-371,Zapatilla Adidas Superstar,Casual,39,33,116.52
+CZ-372,Zapatilla Vans Sk8-Hi,Casual,45,21,134.89
+CZ-373,Zapatilla Puma Suede,Casual,37,22,584.68
+CZ-374,Botas Reebok Classic Leather,Formal,41,22,453.56
+CZ-375,Zapatilla Converse Chuck Taylor All Star,Deportivo,37,22,447.86
+CZ-376,Zapatilla Reebok Classic Leather,Deportivo,41,83,188.75
+CZ-377,Zapatilla Reebok Classic Leather,Casual,38,54,225.45
+CZ-378,Botas Converse Chuck Taylor All Star,Formal,41,29,535.7
+CZ-379,Zapatilla Puma Cali,Deportivo,36,65,198.5
+CZ-380,Zapatilla Puma RS-X,Deportivo,38,80,290.64
+CZ-381,Botas Reebok Classic Leather,Formal,37,33,462.08
+CZ-382,Zapatilla Nike Air Force 1,Casual,43,66,317.68
+CZ-383,Zapatilla New Balance 574,Deportivo,41,66,237.07
+CZ-384,Zapatilla New Balance 990,Casual,38,92,149.56
+CZ-385,Zapatilla Adidas Stan Smith,Deportivo,37,7,387.84
+CZ-386,Zapatilla Vans Sk8-Hi,Casual,36,71,592.9
+CZ-387,Zapatilla Nike Air Force 1,Deportivo,41,94,289.27
+CZ-388,Botas Nike Air Max,Formal,44,72,317.86
+CZ-389,Zapatilla Adidas Stan Smith,Deportivo,39,36,459.85
+CZ-390,Botas Vans Sk8-Hi,Formal,44,73,106.53
+CZ-391,Zapatilla Converse Chuck Taylor All Star,Deportivo,41,18,456.36
+CZ-392,Zapatilla Timberland Botas Classic,Casual,44,29,551.86
+CZ-393,Zapatilla Nike Air Force 1,Casual,38,49,138.23
+CZ-394,Botas New Balance 990,Formal,40,84,236.88
+CZ-395,Zapatilla New Balance 574,Casual,37,19,484.02
+CZ-396,Botas Vans Old Skool,Formal,41,45,318.89
+CZ-397,Zapatilla Vans Era,Casual,44,37,314.51
+CZ-398,Botas Puma RS-X,Formal,44,43,376.87
+CZ-399,Botas Vans Old Skool,Formal,39,31,363.38
+CZ-400,Botas Nike Air Force 1,Formal,39,37,508.76

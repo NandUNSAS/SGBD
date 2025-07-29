@@ -3,16 +3,21 @@
 
 #include "query.h"
 #include "esquema.h"
-#include "bufferManager.h"
+#include "gestorBloques.h"
+#include "bloque.h"
 
 class ControladorQuery{
     Query query;
     Esquema esquema;
-    bufferManager buffer_Manager;
-
+    bloque _bloque;
+    gestorBloques gb;
     public:
-
-    void realizarConsultaInsert(Query _query,Esquema _esquema);
+    ControladorQuery();
+    void realizarConsultaInsert(Query _query,int id);
+    void agregarInserción(bloque& _bloque, string& registro);
+    string crearRegistro();
 };
+
+
 
 #endif // !CONTROLADOR_QUERY_H

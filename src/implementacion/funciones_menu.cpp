@@ -6,6 +6,7 @@
 #include "../include/funciones.h"
 #include "../include/gestorAlmacenamiento.h"
 #include "../include/bloque.h"
+#include "controladorDisco.h"
 #include "funcionesBloque.h"
 #include "../include/controladorDisco.h"
 #include "../include/funciones_menu.h"
@@ -13,6 +14,7 @@
 #include "../include/insertar.h"
 #include "../include/bufferManager.h"
 #include "../include/query.h"
+#include "../include/controlador_Query.h"
 #include "gestorBloques.h"
 #include <string>
 #include <disco.h>
@@ -194,11 +196,11 @@ void procesarArchivoCSV(gestorAlmacenamiento& gestor, disco& disco1) {
         }
         case 2: {
             cout << "valor: " << valor << endl;
-            insertarNRegistrosDesdeCSV(gestor, archivo_csv, RUTASB,valor);
+            //insertarNRegistrosDesdeCSV(gestor, archivo_csv, RUTASB,valor);
             break;
         }
         case 3:
-            insertarTodosLosRegistrosDesdeCSV(gestor, archivo_csv, RUTASB, valor);
+            //insertarTodosLosRegistrosDesdeCSV(gestor, archivo_csv, RUTASB, valor);
             break;
 
         default:
@@ -512,6 +514,7 @@ void generarEntradaIndex(Query& query){
 
 void menuConsultas(){
     Query query;
+    ControladorQuery controladorQuery;
     int opcion;
     do {
         cout << "\n----- consultas -----\n";
@@ -529,6 +532,7 @@ void menuConsultas(){
                 query.pedirDatos();
                 
                 generarEntradaIndex(query);
+
                 break;
             case 3:
                 //B-tree

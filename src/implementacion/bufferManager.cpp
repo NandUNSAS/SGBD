@@ -9,6 +9,12 @@ using namespace std;
 const string RUTASB = "../../rutas_sectores/cilindroMedio.txt";
 const string SALIDA = "../../salidaTerminal.txt";
 // Constructor
+
+bufferManager::bufferManager()
+    : time_counter(0), capacity(0), clock_hand(0), current_policy(ReplacementPolicy::LRU) {
+    // No inicializa frames porque capacity es 0
+}
+
 bufferManager::bufferManager(int frames, ReplacementPolicy policy) 
     : capacity(frames), time_counter(0), clock_hand(0), current_policy(policy) {
     for (int i = 0; i < capacity; i++) {

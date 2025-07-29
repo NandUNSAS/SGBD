@@ -221,6 +221,9 @@ bool Query::getTodos_Campos() const {
     return todos_campos;
 }
 
+Esquema Query::getEsquema(){
+    return esquema;
+}
 void Query::setEsquema(Esquema& _esquema){
     esquema = _esquema;
 }

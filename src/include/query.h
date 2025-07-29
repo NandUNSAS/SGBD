@@ -24,13 +24,14 @@ private:
     // Para INSERT
     vector<string> columnas;
     vector<string> valores;
-
+     //ESQUEMA
+    Esquema esquema;
+    
     // Para UPDATE
     string atributoUpdate;
     string nuevoValor;
 
-    //ESQUEMA
-    Esquema esquema;
+   
 public:
     Query();
     
@@ -51,6 +52,8 @@ public:
     string getValor() const;
     int getOpcionCondicion() const;
     bool getTodos_Campos() const;
+
+    Esquema getEsquema();
 
     void setEsquema(Esquema& esquema);
     string generarConsultaSQL() const;

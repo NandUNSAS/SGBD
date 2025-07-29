@@ -1,4 +1,4 @@
-id_caba,Nombre,Categoria,talla,stock_actual,precio_venta
+id_calzado,Nombre,Categoria,talla,stock_actual,precio_venta
 CZ-001,Botas Vans Sk8-Hi,Formal,44,89,341.58
 CZ-002,Botas Timberland Botas Premium,Formal,41,37,324.89
 CZ-003,Zapatilla Converse One Star,Deportivo,40,56,484.87

@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <vector>
 #include <queue>
+#include "controlador_Query.h"
 using namespace std;
 
 // Enum para las políticas de reemplazo
@@ -19,6 +20,7 @@ enum class ReplacementPolicy {
 };
 
 class bufferManager {
+    
     gestorBloques gb;
     Query query;
     string consulta;
@@ -30,7 +32,7 @@ class bufferManager {
         bool dirty;
         bool pinned;
         string mode;        // "read" o "write"
-        
+        ControladorQuery controladorQuery; 
         // Para LRU
         int last_accessed;
         
@@ -53,6 +55,7 @@ class bufferManager {
     void writeToDisk(int block_id);
 
 public:
+    bufferManager();
     bufferManager(int frames, ReplacementPolicy policy = ReplacementPolicy::LRU);
     void setQuery(const Query& query);
     Query getQuery() const;

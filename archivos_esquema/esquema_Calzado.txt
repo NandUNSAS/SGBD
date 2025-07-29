@@ -1,0 +1,1 @@
+Calzado#id_calzado#int#4#Nombre#string#50#Categoria#string#10#talla#int#2#stock_actual#int#3#precio_venta#float#6

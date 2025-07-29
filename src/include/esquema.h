@@ -10,7 +10,8 @@ struct CampoEsquema {
     string nombre;
     string tipo;
     int tamano;
-    int posicion; // Posición del campo (0-based)
+    int posicion;
+    int tamanoSector; 
 };
 
 class Esquema {
@@ -42,6 +43,7 @@ public:
     // Obtiene todos los campos del esquema
     const vector<CampoEsquema>& getCampos() const;
     
+    int calcularTamanoRegistro();
 };
 
 #endif // ESQUEMA_H

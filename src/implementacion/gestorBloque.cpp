@@ -18,4 +18,13 @@ void gestorBloques::mostrarBloque(int id) const{
             cout << "Bloque con ID " << id << " no encontrado." << endl;
         }
 }
+
+bloque& gestorBloques::getBloque(int id) {
+    auto it = bloques.find(id);
+    if (it != bloques.end()) {
+        return it->second;  // Devuelve referencia al bloque existente
+    } else {
+        throw std::out_of_range("Bloque con ID " + std::to_string(id) + " no encontrado.");
+    }
+}
 //

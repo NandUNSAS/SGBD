@@ -93,6 +93,13 @@ const vector<CampoEsquema>& Esquema::getCampos() const {
     return campos;
 }
 
+int Esquema::calcularTamanoRegistro() {
+    int total = 0;
+    for (const auto& campo : campos) {
+        total += campo.tamano;
+    }
+    return total;
+}
 /*
 string crearArchivoIndexacion(int numeroCampo){
 

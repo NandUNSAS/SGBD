@@ -24,6 +24,49 @@ string cambiarIndicePorUno(const string& ruta) {
     return ruta;
 }
 
+int bloqueDisponibleInt(string ruta) {  // Cambiamos el tipo de retorno a int
+    ifstream archivo(ruta);
+    if (!archivo.is_open()) {
+        cerr << "Error al abrir el archivo: " << ruta << endl;
+        return -1;  // Retorna -1 si hay un error
+    }
+
+    string rutaBloque;
+    vector<string> campos;
+    int bloqueId = 0;  // Contador para el ID del bloque
+    
+    do {
+        if (!getline(archivo, rutaBloque)) {
+            cerr << "No se encontraron bloques disponibles" << endl;
+            return -1;  // Retorna -1 si no hay bloques disponibles
+        }
+        bloqueId++;  // Incrementamos el ID cada línea leída
+        campos = obtenerCampos(rutaBloque); 
+    } while (stoi(campos[0]) == 1);    
+
+    cout << "Bloque disponible encontrado en la línea: " << bloqueId << endl;
+    cout << "Ruta del bloque: " << rutaBloque << endl;
+
+    // (El resto del código para encontrar el sector disponible permanece igual)
+    ifstream archivoSector(campos[1]);
+    string rutaSector;
+    vector<string> campos2;
+    
+    if (getline(archivoSector, rutaSector)) {  // Leer primera línea
+        do {
+            if (!getline(archivoSector, rutaSector)) {
+                cerr << "No se encontraron sectores disponibles" << endl;
+                return bloqueId;  // Retorna el bloqueId aunque no haya sector
+            }
+            campos2 = obtenerCampos(rutaSector);
+        } while(stoi(campos2[0]) == 1);
+        
+        cout << "Sector disponible: " << rutaSector << endl;
+    }
+
+    return bloqueId;  // Devolvemos el ID del bloque como int
+}
+
 string bloqueDisponible(string ruta){
     ifstream archivo(ruta);
 
@@ -50,6 +93,8 @@ string bloqueDisponible(string ruta){
     
     return campos2[1];
 }
+
+
 
 void verificadorSectoresLlenos(string ruta) {
     fstream archivo(ruta, ios::in | ios::out);
@@ -232,6 +277,7 @@ void insertarRegistroDesdeCSV(gestorAlmacenamiento& gestor, const string& archiv
     cout << "Registro insertado correctamente:\n" << linea << endl;
 }
 
+
 void insertarNRegistrosDesdeCSV(gestorAlmacenamiento& gestor, const string& archivo_csv, const string& rutaBloques, int tam) {
     int cantidad;
     cout << "¿Cuántos registros desea insertar desde el archivo CSV? ";
@@ -279,6 +325,7 @@ void insertarNRegistrosDesdeCSV(gestorAlmacenamiento& gestor, const string& arch
         cout << "Se insertaron los " << cantidad << " registros correctamente." << endl;
     }
 }
+
 
 void insertarTodosLosRegistrosDesdeCSV(gestorAlmacenamiento& gestor, const string& archivo_csv, const string& rutaBloques, int tam) {
     ifstream archivo(archivo_csv);

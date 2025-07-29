@@ -14,6 +14,6 @@ void imprimirVectorInt(const vector<int>& vec);
 int devolverCampo(const string& contenido_sector, int campo_n);
 bool actualizarCabecera(int tamanoRegistro, string ruta_sector, int capacidadSector);
 bool actualizarCabeceraB(int tamanoRegistro, string ruta_sector, int capacidadSector, int sectoresXbloque);
-
+string limpiarYConvertir(const std::string& entrada);
 #endif // !FUNCIONESBLOQUE_H
 //

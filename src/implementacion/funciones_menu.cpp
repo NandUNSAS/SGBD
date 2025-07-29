@@ -34,6 +34,7 @@ const string RUTAS = "../../rutas_sectores/rutas.txt";
 const string RUTASB = "../../rutas_sectores/cilindroMedio.txt";
 const string ARCHIVO_INFO_DISCO = "../../archivo_info_Disco/info_disco.txt";
 const string ARCHIVO_B_X_SECTORES = "../../archivo_info_Disco/info_bloque.txt";
+const string ARCHIVO_CSVP = "../../archivos_csv/Postulantes.csv";
 
 #define ESQUEMAS "../archivos_esquema/"
 
@@ -118,7 +119,7 @@ void crearDiscoPersonalizado(gestorAlmacenamiento& gestor, disco& disco1) {
 }
 
 void usarDiscoPorDefecto(gestorAlmacenamiento& gestor, disco& disco1) {
-    const int sectoresBloque = 4;
+    const int sectoresBloque = 8;
 
     disco1.discoEstatico();
     disco1.crearDisco();
@@ -151,9 +152,9 @@ void usarDiscoPorDefecto(gestorAlmacenamiento& gestor, disco& disco1) {
 
 void procesarArchivoCSV(gestorAlmacenamiento& gestor, disco& disco1) {
     int opcionArchivo;
-    cout << "Seleccione archivo:\n1. Titanic\n2. Housing\nOpción: ";
+    cout << "Seleccione archivo:\n1. Titanic\n2. Housing\n3. Postulantes\nOpción: ";
     cin >> opcionArchivo;
-
+    Esquema _esquema; 
     string archivo_csv, archivo_datos, esquema, relacion;
     int valor;
 
@@ -171,14 +172,26 @@ void procesarArchivoCSV(gestorAlmacenamiento& gestor, disco& disco1) {
         relacion = "housing";
         valor = obtenerRegistroMasLargo(archivo_csv, 's');
         gestor.setLongitudRegistroMax(valor);
-    } else {
+    } else if(opcionArchivo == 3){
+        string nombreTabla = "Postulantes";
+        archivo_csv = ARCHIVO_CSVP;
+        _esquema.construirEsquema(nombreTabla);
+        int tamanoregistro = _esquema.calcularTamanoRegistro();
+        _esquema.mostrarEsquema();
+        cout << tamanoregistro << endl;
+        valor = tamanoregistro;
+    } 
+    
+    else {
         cout << "Opción no válida.\n";
         return;
     }
 
-    // Generar esquema
-    encontrarLongitudesMaximas(archivo_csv, ARCHIVO_LONG_MAX);
-    construirEsquema(archivo_csv, archivo_datos, ARCHIVO_LONG_MAX, relacion, esquema);
+    if(opcionArchivo != 3 ){
+        // Generar esquema
+        encontrarLongitudesMaximas(archivo_csv, ARCHIVO_LONG_MAX);
+        construirEsquema(archivo_csv, archivo_datos, ARCHIVO_LONG_MAX, relacion, esquema);
+    }
 
     // Opciones de inserción
     int opcionInsertar;
@@ -196,11 +209,11 @@ void procesarArchivoCSV(gestorAlmacenamiento& gestor, disco& disco1) {
         }
         case 2: {
             cout << "valor: " << valor << endl;
-            //insertarNRegistrosDesdeCSV(gestor, archivo_csv, RUTASB,valor);
+            insertarNRegistrosDesdeCSV(gestor, archivo_csv, RUTASB,valor);
             break;
         }
         case 3:
-            //insertarTodosLosRegistrosDesdeCSV(gestor, archivo_csv, RUTASB, valor);
+            insertarTodosLosRegistrosDesdeCSV(gestor, archivo_csv, RUTASB, valor, _esquema);
             break;
 
         default:
@@ -515,6 +528,7 @@ void generarEntradaIndex(Query& query){
 void menuConsultas(){
     Query query;
     ControladorQuery controladorQuery;
+    string tipoConsulta;
     int opcion;
     do {
         cout << "\n----- consultas -----\n";
@@ -530,9 +544,10 @@ void menuConsultas(){
             case 2:
                 query.pedirTipoConsulta();
                 query.pedirDatos();
-                
-                generarEntradaIndex(query);
-
+                tipoConsulta = query.getTipo();
+                controladorQuery.setTipoConsulta(tipoConsulta);
+                controladorQuery.efectuarConsulta(query, RUTASB);
+                //generarEntradaIndex(query);
                 break;
             case 3:
                 //B-tree

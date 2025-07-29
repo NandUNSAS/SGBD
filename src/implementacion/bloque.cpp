@@ -119,3 +119,41 @@ void bloque::inicializarBloque(int id, string ruta){
     rutaBloque = ruta;
     construirBloque();
 }
+
+
+
+void bloque::leerRutasSectoresDesdeArchivo() {
+    rutaSectores.clear();
+
+    ifstream archivo(rutaBloque);
+    if (!archivo.is_open()) {
+        cerr << "Error al abrir el archivo: " << rutaBloque << endl;
+        return;
+    }
+
+    string linea;
+    bool primeraLinea = true;
+
+    while (getline(archivo, linea)) {
+        if (primeraLinea) {
+            primeraLinea = false;
+            continue; // Saltar encabezado
+        }
+
+        if (linea.empty()) continue;
+
+        size_t pos = linea.find('#');
+        if (pos != string::npos) {
+            string estadoStr = linea.substr(0, pos);
+            string ruta = linea.substr(pos + 1);
+
+            EntradaSector entrada;
+            entrada.estado = stoi(estadoStr);
+            entrada.rutaSector = ruta;
+
+            rutaSectores.push_back(entrada);
+        }
+    }
+
+    archivo.close();
+}

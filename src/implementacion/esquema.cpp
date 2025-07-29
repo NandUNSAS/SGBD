@@ -98,8 +98,15 @@ int Esquema::calcularTamanoRegistro() {
     for (const auto& campo : campos) {
         total += campo.tamano;
     }
+
+    // Agregar el tamaño de los separadores '#'
+    if (!campos.empty()) {
+        total += campos.size() - 1;
+    }
+
     return total;
 }
+
 /*
 string crearArchivoIndexacion(int numeroCampo){
 

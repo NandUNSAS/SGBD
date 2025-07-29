@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <cctype>
 
 #define ARCHIVO_ESQUEMA_HEAD "../../archivos_esquema/esquema_registro_bloques.txt"
 
@@ -23,6 +24,32 @@ void imprimirVectorInt(const vector<int>& vec) {
         cout << valor << " ";
     }
     cout << endl;
+}
+
+
+std::string limpiarYConvertir(const std::string& entrada) {
+    std::string resultado;
+
+    for (char c : entrada) {
+        // Respeta el salto de línea
+        if (c == '\n') {
+            resultado += c;
+        }
+        // Elimina retorno de carro u otros caracteres no imprimibles (excepto \n)
+        else if (c == '\r' || !isprint(c)) {
+            continue;
+        }
+        // Reemplaza caracteres alfanuméricos por '#'
+        else if (c == ',') {
+            resultado += '#';
+        }
+        // Conserva otros símbolos visibles
+        else {
+            resultado += c;
+        }
+    }
+
+    return resultado;
 }
 
 vector<string> obtenerCampos(const string& linea) {

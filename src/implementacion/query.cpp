@@ -224,7 +224,12 @@ bool Query::getTodos_Campos() const {
 Esquema Query::getEsquema(){
     return esquema;
 }
-void Query::setEsquema(Esquema& _esquema){
+
+vector<string> Query::getValores(){
+    return valores;
+}
+
+    void Query::setEsquema(Esquema& _esquema){
     esquema = _esquema;
 }
 

@@ -6,12 +6,19 @@
 
 using namespace std;
 
+struct EntradaSector {
+    int estado;         // 0 = libre, 1 = ocupado
+    string rutaSector;
+};
+
 class bloque{
     int idBloque;
     string rutaBloque; 
     string contenido;
-
+    vector<EntradaSector> rutaSectores;
+    int sectoresXbloque;
     
+
     public:
     bloque();
     void inicializarBloque(int id, string ruta);
@@ -32,6 +39,8 @@ class bloque{
         contenido = nuevosDatos;
         cout << "Nuevo contenido: " << contenido.substr(0, 50) << "..." << endl;
     }
+
+    void leerRutasSectoresDesdeArchivo();
 //
 };
 

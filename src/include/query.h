@@ -52,6 +52,7 @@ public:
     string getValor() const;
     int getOpcionCondicion() const;
     bool getTodos_Campos() const;
+    vector<string> getValores();
 
     Esquema getEsquema();
 

@@ -8,6 +8,9 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include <iomanip>
+
 using namespace std;
 ///
 string cambiarIndicePorUno(const string& ruta) {
@@ -238,6 +241,61 @@ void verificadorBloquesLlenos(const string& archivoRutasBloques) {
     }
 }
 
+string generarRegistroFijo(Esquema esquema, string registroCSV){
+    string registro = limpiarYConvertir(registroCSV);
+    cout << "registro nuevo: " << registro << endl;
+    const vector<CampoEsquema>& campos = esquema.getCampos();
+    const vector<string>& valores = obtenerCampos(registro);
+    string registroInsercion;
+
+    if (valores.size() != campos.size()) {
+        cout <<"tamaño de valores: " << valores.size() <<endl;
+        imprimirVectorString(valores);
+        cout << "tamaño del esquema" << campos.size() << endl;
+        cerr << "Error: cantidad de valores no coincide con el esquema." << endl;
+        
+        return "";
+    }
+
+    for (size_t i = 0; i < campos.size(); ++i) {
+        string valor = valores[i];
+        string tipo = campos[i].tipo;
+        int tamano = campos[i].tamano;
+
+        if (tipo == "string") {
+            if ((int)valor.size() > tamano) {
+                valor = valor.substr(0, tamano);  // Truncar
+            } else {
+                valor.append(tamano - valor.size(), ' ');  // Padding con espacios
+            }
+        } else if (tipo == "int") {
+            valor = to_string(stoi(valor));
+            if ((int)valor.size() > tamano) {
+                valor = valor.substr(0, tamano);
+            } else {
+                valor.insert(valor.begin(), tamano - valor.size(), '0');
+            }
+        } else if (tipo == "float") {
+            stringstream ss;
+            ss << fixed << setprecision(2) << stof(valor);
+            valor = ss.str();
+            if ((int)valor.size() > tamano) {
+                valor = valor.substr(0, tamano);
+            } else {
+                valor.insert(valor.begin(), tamano - valor.size(), '0');
+            }
+        }
+
+        registroInsercion += valor;
+
+        // Agregar '#' solo si no es el último campo
+        if (i != campos.size() - 1) {
+            registroInsercion += '#';
+        }
+    }
+
+    return registroInsercion;
+}
 
 void insertarRegistroDesdeCSV(gestorAlmacenamiento& gestor, const string& archivo_csv, const string& rutaBloques, int tam) {
     int filaDeseada;
@@ -327,7 +385,7 @@ void insertarNRegistrosDesdeCSV(gestorAlmacenamiento& gestor, const string& arch
 }
 
 
-void insertarTodosLosRegistrosDesdeCSV(gestorAlmacenamiento& gestor, const string& archivo_csv, const string& rutaBloques, int tam) {
+void insertarTodosLosRegistrosDesdeCSV(gestorAlmacenamiento& gestor, const string& archivo_csv, const string& rutaBloques, int tam, Esquema& esquema) {
     ifstream archivo(archivo_csv);
     if (!archivo.is_open()) {
         cerr << "No se pudo abrir el archivo CSV: " << archivo_csv << endl;
@@ -345,6 +403,7 @@ void insertarTodosLosRegistrosDesdeCSV(gestorAlmacenamiento& gestor, const strin
 
     // Leer e insertar todos los registros
     while (getline(archivo, linea)) {
+        linea = generarRegistroFijo(esquema, linea);
         string rutaSector = bloqueDisponible(rutaBloques);
         if (rutaSector.empty()) {
             cerr << "No se encontró un sector disponible para el registro #" << contador + 1 << endl;

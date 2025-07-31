@@ -21,6 +21,7 @@
 #include <fstream>
 #include <algorithm>
 #include <vector>
+#include "../include/directorioHash.h"
 using namespace std;
 
 const string ARCHIVO_CSVT = "../../archivos_csv/TitanicG.csv";
@@ -522,29 +523,57 @@ void crearTabla() {
     }
 }
 
-void generarEntradaIndex(Query& query){
-    int tipoCondicion = query.getOpcionCondicion();
-    if(tipoCondicion == 1){
-        //llamar indexacion hash
+void cargarPaginaPorID(bufferManager& bm, int id, Query& query) {
+    int idBloque = id;
+    char modo ;
+    char pinOption = 'N';
+    string tipoConsulta = query.getTipo();
+    if(tipoConsulta == "SELECT"){
+        modo = 'L';
     }
 
-    else if (tipoCondicion >= 2 && tipoCondicion <= 6 ){
-        //llamar indexacion arboltree
+    modo = toupper(modo);
+    
+    if (modo != 'L' && modo != 'E') {
+        cout << "Modo no válido. Use L (lectura) o E (escritura)." << endl;
+        return;
     }
+
+    pinOption = toupper(pinOption);
+    
+    bool pinned = (pinOption == 'S');
+    string mode_str = (modo == 'L') ? "read" : "write";
+    
+    string rutaBloque;
+    try {
+        rutaBloque = obtenerRutaPorId(RUTASB, idBloque);
+    } catch (const exception& e) {
+        cerr << "Error: " << e.what() << endl;
+        return;
+    }
+    
+    int valorPostulante = query.getIntValor();
+    cout << "valor de postulantes: "<< valorPostulante <<endl;
+    bloque b;
+    b.inicializarBloqueInt(idBloque, rutaBloque,valorPostulante);
+    bm.agregarBufferPool(idBloque, b, mode_str, pinned);
 }
 
-void menuConsultas(){
+void menuConsultas(bufferManager& bufferManager) {
     Query query;
     ControladorQuery controladorQuery;
-    string tipoConsulta;
-    string resultado;
+    DirectorioHash dirHash(2, 4); // profundidad inicial 2, tamaño bucket 4
+    bool indicesCargados = false;
     int opcion;
+    int id;
     do {
         cout << "\n----- consultas -----\n";
         cout << "1. Crear Tabla (ESQUEMA)\n";
         cout << "2. Realizar Consulta\n";
         cout << "3. Buscar Postulante por ID\n";
         cout << "4. Reconstruir Indice Postulantes\n";
+        cout << "5. Generar entrada index\n";
+        cout << "8. Salir\n";
         cin >> opcion;
         cin.ignore();
 
@@ -552,26 +581,55 @@ void menuConsultas(){
             case 1:
                 crearTabla();
                 break;
-            case 2:
+            case 2: {
+                if(!indicesCargados) {
+                    dirHash = DirectorioHash(2, 35); // Reiniciar el índice
+                    dirHash.cargarDesdeArchivo("../../entradas.txt");
+                    indicesCargados = true;
+                }
                 query.pedirTipoConsulta();
                 query.pedirDatos();
-                tipoConsulta = query.getTipo();
-                controladorQuery.setTipoConsulta(tipoConsulta);
-                controladorQuery.efectuarConsulta(query, RUTASB);
-                //generarEntradaIndex(query);
+                int clave = query.getIntValor();
+                int id = dirHash.search(clave);
+                if(id != -1) {
+                    cargarPaginaPorID(bufferManager, id, query);
+                } else {
+                    cout << "ID de postulante no encontrado" << endl;
+                }
+                bufferManager.mostrarEstadoBufferPool();
                 break;
-            case 3:
-                int idPostulante;
-                cout << "Ingrese ID del postulante: "; cin >> idPostulante;
-                resultado = controladorQuery.buscarPostulantePorID(idPostulante);
-                cout << "Resultado: " << resultado << endl;
+            }
+            case 3: {
+                if(!indicesCargados) {
+                    dirHash.cargarDesdeArchivo("../../entradas.txt");
+                    indicesCargados = true;
+                }
+                int idBuscar;
+                cout << "Ingrese ID del postulante: ";
+                cin >> idBuscar;
+                int idBloque = dirHash.search(idBuscar);
+                if(idBloque != -1) {
+                    cout << "El postulante " << idBuscar << " se encuentra en el bloque " << idBloque << endl;
+                } else {
+                    cout << "Postulante no encontrado" << endl;
+                }
                 break;
+            }
             case 4:
-                controladorQuery.generarIndicePostulantes();
-                cout << "Índice de postulantes reconstruido exitosamente.\n";
+                dirHash = DirectorioHash(2, 35); // Reiniciar el índice
+                dirHash.cargarDesdeArchivo("../../entradas.txt");
+                indicesCargados = true;
+                cout << "Índice reconstruido exitosamente" << endl;
+                dirHash.mostrarTablaHash();
+                break;
+            case 5:
+                id = obtenerIdBloqueLlenoUltimo(RUTASB);
+                cout << "Para generar reporte haga una consulta SELECT del id_postulante" << endl;
+                generarArchivoUnicoIndices(RUTASB, id, "../../entradas.txt");
                 break;
             default:
                 cout << "Opción no válida. Intente nuevamente.\n";
+                break;
         }
-    } while(opcion != 4);
+    } while(opcion != 8);
 }

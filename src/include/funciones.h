@@ -15,5 +15,7 @@ void construirEsquema(const string& archivoAtributos,
 
 string obtenerRutaPorId(const string& archivoRutas, int idBloque);
 string obtenerRuta(const string& linea);
+int obtenerIdBloqueLlenoUltimo(const string& rutasBloques);
+void generarArchivoUnicoIndices(const string& rutaBloques, int maxId, const string& archivoSalida);
 #endif 
 //

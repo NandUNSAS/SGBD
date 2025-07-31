@@ -5,6 +5,8 @@ using namespace std;
 
 
 void gestorBloques::agregarBloque(int id, const bloque& b) {
+    int _id = b.getIdPostulante();
+    cout <<  "idPostulante asignado en gestor bloque" << _id << endl;
     bloques[id] = b;
 }
 
@@ -14,6 +16,8 @@ void gestorBloques::mostrarBloque(int id) const{
         if (it != bloques.end()) {
             const bloque& b = it->second;
             b.mostrarBloque();
+            string registroEncontrado = b.buscarRegistroPorIdPostulante();
+            cout << registroEncontrado << endl;
         } else {
             cout << "Bloque con ID " << id << " no encontrado." << endl;
         }

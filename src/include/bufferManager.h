@@ -69,7 +69,7 @@ public:
     ReplacementPolicy getCurrentPolicy() const { return current_policy; }
     void mostrarContenidoBloque(int id) const;
     bool handleFullBufferCLOCK(int new_block_id, const string& mode, bool pinned);
-    bool handleFullBufferLRU(int new_block_id, const string& mode, bool pinned);
+    bool handleFullBufferLRU(int new_block_id, const string& mode, bool pinned, bloque& bloqueAgregar);
 
 };
 #endif // !BUFFERMANAGER_H

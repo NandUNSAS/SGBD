@@ -9,6 +9,8 @@
 #include <algorithm>
 #include <sstream>
 
+#include <unordered_set>
+
 
 using namespace std;
 
@@ -218,6 +220,202 @@ void construirEsquema(const string& archivoAtributos,
 }
 
 
+int obtenerIdBloqueLlenoUltimo(const string& rutaArchivoBloques) {
+    ifstream archivo(rutaArchivoBloques);
+    if (!archivo.is_open()) {
+        cerr << "No se pudo abrir el archivo de rutas: " << rutaArchivoBloques << endl;
+        return -1;
+    }
+
+    string linea;
+    int contador = 1;
+
+    while (getline(archivo, linea)) {
+        if (linea.empty()) continue;
+
+        size_t pos = linea.find('#');
+        if (pos == string::npos) continue;
+
+        string cabecera = linea.substr(0, pos);
+        string rutaBloque = linea.substr(pos + 1);
+
+        if (cabecera == "0") {
+            ifstream archivoBloque(rutaBloque);
+            if (!archivoBloque.is_open()) {
+                cerr << "No se pudo abrir el archivo de bloque: " << rutaBloque << endl;
+                contador++;
+                continue;
+            }
+
+            string lineaBloque;
+            bool esPrimera = true;
+            while (getline(archivoBloque, lineaBloque)) {
+                if (lineaBloque.empty()) continue;
+
+                if (esPrimera) {
+                    // Solo ignorar la cabecera del bloque, sin verificar nada
+                    esPrimera = false;
+                    continue;
+                }
+
+                size_t posReg = lineaBloque.find('#');
+                if (posReg == string::npos) continue;
+
+                string cabeceraReg = lineaBloque.substr(0, posReg);
+                if (cabeceraReg == "1") {
+                    return contador;
+                } else if (cabeceraReg == "0") {
+                    string rutaSector = lineaBloque.substr(posReg + 1);
+                    ifstream archivoSector(rutaSector);
+                    if (!archivoSector.is_open()) {
+                        cerr << "No se pudo abrir el archivo del sector: " << rutaSector << endl;
+                        continue;
+                    }
+
+                    string cabeceraSector;
+                    if (getline(archivoSector, cabeceraSector)) {
+                        istringstream iss(cabeceraSector);
+                        string parte;
+                        int campoIndex = 0;
+                        while (getline(iss, parte, '#')) {
+                            if (campoIndex == 3) {
+                                if (parte > "00") {
+                                    return contador;
+                                }
+                                break;
+                            }
+                            campoIndex++;
+                        }
+                    }
+                }
+            }
+        }
+
+        contador++;
+    }
+
+    return -1;  // No se encontró un bloque que cumpla la condición
+}
+
+
+
+void generarArchivoUnicoIndices(const string& rutaBloques, int maxId, const string& archivoSalida) {
+    ifstream archivoBloques(rutaBloques);
+    if (!archivoBloques.is_open()) {
+        cerr << "Error al abrir el archivo de rutas de bloques: " << rutaBloques << endl;
+        return;
+    }
+
+    ofstream archivoIndices(archivoSalida);
+    if (!archivoIndices.is_open()) {
+        cerr << "Error al crear archivo de índices: " << archivoSalida << endl;
+        return;
+    }
+
+    unordered_set<string> idsAgregados;  // Para evitar duplicados
+    string lineaBloque;
+    int idBloque = 1;
+
+    // Leer cada línea del archivo de bloques una sola vez
+    while (getline(archivoBloques, lineaBloque) && idBloque <= maxId) {
+        vector<string> camposBloque;
+        istringstream streamBloque(lineaBloque);
+        string token;
+
+        while (getline(streamBloque, token, '#')) {
+            camposBloque.push_back(token);
+        }
+
+        if (camposBloque.size() < 2) {
+            idBloque++;
+            continue;
+        }
+
+        // Abrir archivo de contenido del bloque
+        ifstream contenidoBloque(camposBloque[1]);
+        if (!contenidoBloque.is_open()) {
+            cerr << "No se pudo abrir archivo de bloque: " << camposBloque[1] << endl;
+            idBloque++;
+            continue;
+        }
+
+        string lineaContenido;
+        bool primeraLinea = true;
+
+        while (getline(contenidoBloque, lineaContenido)) {
+            if (primeraLinea) {
+                primeraLinea = false;
+                continue; // Saltar cabecera del bloque
+            }
+
+            vector<string> camposContenido;
+            istringstream streamContenido(lineaContenido);
+            string tokenContenido;
+
+            while (getline(streamContenido, tokenContenido, '#')) {
+                camposContenido.push_back(tokenContenido);
+            }
+
+            if (camposContenido.size() < 2) continue;
+
+            // Abrir archivo del sector
+            ifstream archivoSector(camposContenido[1]);
+            if (!archivoSector.is_open()) {
+                cerr << "No se pudo abrir archivo del sector: " << camposContenido[1] << endl;
+                continue;
+            }
+
+            string lineaSector;
+            bool primeraLineaSector = true;
+            bool tieneRegistros = false;
+
+            while (getline(archivoSector, lineaSector)) {
+                if (primeraLineaSector) {
+                    primeraLineaSector = false;
+
+                    // Analizar cabecera del sector
+                    vector<string> cabeceraSector;
+                    istringstream streamCabecera(lineaSector);
+                    string tokenCabecera;
+
+                    while (getline(streamCabecera, tokenCabecera, '#')) {
+                        cabeceraSector.push_back(tokenCabecera);
+                    }
+
+                    // Verificar si hay registros (campo 4 > 0)
+                    if (cabeceraSector.size() < 4 || stoi(cabeceraSector[3]) == 0) {
+                        break;
+                    }
+
+                    tieneRegistros = true;
+                    continue;
+                }
+
+                // Si hay registros, procesarlos
+                if (!tieneRegistros) break;
+
+                size_t pos = lineaSector.find('#');
+                if (pos != string::npos) {
+                    string idPostulante = lineaSector.substr(0, pos);
+                    
+                    // Evitar duplicados
+                    if (idsAgregados.find(idPostulante) == idsAgregados.end()) {
+                        archivoIndices << idPostulante << "#" << idBloque << endl;
+                        idsAgregados.insert(idPostulante);
+                    }
+                }
+            }
+
+            archivoSector.close();
+        }
+
+        contenidoBloque.close();
+        idBloque++;
+    }
+
+    archivoBloques.close();
+    archivoIndices.close();
+}
 
 
 

@@ -34,7 +34,7 @@ using namespace std;
 int main() {
     controladorDisco cd;
     disco disco1;
-    bufferManager bm(0);
+    bufferManager bm(1);
     gestorAlmacenamiento gestor(cd);
 
     int opcion;
@@ -67,7 +67,7 @@ int main() {
                 break;
             
             case 7:
-                menuConsultas();
+                menuConsultas(bm);
                 break;
             case 8:
                 cout << "Gracias por usar Megatrom 3000. ¡Hasta luego!\n";

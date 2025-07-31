@@ -160,7 +160,7 @@ bool bufferManager::handleFullBufferCLOCK(int new_block_id, const string& mode, 
 }
 
 
-bool bufferManager::handleFullBufferLRU(int new_block_id, const string& mode, bool pinned) {
+bool bufferManager::handleFullBufferLRU(int new_block_id, const string& mode, bool pinned,bloque& bloqueAgregar) {
     while (true) { 
         int lru_index = -1;
         int min_time = numeric_limits<int>::max();
@@ -239,9 +239,9 @@ bool bufferManager::handleFullBufferLRU(int new_block_id, const string& mode, bo
                             return false;
                         }
                         
-                        bloque b;
-                        b.inicializarBloque(new_block_id, rutaBloque);
-                        gb.agregarBloque(new_block_id, b);
+                        //bloque b;
+                        //b.inicializarBloque(new_block_id, rutaBloque);
+                        gb.agregarBloque(new_block_id, bloqueAgregar);
                         
                         lru_frame.block_id = new_block_id;
                         lru_frame.pin_count = 1; // Asignar pin_count inicial
@@ -338,7 +338,7 @@ void bufferManager::agregarBufferPool(int id, bloque b, const string& mode, bool
     time_counter--;
         // Llamar a la función correcta según la política
     if (current_policy == ReplacementPolicy::LRU) {
-        while (!handleFullBufferLRU(id, mode, pinned)) {
+        while (!handleFullBufferLRU(id, mode, pinned,b)) {
             cout << "Buscando siguiente frame candidato (LRU)..." << endl;
         }
     } else if (current_policy == ReplacementPolicy::CLOCK) {

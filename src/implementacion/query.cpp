@@ -10,16 +10,10 @@ void Query::pedirTipoConsulta() {
     int opcion;
     cout << "\n----- TIPO CONSULTA -----\n";
     cout << "1. SELECT\n";
-    cout << "2. INSERT\n";
-    cout << "3. DELETE\n";
-    cout << "4. UPDATE\n";
     cin >> opcion;
 
     switch (opcion) {
         case 1: tipo = "SELECT"; break;
-        case 2: tipo = "INSERT"; break;
-        case 3: tipo = "DELETE"; break;
-        case 4: tipo = "UPDATE"; break;
         default: tipo = "UNKNOWN";
     }
 }
@@ -54,7 +48,6 @@ void Query::pedirCamposSelect() {
     while (opcion != 1 && opcion != 2) {
         cout << "\nSelección de campos:\n";
         cout << "1. Todos los campos (*)\n";
-        cout << "2. Campos específicos\n";
         cout << "Opción: ";
         cin >> opcion;
         cin.ignore();
@@ -82,29 +75,23 @@ void Query::pedirCamposSelect() {
 }
 
 void Query::pedirWhereSelect() {
-    cout << "\n¿Deseas aplicar cláusula WHERE? (1: Sí, 0: No): ";
-    int opcion;
-    cin >> opcion;
-    cin.ignore();
+    
+    int opcion = 1;
     tieneWhere = (opcion == 1);
 
     if (tieneWhere) {
         cout << "\nTipo de condición WHERE:\n";
         cout << "1. Igualdad (=)\n";
-        cout << "2. Rango (BETWEEN)\n";
-        cout << "3. Mayor que (>)\n";
-        cout << "4. Menor que (<)\n";
-        cout << "5. Mayor o igual que (>=)\n";
-        cout << "6. Menor o igual que (<=)\n";
         cout << "Opción: ";
         cin >> opcionCondicion;
         cin.ignore();
-
-        cout << "Introduce el nombre del atributo: ";
+        vector<CampoEsquema> campos = esquema.getCampos(); 
+        cout << "atributo =  " << campos[0].nombre;
         getline(cin, atributo);
 
         switch(opcionCondicion) {
             case 1: // Igualdad
+                cout << "tipo(" << campos[0].tipo<<") y tamaño("<<campos[0].tamano <<") para valor "<< endl;
                 cout << "Introduce el valor para comparar (=): ";
                 getline(cin, valor);
                 break;
@@ -211,6 +198,18 @@ string Query::getAtributo() const {
 
 string Query::getValor() const {
     return valor;
+}
+
+int Query::getIntValor() const {
+    try {
+        return stoi(valor);
+    } catch (const invalid_argument& e) {
+        cerr << "Error: El valor '" << valor << "' no se puede convertir a entero" << endl;
+        return -1;
+    } catch (const out_of_range& e) {
+        cerr << "Error: El valor '" << valor << "' está fuera del rango de un entero" << endl;
+        return -1;
+    }
 }
 
 int Query::getOpcionCondicion() const{

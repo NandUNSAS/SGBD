@@ -17,11 +17,12 @@ class bloque{
     string contenido;
     vector<EntradaSector> rutaSectores;
     int sectoresXbloque;
-    
+    int idPostulante;
 
     public:
     bloque();
     void inicializarBloque(int id, string ruta);
+    void inicializarBloqueInt(int id, string ruta, int _idPostulante);
     void construirBloque();
     void mostrarBloque()const;
 
@@ -41,6 +42,9 @@ class bloque{
     }
 
     void leerRutasSectoresDesdeArchivo();
+    string buscarRegistroPorIdPostulante() const;
+
+    int getIdPostulante() const;
 //
 };
 

@@ -14,7 +14,7 @@ set(SOURCES
         implementacion/query.cpp
         implementacion/esquema.cpp
         implementacion/controlador_Query.cpp
-        implementacion/hashing_extendible.cpp
+        implementacion/directorioHash.cpp
 )
 
 set(HEADERS include)

@@ -50,6 +50,9 @@ public:
     bool getTieneWhere() const;
     string getAtributo() const;
     string getValor() const;
+
+    int getIntValor() const;
+    
     int getOpcionCondicion() const;
     bool getTodos_Campos() const;
     vector<string> getValores();

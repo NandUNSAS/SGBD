@@ -112,6 +112,7 @@ void bloque::mostrarBloque() const {
     cout << "ID: " << idBloque << endl;
     cout << "Ruta del bloque: " << rutaBloque << endl;
     cout << "Registros: " << contenido << endl;
+    cout << "IdPostulante: "<< idPostulante << endl;
 }
 
 void bloque::inicializarBloque(int id, string ruta){
@@ -120,7 +121,12 @@ void bloque::inicializarBloque(int id, string ruta){
     construirBloque();
 }
 
-
+void bloque::inicializarBloqueInt(int id, string ruta, int _idPostulante){
+    idBloque = id;
+    rutaBloque = ruta;
+    idPostulante = _idPostulante;
+    construirBloque();
+}
 
 void bloque::leerRutasSectoresDesdeArchivo() {
     rutaSectores.clear();
@@ -156,4 +162,30 @@ void bloque::leerRutasSectoresDesdeArchivo() {
     }
 
     archivo.close();
+}
+
+string bloque::buscarRegistroPorIdPostulante() const {
+    cout << "buscando registro con id: "<<idPostulante << endl;
+    stringstream ss(contenido);
+    string linea;
+    string idStr = to_string(idPostulante);
+
+    while (getline(ss, linea)) {
+        // Ignora líneas vacías
+        if (linea.empty()) continue;
+        // Busca el primer campo antes del primer '#'
+        size_t pos = linea.find('#');
+        if (pos != string::npos) {
+            string idCampo = linea.substr(0, pos);
+            if (idCampo == idStr) {
+                return linea; // Retorna la línea completa
+            }
+        }
+    }
+    return "no encontrado"; // No encontrado
+}
+
+
+int bloque::getIdPostulante() const{
+    return idPostulante;
 }

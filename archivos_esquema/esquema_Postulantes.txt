@@ -1,1 +1,1 @@
-Postulantes#id_postulante#string#8#Escuela#string#14#Apto#string#2#Puntaje#float#8
+Postulantes#id_postulante#int#8#Escuela#string#14#Apto#string#2#Puntaje#float#8

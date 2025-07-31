@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <fstream>
 
+const string RUTASB = "../../rutas_sectores/cilindroMedio.txt";
 
 ControladorQuery::ControladorQuery(){
 
@@ -50,6 +51,23 @@ void ControladorQuery::efectuarConsulta(Query& _query, string rutaBloques){
         int id = obtenerIdBloqueVacio(rutaBloques);
         realizarConsultaInsert(_query, id);
     }
+    else if(tipoConsulta == "SELECT"){
+        //ControladorQuery controlador;
+        //controlador.generarIndicePostulantes();
+        // Aquí se implementaría la lógica para consultas SELECT
+        cout << "Consulta SELECT no implementada aún." << endl;
+    }
+    else if(tipoConsulta == "UPDATE"){
+        // Aquí se implementaría la lógica para consultas UPDATE
+        cout << "Consulta UPDATE no implementada aún." << endl;
+    }
+    else if(tipoConsulta == "DELETE"){
+        // Aquí se implementaría la lógica para consultas DELETE
+        cout << "Consulta DELETE no implementada aún." << endl;
+    }
+    else{
+        cout << "Tipo de consulta no reconocido." << endl;
+    }
 }
 
 void modifcarCabecera(string& cabecera, int tamañoRegistro, int cantidadMaximaRegistros){
@@ -80,6 +98,15 @@ void ControladorQuery::agregarInserción(bloque& _bloque, string& registro){
     modifcarCabecera(cabecera, tamañoRegistro, cantidadMaximaRegistros);
     int desplazamiento = obtenerDesplazamiento(cabecera);
     desplazamientoInserción(desplazamiento);
+
+    // Extraer ID del postulante
+    size_t hash_pos = registro.find('#');
+    if(hash_pos == string::npos) return;
+    
+    int id = stoi(registro.substr(0, hash_pos));
+    
+    // Actualizar índice
+    actualizarIndiceInsercion(id, _bloque.getIdBloque(), desplazamiento);
 }
 
 string ControladorQuery::crearRegistro() {
@@ -132,12 +159,107 @@ string ControladorQuery::crearRegistro() {
     return registroInsercion;
 }
 
-
-
 void ControladorQuery::realizarConsultaInsert(Query _query, int id){
     //string nombreTabla = query.getTabla();
     esquema = query.getEsquema();
     _bloque = gb.getBloque(id);
     string registro = crearRegistro();
     agregarInserción(_bloque, registro);
+}
+
+void ControladorQuery::generarIndicePostulantes() {
+    postulantes_index = ExtendibleHash(2, 4, "indice_postulantes.dat");
+    
+    int block_id = 1;
+    while(true) {
+        string ruta = obtenerRutaPorId(RUTASB, block_id);
+        if(ruta == "no encontrado") break;
+        
+        bloque b;
+        b.inicializarBloque(block_id, ruta);
+        string contenido = b.getContenido();
+        
+        // Saltar cabecera
+        size_t pos = contenido.find('\n');
+        if(pos == string::npos) {
+            block_id++;
+            continue;
+        }
+        
+        // Procesar registros
+        int offset = 0;
+        size_t inicio = pos + 1;
+        while(inicio < contenido.size()) {
+            pos = contenido.find('\n', inicio);
+            if(pos == string::npos) pos = contenido.size();
+            
+            string registro = contenido.substr(inicio, pos - inicio);
+            if(!registro.empty()) {
+                // Extraer ID (primer campo antes del #)
+                size_t hash_pos = registro.find('#');
+                if(hash_pos != string::npos) {
+                    try {
+                        int id = stoi(registro.substr(0, hash_pos));
+                        postulantes_index.insert(id, {block_id, offset});
+                    } catch(...) {
+                        // Ignorar registros mal formados
+                    }
+                }
+                
+                // Actualizar offset para el próximo registro
+                offset = pos - inicio;
+            }
+            
+            inicio = pos + 1;
+        }
+        
+        block_id++;
+    }
+    
+    postulantes_index.saveToFile();
+}
+
+std::string ControladorQuery::buscarPostulantePorID(int id) {
+    if(!postulantes_index.loadFromFile()) {
+        generarIndicePostulantes(); // Regenerar índice si no existe
+    }
+    
+    BlockPosition pos = postulantes_index.search(id);
+    if(!pos.isValid()) {
+        return "Postulante no encontrado";
+    }
+    
+    // Obtener bloque
+    string ruta = obtenerRutaPorId(RUTASB, pos.block_id);
+    if(ruta == "no encontrado") {
+        return "Bloque no encontrado";
+    }
+    
+    bloque b;
+    b.inicializarBloque(pos.block_id, ruta);
+    string contenido = b.getContenido();
+    
+    // Saltar cabecera
+    size_t inicio = contenido.find('\n') + 1;
+    if(inicio == string::npos) {
+        return "Formato de bloque inválido";
+    }
+    
+    // Buscar registro en la posición indicada
+    size_t registro_inicio = inicio + pos.offset;
+    if(registro_inicio >= contenido.size()) {
+        return "Desplazamiento inválido";
+    }
+    
+    size_t registro_fin = contenido.find('\n', registro_inicio);
+    if(registro_fin == string::npos) {
+        registro_fin = contenido.size();
+    }
+    
+    return contenido.substr(registro_inicio, registro_fin - registro_inicio);
+}
+
+void ControladorQuery::actualizarIndiceInsercion(int id, int block_id, int offset) {
+    postulantes_index.insert(id, {block_id, offset});
+    postulantes_index.saveToFile();
 }

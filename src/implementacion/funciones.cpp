@@ -11,15 +11,6 @@
 
 
 using namespace std;
-/*
-#define ARCHIVO_ESQUEMA "../../esquema.txt"
-#define ARCHIVO_RELACION "../../relacion.txt"
-#define ARCHIVO_TIPOS_T "../../datos_titanic.txt"
-#define ARCHIVO_TIPOS_H "../../datos_housing.txt"
-
-#define ARCHIVO_MAX_LONGITUD "../../maxLongitud.txt"
-*/
-//NO TOMA EN CUENTA EL ENCABEZADO
 
 string obtenerRuta(const string& linea) {
     size_t pos = linea.find('#');
@@ -209,29 +200,6 @@ void construirEsquema(const string& archivoAtributos,
     // Limpiar longitudes
     for (string& longitud : longitudes)
         longitud = limpiar(longitud);
-
-    
-    // Función para mostrar los vectores de atributos, tipos y longitudes
-    /*
-        cout << "Atributos:\n";
-        for (const string& atributo : atributos) {
-            cout << " - " << atributo << endl;
-        }
-
-        cout << "\nTipos:\n";
-        int a = 0;
-        for (const string& tipo : tipos) {
-            cout << " - " << tipo << endl;
-            cout <<"veces: " << a <<endl;
-            a++;
-        }
-
-        cout << "\nLongitudes:\n";
-        for (const string& longitud : longitudes) {
-            cout << " - " << longitud << endl;
-        }
-
-       */
 
     if (atributos.size() != tipos.size() || atributos.size() != longitudes.size()) {
         cerr << "Cantidad inconsistente de atributos, tipos o longitudes.\n";

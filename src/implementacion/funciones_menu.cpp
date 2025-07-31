@@ -383,6 +383,14 @@ string tipoConsulta(){
     else if(opcion == 2){
         return "write";
     }
+    else if(opcion == 3){
+        cout << "Volviendo al menú principal...\n";
+        return "volver";
+    }
+    else{
+        cout << "Opción no válida. Intente nuevamente.\n";
+        return tipoConsulta();
+    }
 }
 
 void cargarPaginas(bufferManager& bm, Query& query, string modo){
@@ -529,11 +537,14 @@ void menuConsultas(){
     Query query;
     ControladorQuery controladorQuery;
     string tipoConsulta;
+    string resultado;
     int opcion;
     do {
         cout << "\n----- consultas -----\n";
         cout << "1. Crear Tabla (ESQUEMA)\n";
         cout << "2. Realizar Consulta\n";
+        cout << "3. Buscar Postulante por ID\n";
+        cout << "4. Reconstruir Indice Postulantes\n";
         cin >> opcion;
         cin.ignore();
 
@@ -550,10 +561,14 @@ void menuConsultas(){
                 //generarEntradaIndex(query);
                 break;
             case 3:
-                //B-tree
+                int idPostulante;
+                cout << "Ingrese ID del postulante: "; cin >> idPostulante;
+                resultado = controladorQuery.buscarPostulantePorID(idPostulante);
+                cout << "Resultado: " << resultado << endl;
                 break;
             case 4:
-                cout << "Volviendo al menú principal...\n";
+                controladorQuery.generarIndicePostulantes();
+                cout << "Índice de postulantes reconstruido exitosamente.\n";
                 break;
             default:
                 cout << "Opción no válida. Intente nuevamente.\n";

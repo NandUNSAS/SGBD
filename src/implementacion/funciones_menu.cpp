@@ -119,7 +119,7 @@ void crearDiscoPersonalizado(gestorAlmacenamiento& gestor, disco& disco1) {
 }
 
 void usarDiscoPorDefecto(gestorAlmacenamiento& gestor, disco& disco1) {
-    const int sectoresBloque = 8;
+    const int sectoresBloque = 5;
 
     disco1.discoEstatico();
     disco1.crearDisco();

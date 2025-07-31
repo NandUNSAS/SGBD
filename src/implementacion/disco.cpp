@@ -25,11 +25,11 @@ void disco::discoPersonalizado(int _platos, int _pistasXsuperficie, int _sectorX
 }    
 
 void disco::discoEstatico() {
-    platos = 8;
+    platos = 10;
     superficies = 2;
     pistasXsuperficie = 10;
-    sectoresXpista = 15;
-    tamSector = 1024;
+    sectoresXpista = 10;
+    tamSector = 368;
 }
 
 
@@ -89,17 +89,17 @@ void disco::crearDisco() {
 }
 
 void disco::guardarEnArchivo() {
-ofstream archivo("archivo_info_Disco/info_disco.txt");
+    ofstream archivo("../../archivo_info_Disco/info_disco.txt", ios::trunc); // modo trunc para borrar contenido previo
     if (archivo.is_open()) {
-        archivo << getPlatos() << "#"
-                << getSuperficie() << "#"
-                << getPistasXsuperficie() << "#"
-                << getSectoresXpista() << "#"
-                << getTamSector() << "#"
-                << getCapacidadDisco();
+        archivo << platos << "#"
+                << superficies << "#"
+                << pistasXsuperficie << "#"
+                << sectoresXpista << "#"
+                << tamSector << "#"
+                << capacidadDisco;
         archivo.close();
     } else {
-        cerr << "No se pudo abrir el archivo datos_disco.txt para escritura." << std::endl;
+        cerr << "No se pudo abrir el archivo archivo_info_Disco/info_disco.txt para escritura." << std::endl;
     }
 }
 
